@@ -1,0 +1,6 @@
+{
+  "name": "Dr. P. Annamalai IAS Academy",
+  "description": "A modern and clean website for Dr. P. Annamalai IAS Academy, featuring a professional hero section and navigation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,176 @@
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useSpring, type MotionValue } from "motion/react";
+import { ArrowRight } from "lucide-react";
+
+// Sub-component for individual stacking image
+interface FacultyImageProps {
+  key?: any;
+  image: string;
+  index: number;
+  total: number;
+  scrollProgress: MotionValue<number>;
+  isActive: boolean;
+}
+
+const FacultyImage = ({ image, index, total, scrollProgress, isActive }: FacultyImageProps) => {
+  const start = index / total;
+  
+  // Create a spring-smoothed version of the scroll progress for this specific image
+  const smoothProgress = useSpring(scrollProgress, {
+    stiffness: 60,
+    damping: 20,
+    restDelta: 0.001
+  });
+
+  const y = useTransform(smoothProgress, 
+    [index === 0 ? 0 : start - 0.2, start], 
+    [index === 0 ? "0%" : "100%", "0%"]
+  );
+
+  return (
+    <motion.div
+      className="absolute inset-0"
+      style={{ 
+        y,
+        zIndex: index + 10,
+      }}
+    >
+      <div className="relative w-full h-full overflow-hidden">
+        <motion.img 
+          src={image} 
+          alt=""
+          className={`w-full h-full object-cover transition-all duration-1000 ${isActive ? 'grayscale-0' : 'grayscale brightness-75 scale-110'}`}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent"></div>
+        {/* Decorative corner */}
+        <div className="absolute bottom-12 left-12 border-l border-b border-white/20 w-32 h-32 pointer-events-none"></div>
+      </div>
+    </motion.div>
+  );
+};
+
+const FacultySection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const FACULTY = [
+    {
+      name: "Dr. P. Annamalai",
+      role: "Founder & Director",
+      desc: "15+ years of experience in mentoring over 1,000 successful IAS officers. Expert in General Studies and Strategy.",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=1200",
+    },
+    {
+      name: "Mr. S. Raghavan",
+      role: "Head of History",
+      desc: "Distinguished historian with a decade of expertise in Indian Culture and World History modules.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=1200",
+    },
+    {
+      name: "Ms. Deepa Lakshmi",
+      role: "Geography Specialist",
+      desc: "Renowned for her mapping techniques and comprehensive analysis of Environmental Impact.",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1200",
+    },
+    {
+      name: "Mr. K. Velmurugan",
+      role: "Polity Consultant",
+      desc: "Specialist in Governance and Indian Constitution. Former legal advisor with deep insights.",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=1200",
+    },
+  ];
+
+  // Update active index based on scroll progress
+  useEffect(() => {
+    return scrollYProgress.onChange((v) => {
+      const index = Math.min(
+        Math.floor(v * FACULTY.length),
+        FACULTY.length - 1
+      );
+      setActiveIndex(index);
+    });
+  }, [scrollYProgress, FACULTY.length]);
+
+  return (
+    <section ref={containerRef} className="relative bg-white" style={{ height: `${FACULTY.length * 100}vh` }}>
+      <div className="sticky top-0 h-screen w-full flex flex-col lg:flex-row overflow-hidden">
+        
+        {/* Left Side: Editorial Text */}
+        <div className="w-full lg:w-1/2 h-full flex flex-col pt-32 px-6 sm:px-12 xl:px-[120px] bg-white z-20 border-b lg:border-b-0 lg:border-r border-gray-100 relative">
+          <div className="max-w-md w-full text-left mr-auto">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 40 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="inline-block px-4 py-1.5 bg-primary-light text-primary text-[10px] font-bold tracking-[0.4em] uppercase rounded-full mb-10">
+                MEET THE MENTORS
+              </div>
+              <h2 className="text-5xl lg:text-[88px] font-display text-dark leading-[0.85] mb-10 font-normal">
+                {FACULTY[activeIndex].name.split(' ').map((word, i) => (
+                  <span key={i} className="block">{word}</span>
+                ))}
+              </h2>
+              <div className="flex flex-col items-start space-y-8">
+                <span className="text-2xl font-display italic text-primary/80">{FACULTY[activeIndex].role}</span>
+                <p className="text-gray-500 leading-relaxed text-base lg:text-lg max-w-sm font-light">
+                  {FACULTY[activeIndex].desc}
+                </p>
+                <div className="pt-10 flex items-center gap-12">
+                   <div className="flex -space-x-3">
+                      {FACULTY.map((f, i) => (
+                        <div 
+                          key={i} 
+                          className={`w-10 h-10 rounded-full border-2 border-white overflow-hidden transition-all duration-500 ${i === activeIndex ? 'scale-125 z-10 border-primary' : 'opacity-40'}`}
+                        >
+                          <img src={f.image} className="w-full h-full object-cover" alt="" />
+                        </div>
+                      ))}
+                   </div>
+                   <button className="flex items-center gap-3 text-dark text-xs font-bold uppercase tracking-widest group">
+                      <span>View Bio</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                   </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Vertical Counter - Moved to right side of left panel for balance */}
+          <div className="absolute right-12 bottom-12 flex flex-col gap-12 font-display text-4xl lg:text-7xl opacity-5">
+            {FACULTY.map((_, i) => (
+              <span key={i} className={`transition-opacity duration-500 ${i === activeIndex ? 'opacity-100' : 'opacity-20'}`}>
+                0{i + 1}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Side: Stacking images */}
+        <div className="w-full lg:w-1/2 h-full relative bg-gray-50 overflow-hidden">
+          {FACULTY.map((f, i) => {
+            return (
+              <FacultyImage 
+                key={i} 
+                image={f.image} 
+                index={i} 
+                total={FACULTY.length} 
+                scrollProgress={scrollYProgress}
+                isActive={i === activeIndex}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FacultySection;
