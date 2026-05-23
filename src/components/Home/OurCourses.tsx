@@ -2,6 +2,13 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 
+import civilImg from '../../assets/images/civil.png';
+import tnpscImg from '../../assets/images/Tnpsc 1 &2.png';
+import optionalImg from '../../assets/images/optional.png';
+import csatImg from '../../assets/images/csat.png';
+import ethicsImg from '../../assets/images/ethics.png';
+import interviewImg from '../../assets/images/Interview ready.png';
+
 interface OurCoursesProps {
   onDiscoverMore?: () => void;
 }
@@ -12,40 +19,40 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 640 : false);
 
   const COURSES = [
-    { 
-      name: 'Civil Services (IAS/IPS)', 
-      src: 'https://cdn3d.iconscout.com/3d/premium/thumb/book-5596349-4665465.png',
-      bg: '#1e40af', 
+    {
+      name: 'Civil Services (IAS/IPS)',
+      src: civilImg,
+      bg: '#1e40af',
       desc: 'Our flagship program providing comprehensive coaching for Prelims, Mains, and Interview.'
     },
-    { 
-      name: 'TNPSC Group I & II', 
-      src: 'https://cdn3d.iconscout.com/3d/premium/thumb/book-4743640-3949823.png',
-      bg: '#166534', 
+    {
+      name: 'TNPSC Group I & II',
+      src: tnpscImg,
+      bg: '#166534',
       desc: 'Specialized coaching for Tamil Nadu Public Service Commission exams with expert local faculty.'
     },
-    { 
-      name: 'Optional Specialization', 
-      src: 'https://cdn3d.iconscout.com/3d/premium/thumb/book-6601449-5494276.png',
-      bg: '#5b21b6', 
+    {
+      name: 'Optional Specialization',
+      src: optionalImg,
+      bg: '#5b21b6',
       desc: 'Deep dive into History, Geography, PSIR, and Sociology with our dedicated subject experts.'
     },
-    { 
-      name: 'CSAT & Aptitude', 
-      src: 'https://cdn3d.iconscout.com/3d/premium/thumb/book-5691555-4741049.png',
-      bg: '#9a3412', 
+    {
+      name: 'CSAT & Aptitude',
+      src: csatImg,
+      bg: '#9a3412',
       desc: 'Master logical reasoning, analytical ability, and basic numeracy for the CSAT paper.'
     },
-    { 
-      name: 'Ethics & Integrity', 
-      src: 'https://cdn3d.iconscout.com/3d/premium/thumb/book-4743644-3949827.png',
-      bg: '#854d0e', 
+    {
+      name: 'Ethics & Integrity',
+      src: ethicsImg,
+      bg: '#854d0e',
       desc: 'Focused sessions on General Studies Paper IV, covering ethics, integrity, and case studies.'
     },
-    { 
-      name: 'Interview Ready', 
-      src: 'https://cdn3d.iconscout.com/3d/premium/thumb/book-4743639-3949822.png',
-      bg: '#1e3a8a', 
+    {
+      name: 'Interview Ready',
+      src: interviewImg,
+      bg: '#1e3a8a',
       desc: 'Personality development and mock interview sessions with former board members and bureaucrats.'
     },
   ];
@@ -93,66 +100,66 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
         return {
           ...base,
           left: '50%',
-          transform: `translateX(-50%) scale(${isMobile ? 1.4 : 1.8})`,
+          transform: `translateX(-50%) scale(${isMobile ? 1.2 : 1.25})`,
           filter: 'blur(0px)',
           opacity: 1,
           zIndex: 30,
-          height: isMobile ? '55%' : '85%',
-          bottom: isMobile ? '25%' : '5%',
+          height: isMobile ? '45%' : '65%',
+          bottom: isMobile ? '22%' : '6%',
         };
       case 'left':
         return {
           ...base,
           left: isMobile ? '15%' : '25%',
-          transform: 'translateX(-50%) scale(1)',
+          transform: 'translateX(-50%) scale(0.9)',
           filter: 'blur(1px)',
           opacity: 0.8,
           zIndex: 20,
-          height: isMobile ? '18%' : '28%',
-          bottom: isMobile ? '35%' : '15%',
+          height: isMobile ? '14%' : '22%',
+          bottom: isMobile ? '34%' : '14%',
         };
       case 'right':
         return {
           ...base,
           left: isMobile ? '85%' : '75%',
-          transform: 'translateX(-50%) scale(1)',
+          transform: 'translateX(-50%) scale(0.9)',
           filter: 'blur(1px)',
           opacity: 0.8,
           zIndex: 20,
-          height: isMobile ? '18%' : '28%',
-          bottom: isMobile ? '35%' : '15%',
+          height: isMobile ? '14%' : '22%',
+          bottom: isMobile ? '34%' : '14%',
         };
       case 'back-left':
         return {
           ...base,
           left: isMobile ? '0%' : '10%',
-          transform: 'translateX(-50%) scale(0.8)',
+          transform: 'translateX(-50%) scale(0.75)',
           filter: 'blur(3px)',
           opacity: 0.4,
           zIndex: 10,
-          height: isMobile ? '12%' : '20%',
+          height: isMobile ? '10%' : '16%',
           bottom: isMobile ? '38%' : '18%',
         };
       case 'back-right':
         return {
           ...base,
           left: isMobile ? '100%' : '90%',
-          transform: 'translateX(-50%) scale(0.8)',
+          transform: 'translateX(-50%) scale(0.75)',
           filter: 'blur(3px)',
           opacity: 0.4,
           zIndex: 10,
-          height: isMobile ? '12%' : '20%',
+          height: isMobile ? '10%' : '16%',
           bottom: isMobile ? '38%' : '18%',
         };
       default: // back
         return {
           ...base,
           left: '50%',
-          transform: 'translateX(-50%) scale(0.6)',
+          transform: 'translateX(-50%) scale(0.55)',
           filter: 'blur(5px)',
           opacity: 0,
           zIndex: 5,
-          height: '15%',
+          height: isMobile ? '8%' : '12%',
           bottom: '20%',
         };
     }
@@ -173,10 +180,6 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
       />
 
       {/* Brand Label */}
-      <div className="absolute top-8 left-6 sm:left-12 xl:left-[120px] z-[60] text-white flex flex-col">
-        <span className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-80 mb-1">Dr. P. Annamalai</span>
-        <span className="text-lg font-black uppercase tracking-[0.1em] font-display italic">IAS Academy</span>
-      </div>
 
       {/* Giant Ghost Text */}
       <div className="absolute inset-x-0 top-[15%] flex items-center justify-center pointer-events-none select-none z-[1]">
@@ -192,10 +195,11 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
       <div className="absolute inset-0 z-[10]">
         {COURSES.map((course, i) => (
           <div key={i} style={getStyle(getRole(i)) as any}>
-            <img 
-              src={course.src} 
-              alt={course.name} 
+            <img
+              src={course.src}
+              alt={course.name}
               className="w-full h-full object-contain object-bottom select-none drop-shadow-2xl"
+              style={{ maxWidth: isMobile ? '160px' : '420px', maxHeight: '100%' }}
               draggable={false}
             />
           </div>
