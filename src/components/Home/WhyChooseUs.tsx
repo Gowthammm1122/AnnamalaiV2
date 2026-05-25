@@ -1,10 +1,18 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { Award, GraduationCap, BookText, Globe, Microscope, Sparkles, ArrowRight } from "lucide-react";
 
 const WhyChooseUs = () => {
+  const [isMobile, setIsMobile] = useState(false);
   const targetRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -52,6 +60,43 @@ const WhyChooseUs = () => {
       desc: "Mock interview sessions with former civil servants to polish your personality.",
     },
   ];
+
+  if (isMobile) {
+    return (
+      <section className="bg-white py-14 px-4 border-y border-gray-50">
+        <div className="max-w-[1440px] mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-display text-dark mb-3 leading-tight">
+              Why Choose <span className="italic text-primary font-medium font-display">Dr. P. Annamalai IAS Academy?</span>
+            </h2>
+            <div className="w-16 h-1 bg-primary mx-auto opacity-30 mt-4"></div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3.5">
+            {features.map((f, i) => (
+              <div
+                key={i}
+                className="p-4 bg-white border border-gray-100 shadow-sm rounded-xl flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-10 h-10 bg-primary-light flex items-center justify-center text-primary mb-4 rounded-xl ring-1 ring-primary/10">
+                    {React.cloneElement(f.icon as React.ReactElement<any>, { className: "w-5 h-5" })}
+                  </div>
+                  <h3 className="text-sm font-bold text-dark mb-1.5 leading-snug">{f.title}</h3>
+                  <p className="text-[11px] text-gray-500 font-light italic leading-relaxed">
+                    {f.desc}
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-gray-50 flex items-center text-primary text-[8px] font-bold uppercase tracking-widest">
+                  Read More <ArrowRight className="ml-1.5 w-2.5 h-2.5" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section ref={targetRef} className="relative h-[400vh] bg-white">

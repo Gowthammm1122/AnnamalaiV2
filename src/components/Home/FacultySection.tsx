@@ -50,6 +50,15 @@ const FacultyImage = ({ image, index, total, scrollProgress, isActive }: Faculty
 };
 
 const FacultySection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -87,6 +96,7 @@ const FacultySection = () => {
 
   // Update active index based on scroll progress
   useEffect(() => {
+    if (isMobile) return;
     return scrollYProgress.onChange((v) => {
       const index = Math.min(
         Math.floor(v * FACULTY.length),
@@ -94,7 +104,45 @@ const FacultySection = () => {
       );
       setActiveIndex(index);
     });
-  }, [scrollYProgress, FACULTY.length]);
+  }, [scrollYProgress, FACULTY.length, isMobile]);
+
+  if (isMobile) {
+    return (
+      <section className="bg-white py-14 px-4 border-b border-gray-100">
+        <div className="max-w-[1440px] mx-auto">
+          <div className="text-center mb-10">
+            <div className="inline-block px-3 py-1 bg-primary-light text-primary text-[9px] font-bold tracking-[0.3em] uppercase rounded-full mb-3">
+              MEET THE MENTORS
+            </div>
+            <h2 className="text-3xl font-display text-dark leading-tight">
+              Our Distinguished <span className="italic text-primary font-medium font-display">Faculty</span>
+            </h2>
+            <div className="w-16 h-1 bg-primary mx-auto opacity-30 mt-4"></div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            {FACULTY.map((f, i) => (
+              <div
+                key={i}
+                className="flex gap-4 p-4 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 border border-gray-100 shadow-sm">
+                  <img src={f.image} className="w-full h-full object-cover" alt={f.name} />
+                </div>
+                <div className="flex-1 flex flex-col justify-center">
+                  <span className="text-[10px] font-bold text-primary tracking-wider uppercase">{f.role}</span>
+                  <h3 className="text-lg font-bold text-dark mt-0.5 leading-snug">{f.name}</h3>
+                  <p className="text-xs text-gray-500 font-light mt-1.5 leading-relaxed">
+                    {f.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section ref={containerRef} className="relative bg-white" style={{ height: `${FACULTY.length * 100}vh` }}>
