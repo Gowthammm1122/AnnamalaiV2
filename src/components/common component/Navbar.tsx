@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import Logo from "../../assets/images/logo.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Monitors scroll position to add depth and shadow dynamically
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
-    { name: "Home", key: "home" as const, path: "/" },
-    { name: "About", key: "about" as const, path: "/about" },
-    { name: "Courses", key: "courses" as const, path: "/courses" },
-    { name: "Event Gallery", key: "gallery" as const, path: "/gallery" },
-    { name: "Contact", key: "contact" as const, path: "/contact" },
+    { name: "Home", key: "home", path: "/" },
+    { name: "About", key: "about", path: "/about" },
+    { name: "Courses", key: "courses", path: "/courses" },
+    { name: "Event Gallery", key: "gallery", path: "/gallery" },
   ];
 
   const getActiveKey = () => {
@@ -25,33 +37,131 @@ const Navbar = () => {
 
   const activeKey = getActiveKey();
 
+  const handleNavigation = (path: string) => {
+    if (mobileMenuOpen) {
+      // Step 1: Close the mobile drawer first
+      setMobileMenuOpen(false);
+      // Step 2: Delay route transitions slightly to let the glass drawer slide-out smoothly
+      setTimeout(() => {
+        navigate(path);
+        window.scrollTo(0, 0); // Instantly jump to top for fresh page loads
+      }, 250);
+    } else {
+      // Direct transition on desktop
+      navigate(path);
+      window.scrollTo(0, 0);
+    }
+  };
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100/80 backdrop-blur-md">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-12 xl:px-[120px]">
-        <div className="flex flex-col items-center py-6">
-          <ul className="flex space-x-10 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400">
-            {navLinks.map((link) => {
-              const navigateTo = () => {
-                navigate(link.path);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              };
+    <nav className="fixed top-0 left-0 right-0 z-50 h-24 flex items-center justify-center select-none pointer-events-none px-4 sm:px-6">
+      {/* 
+        Centralized Glassmorphic Dock 
+        Responsive behavior: Spans full width on mobile, locks into a beautifully balanced pill dock on desktop
+      */}
+      <div
+        className={`w-full max-w-full md:max-w-fit flex items-center justify-between md:justify-center md:space-x-2 p-1.5 rounded-full border transition-all duration-500 ease-out pointer-events-auto ${
+          mobileMenuOpen
+            ? "bg-transparent border-transparent shadow-none" // Dissolve container bubbles when mobile drawer is open
+            : scrolled
+            ? "bg-white/80 backdrop-blur-md border-gray-200/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+            : "bg-white/40 backdrop-blur-sm border-white/20 shadow-none"
+        }`}
+      >
+        
+        {/* Minimalist Logo Anchor */}
+        <div
+          onClick={() => handleNavigation("/")}
+          className="flex items-center pl-3 pr-2 md:pr-4 cursor-pointer transition-transform duration-300 hover:scale-105 z-50"
+        >
+          <img
+            src={Logo}
+            alt="Academy Logo"
+            className="w-12 h-12 md:w-12 md:h-12 object-contain"
+          />
+        </div>
 
-              const isActive = link.key === activeKey;
+        {/* Desktop Central Integrated Navigation Array */}
+        <div className="hidden md:flex items-center space-x-1">
+          {navLinks.map((link) => {
+            const isActive = link.key === activeKey;
+            return (
+              <button
+                key={link.name}
+                onClick={() => handleNavigation(link.path)}
+                className={`px-5 py-2 rounded-full text-[11px] font-bold tracking-[0.06em] uppercase transition-all duration-300 ${
+                  isActive
+                    ? "bg-white text-gray-900 shadow-[0_2px_8px_rgba(0,0,0,0.06)]"
+                    : "text-gray-500 hover:text-gray-900 hover:bg-white/40"
+                }`}
+              >
+                {link.name}
+              </button>
+            );
+          })}
+          
+          {/* Integrated Internal CTA Contact Link */}
+          <button
+            onClick={() => handleNavigation("/contact")}
+            className={`px-5 py-2 rounded-full text-[11px] font-bold tracking-[0.06em] uppercase transition-all duration-300 flex items-center space-x-1 group ${
+              activeKey === "contact"
+                ? "bg-primary text-white shadow-[0_2px_8px_rgba(0,0,0,0.1)]"
+                : "bg-gray-900 text-white hover:bg-primary"
+            }`}
+          >
+            <span>Contact</span>
+            <ArrowUpRight className="w-3 h-3 transition-transform duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </button>
+        </div>
 
-              return (
-                <li key={link.name}>
-                  <button
-                    onClick={navigateTo}
-                    className={`transition-colors duration-200 hover:text-[#111214] uppercase font-bold tracking-[0.2em] cursor-pointer outline-none pb-1 ${
-                      isActive ? "text-primary border-b-2 border-primary" : ""
-                    }`}
-                  >
-                    {link.name}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+        {/* Modern Mobile Trigger - Icons enlarged to w-6 h-6 for pristine legibility */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden p-2 text-gray-900 focus:outline-none z-50 rounded-full transition-colors hover:bg-white/60 mr-1 cursor-pointer"
+          aria-label="Toggle Menu"
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6 animate-fade-in" /> : <Menu className="w-6 h-6 animate-fade-in" />}
+        </button>
+      </div>
+
+      {/* Clean Premium Mobile Fullscreen Blur Sheet (Explicitly captures pointers to resolve broken navigation bugs) */}
+      <div
+        className={`fixed inset-0 z-40 bg-white/98 backdrop-blur-xl flex flex-col justify-between transition-all duration-500 ease-in-out md:hidden pointer-events-auto ${
+          mobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
+        }`}
+      >
+        {/* Navigation Section */}
+        <div className="flex flex-col pt-32 px-10 space-y-6">
+          <p className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-gray-400 border-b border-gray-100 pb-2">
+            Navigation Hub
+          </p>
+          {navLinks.map((link) => {
+            const isActive = link.key === activeKey;
+            return (
+              <button
+                key={link.name}
+                onClick={() => handleNavigation(link.path)}
+                className={`text-left text-4xl uppercase tracking-tight transition-all duration-300 outline-none ${
+                  isActive ? "text-primary translate-x-3" : "text-gray-900 hover:text-primary"
+                }`}
+                style={{ fontFamily: "'Anton', sans-serif" }}
+              >
+                {link.name}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Action Drawer Area */}
+        <div className="p-8 bg-gray-50/80 border-t border-gray-100 backdrop-blur-md flex flex-col space-y-4">
+          <button
+            onClick={() => handleNavigation("/contact")}
+            className="w-full py-4 bg-gray-900 hover:bg-primary text-white font-bold text-xs tracking-widest uppercase rounded-full shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
+            style={{ fontFamily: "'Anton', sans-serif" }}
+          >
+            <span>Connect Directly</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </nav>
