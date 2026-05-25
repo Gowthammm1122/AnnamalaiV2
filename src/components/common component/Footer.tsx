@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Twitter, Linkedin, Github } from "lucide-react";
+import whitelogoImg from "../../assets/images/whitelogo.png";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -22,11 +23,16 @@ const Footer = () => {
             <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260503_104800_bc43ae09-f494-43e3-97d7-2f8c1692cfd7.mp4" type="video/mp4" />
           </video>
           
-          <div className="footer-logo flex items-center gap-2.5 relative z-10">
-            <div className="footer-logo-mark w-8 h-8 rounded-lg bg-white/15 border-[1.5px] border-white/85 flex items-center justify-center font-bold text-white text-base tracking-[-0.02em]">
-              A
+          <div className="footer-logo flex items-center gap-3 relative z-10">
+            <img src={whitelogoImg} alt="Dr. P. Annamalai IAS Academy Logo" className="h-12 w-auto object-contain drop-shadow-sm" />
+            <div className="flex flex-col">
+              <span className="text-[13px] font-black uppercase text-white tracking-[0.12em] leading-none">
+                Dr. P. Annamalai
+              </span>
+              <span className="text-[9px] font-bold uppercase text-white/80 tracking-[0.26em] mt-1 leading-none">
+                IAS Academy
+              </span>
             </div>
-            <span className="footer-logo-name text-[22px] font-bold text-white tracking-[-0.02em]">Annamalai</span>
           </div>
 
           <div className="footer-tagline-container mt-auto mb-7 relative z-10">
@@ -54,7 +60,7 @@ const Footer = () => {
           {/* Floating Badge */}
           <div className="footer-lucky-graphic absolute -top-9 right-10 z-10 flex flex-col items-start gap-1.5">
             <div className="lucky-cube w-24 h-24 rounded-[22px] -rotate-[10deg] bg-gradient-to-br from-[#5b9ffb] via-[#1e5dd7] to-[#1448be] shadow-[inset_3px_3px_8px_rgba(255,255,255,0.35),inset_-3px_-3px_12px_rgba(0,0,0,0.18),8px_14px_28px_rgba(20,72,200,0.35)] flex items-center justify-center">
-              <span className="lucky-cube-mark text-[42px] font-bold text-white rotate-[10deg] tracking-[-0.04em] drop-shadow-[0_3px_6px_rgba(0,0,0,0.25)] leading-none">A</span>
+              <img src={whitelogoImg} alt="Dr. P. Annamalai IAS Academy Logo" className="w-14 h-14 object-contain rotate-[10deg] drop-shadow-[0_2px_5px_rgba(0,0,0,0.2)]" />
             </div>
             <div className="lucky-text-row flex items-center gap-1.5 -rotate-1 mt-1">
               <svg className="w-5.5 h-5.5 text-[#9ca3af]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
