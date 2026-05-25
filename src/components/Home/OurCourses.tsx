@@ -22,7 +22,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
     {
       name: 'Civil Services (IAS/IPS)',
       src: civilImg,
-      bg: '#1e40af',
+      bg: '#854d0e',
       desc: 'Our flagship program providing comprehensive coaching for Prelims, Mains, and Interview.'
     },
     {
@@ -34,19 +34,19 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
     {
       name: 'Optional Specialization',
       src: optionalImg,
-      bg: '#5b21b6',
+      bg: '#9a3412',
       desc: 'Deep dive into History, Geography, PSIR, and Sociology with our dedicated subject experts.'
     },
     {
       name: 'CSAT & Aptitude',
       src: csatImg,
-      bg: '#9a3412',
+      bg: '#5b21b6',
       desc: 'Master logical reasoning, analytical ability, and basic numeracy for the CSAT paper.'
     },
     {
       name: 'Ethics & Integrity',
       src: ethicsImg,
-      bg: '#854d0e',
+      bg: '#1e40af',
       desc: 'Focused sessions on General Studies Paper IV, covering ethics, integrity, and case studies.'
     },
     {
@@ -55,6 +55,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
       bg: '#1e3a8a',
       desc: 'Personality development and mock interview sessions with former board members and bureaucrats.'
     },
+    
   ];
 
   useEffect(() => {

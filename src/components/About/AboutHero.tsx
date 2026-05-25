@@ -98,19 +98,14 @@ const AboutHero: React.FC = () => {
       if (offCtx) {
         offCtx.clearRect(0, 0, w, h);
         drawOriginalCentered(offCtx, img2Ref.current, w, h);
+        
+        // Use destination-in to mask the second image
         offCtx.globalCompositeOperation = "destination-in";
 
-        const grad = offCtx.createRadialGradient(cursorX, cursorY, 0, cursorX, cursorY, 260);
-        grad.addColorStop(0, "rgba(255,255,255,1)");
-        grad.addColorStop(0.4, "rgba(255,255,255,1)");
-        grad.addColorStop(0.6, "rgba(255,255,255,0.75)");
-        grad.addColorStop(0.75, "rgba(255,255,255,0.4)");
-        grad.addColorStop(0.88, "rgba(255,255,255,0.12)");
-        grad.addColorStop(1, "rgba(255,255,255,0)");
-
+        // CHANGED HERE: Replaced the feathered gradient with a flat, sharp circle path fill
         offCtx.beginPath();
         offCtx.arc(cursorX, cursorY, 260, 0, 2 * Math.PI);
-        offCtx.fillStyle = grad;
+        offCtx.fillStyle = "#ffffff"; 
         offCtx.fill();
 
         offCtx.globalCompositeOperation = "source-over";
@@ -210,7 +205,7 @@ const AboutHero: React.FC = () => {
           >
             <h1 id="about-hero-headline" className="text-2xl md:text-4.5xl font-display font-semibold text-white tracking-tight leading-tight uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
               Nurturing India's <br className="hidden md:block" />
-              Officers <span className="italic font-normal font-serif text-blue-300">Since Two Decades</span>
+              Officials <span className="italic font-normal font-serif text-blue-300">Since Two Decades</span>
             </h1>
             <p id="about-hero-bottom-text" className="text-gray-200 font-medium text-xs md:text-sm leading-relaxed max-w-md drop-shadow-[0_1px_5px_rgba(0,0,0,0.95)]">
               Dr. P. Annamalai IAS Academy is committed to transforming civil service aspirations into structured achievements, leveraging continuous subjective mentorship and personal guidance plans.
