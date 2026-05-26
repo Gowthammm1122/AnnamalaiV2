@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { motion } from "motion/react";
 import Image1 from "../../assets/images/banner1.png";
-import Image2 from "../../assets/images/banner2.png";
+import Image2 from "../../assets/images/banner3.png";
 
 const AboutHero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);

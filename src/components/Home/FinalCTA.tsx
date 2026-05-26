@@ -87,23 +87,6 @@ const FinalCTA = ({ onApply, onRegisterDemo }: FinalCTAProps) => {
                   <div className="h-px w-full bg-white/20"></div>
                 </div>
               </motion.div>
-              
-              {/* Floating Stat Card */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-6 -right-6 bg-white p-6 rounded-2xl shadow-2xl hidden md:block animate-none"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center text-primary">
-                    <Award className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-display text-dark">85%</div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Success Rate</div>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </div>
         </div>

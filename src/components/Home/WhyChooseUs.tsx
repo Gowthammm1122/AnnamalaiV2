@@ -20,7 +20,7 @@ const WhyChooseUs = () => {
 
   // Calculate the precise transform based on container width vs viewport width
   // This value will be mapped to the actual translation in px or %
-  const xRaw = useTransform(scrollYProgress, [0, 1], ["0%", "-65%"]);
+  const xRaw = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
   
   const x = useSpring(xRaw, {
     stiffness: 100,
@@ -99,7 +99,7 @@ const WhyChooseUs = () => {
   }
 
   return (
-    <section ref={targetRef} className="relative h-[400vh] bg-white">
+    <section ref={targetRef} className="relative h-[300vh] bg-white">
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden bg-primary-light/20 border-y border-gray-100">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-12 xl:px-[120px] mb-12">
           <motion.div
@@ -119,7 +119,7 @@ const WhyChooseUs = () => {
           <motion.div 
             ref={scrollContainerRef}
             style={{ x }}
-            className="flex gap-10 px-6 sm:px-12 xl:px-[120px] pr-[400px]"
+            className="flex gap-10 px-6 sm:px-12 xl:px-[120px] pr-[200px]"
           >
             {features.map((f, i) => (
               <div
