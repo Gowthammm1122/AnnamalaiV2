@@ -62,7 +62,9 @@ const AboutHero: React.FC = () => {
     const ih = img.naturalHeight || img.height;
 
     // Cover math: Calculate size to completely fill container, cropping excess
-    const ratio = Math.max(w / iw, h / ih);
+    // Apply a scale factor of 0.85 to scale the image down and show more of it
+    const scaleFactor = 0.80;
+    const ratio = Math.max(w / iw, h / ih) * scaleFactor;
     const drawW = iw * ratio;
     const drawH = ih * ratio;
 
