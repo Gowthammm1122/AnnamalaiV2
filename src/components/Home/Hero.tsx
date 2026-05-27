@@ -9,7 +9,7 @@ interface HeroProps {
 
 const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
   return (
-    <div className="min-h-screen flex flex-col justify-between relative bg-white">
+    <section className="sticky top-0 left-0 h-screen w-full flex flex-col justify-between bg-white overflow-hidden z-0">
       {/* Abstract Background Shapes */}
       <div className="absolute -bottom-20 -left-20 w-64 h-64 border border-gray-50 rounded-full -z-10"></div>
       <div className="absolute top-1/2 right-10 w-24 h-[1px] bg-primary opacity-30 -z-10"></div>
@@ -103,7 +103,7 @@ const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

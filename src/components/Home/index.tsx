@@ -4,6 +4,7 @@ import Hero from "./Hero";
 import WhyChooseUs from "./WhyChooseUs";
 import OurCourses from "./OurCourses";
 import FacultySection from "./FacultySection";
+import TestimonialSection from "./Testimonial";
 import FinalCTA from "./FinalCTA";
 import FAQSection from "./FAQSection";
 
@@ -17,14 +18,17 @@ const Home = () => {
 
   return (
     <>
-      <Hero 
-        onViewCourses={() => handleNavigation("/courses")} 
-        onEnrollNow={() => handleNavigation("/contact")} 
-      />
-      <WhyChooseUs />
+      <div className="relative w-full">
+        <Hero 
+          onViewCourses={() => handleNavigation("/courses")} 
+          onEnrollNow={() => handleNavigation("/contact")} 
+        />
+        <WhyChooseUs />
+      </div>
+      <TestimonialSection />
       <OurCourses 
         onDiscoverMore={() => handleNavigation("/courses")} 
-      />
+      /> 
       <FacultySection />
       <FinalCTA 
         onApply={() => handleNavigation("/contact")} 
