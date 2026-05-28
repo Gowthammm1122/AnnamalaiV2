@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "motion/react";
-import { Award } from "lucide-react";
 import Lanyard from "../Lanyard/Lanyard";
 import Ctabg from "../../assets/images/ctabg.jpg";
 
@@ -97,9 +96,13 @@ const CtaSection = ({ onApply, onRegisterDemo }: CtaSectionProps) => {
 
           {/* Absolute overlay for Lanyard spanning the entire container width to prevent clipping, z-30 to float on top of text */}
           <div className="absolute inset-0 w-full h-full pointer-events-none z-30 hidden lg:block">
-            {isInView && (
-              <Lanyard position={[-1.5, -0.5, 14]} gravity={[0, -40, 0]} fov={18} interactive={isInteractive} />
-            )}
+            <Lanyard 
+              position={[-1.5, -0.5, 14]} 
+              gravity={[0, -40, 0]} 
+              fov={18} 
+              interactive={isInteractive} 
+              isInView={isInView}
+            />
           </div>
 
           {/* Visual indicator that card is interactive */}

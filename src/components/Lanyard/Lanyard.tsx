@@ -29,9 +29,10 @@ interface LanyardProps {
   fov?: number;
   transparent?: boolean;
   interactive?: boolean;
+  isInView?: boolean;
 }
 
-export default function Lanyard({ position = [0, 0, 20], gravity = [0, -40, 0], fov = 22, transparent = true, interactive = true }: LanyardProps) {
+export default function Lanyard({ position = [0, 0, 20], gravity = [0, -40, 0], fov = 22, transparent = true, interactive = true, isInView = true }: LanyardProps) {
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
   const [dragged, drag] = useState<THREE.Vector3 | boolean>(false);
 
@@ -51,10 +52,11 @@ export default function Lanyard({ position = [0, 0, 20], gravity = [0, -40, 0], 
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
         style={{ pointerEvents: pointerEventsValue }}
+        frameloop={isInView ? "always" : "never"}
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
-          <Band isMobile={isMobile} dragged={dragged} drag={drag} position={position} />
+          <Band isMobile={isMobile} dragged={dragged} drag={drag} position={position} isInView={isInView} />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer
@@ -98,9 +100,10 @@ interface BandProps {
   dragged: THREE.Vector3 | boolean;
   drag: React.Dispatch<React.SetStateAction<THREE.Vector3 | boolean>>;
   position: [number, number, number];
+  isInView?: boolean;
 }
 
-function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, dragged, drag, position }: BandProps) {
+function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, dragged, drag, position, isInView = true }: BandProps) {
   const band = useRef<any>(null);
   const fixed = useRef<any>(null);
   const j1 = useRef<any>(null);
@@ -197,6 +200,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, dragged, drag, po
   }, [hovered, dragged]);
 
   useFrame((state, delta) => {
+    if (!isInView) return;
     state.camera.position.set(position[0], position[1], position[2]);
     state.camera.lookAt(position[0], position[1], 0);
 

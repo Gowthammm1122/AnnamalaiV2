@@ -77,39 +77,39 @@ const FacultySection = () => {
 
   const FACULTY = [
     {
-      name: "Dr. P. Annamalai",
-      role: "Founder & Director",
+      name: "Dr.P Annamalai",
+      role: "Chairman of Dr P.Annamalai IAS Academy",
       desc: "15+ years of experience in mentoring over 1,000 successful IAS officers. Expert in General Studies and Strategy.",
       image: Founder ,
     },
     {
-      name: "Mr. S. Raghavan",
-      role: "Head of History",
+      name: "C.Kamaraj IAS(R)",
+      role: "C.E.O of Dr P Annamalai IAS Academy",
       desc: "Distinguished historian with a decade of expertise in Indian Culture and World History modules.",
       image: Kamaraj,
     },
     {
-      name: "Ms. Deepa Lakshmi",
-      role: "Geography Specialist",
-      desc: "Renowned for her mapping techniques and comprehensive analysis of Environmental Impact.",
+      name: "Vetrivel D",
+      role: "Faculty - Indian Economy",
+      desc: "Education: BA, ME. Specializes in Indian Economy with 5 years of teaching and mentoring experience.",
       image: Vetrivel,
     },
     {
-      name: "Mr. K. Velmurugan",
-      role: "Polity Consultant",
-      desc: "Specialist in Governance and Indian Constitution. Former legal advisor with deep insights.",
+      name: "Rahman",
+      role: "Faculty - History",
+      desc: "Qualification: B.E. Electrical and Electronics Engineering. 7 years of experience in mentoring students in History.",
       image: Rahman,
     },
     {
-      name: "Mr. K. Velmurugan",
-      role: "Polity Consultant",
-      desc: "Specialist in Governance and Indian Constitution. Former legal advisor with deep insights.",
+      name: "P. Rajiv Gandhi",
+      role: "Faculty - Tamil Society & TN Development",
+      desc: "Qualification: MA History, DEEE. 5 years of experience specializing in Tamil Society and TN Development.",
       image: Rajiv,
     },
     {
-      name: "Mr. K. Velmurugan",
-      role: "Polity Consultant",
-      desc: "Specialist in Governance and Indian Constitution. Former legal advisor with deep insights.",
+      name: "Gunasekaran V",
+      role: "Maths & Reasoning Faculty",
+      desc: "Qualification: B.E. - EEE. 5 years of experience in simplifying Maths and Logical Reasoning.",
       image: Gunasekaran,
     },
   ];
@@ -118,10 +118,17 @@ const FacultySection = () => {
   useEffect(() => {
     if (isMobile) return;
     return scrollYProgress.onChange((v) => {
-      const index = Math.min(
-        Math.floor(v * FACULTY.length),
-        FACULTY.length - 1
-      );
+      const segmentWidth = 1 / FACULTY.length;
+      const slideDuration = segmentWidth * 0.55; // aligned with slideDuration in FacultyImage
+      
+      let index = 0;
+      for (let i = 1; i < FACULTY.length; i++) {
+        const startOfSegment = (i - 1) / FACULTY.length;
+        const slideUpEnd = startOfSegment + slideDuration;
+        if (v >= slideUpEnd) {
+          index = i;
+        }
+      }
       setActiveIndex(index);
     });
   }, [scrollYProgress, FACULTY.length, isMobile]);
@@ -151,7 +158,7 @@ const FacultySection = () => {
                 </div>
                 <div className="flex-1 flex flex-col justify-center">
                   <span className="text-[10px] font-bold text-primary tracking-wider uppercase">{f.role}</span>
-                  <h3 className="text-lg font-bold text-dark mt-0.5 leading-snug">{f.name}</h3>
+                  <h3 className="text-md font-bold text-dark mt-0.5 leading-snug">{f.name}</h3>
                   <p className="text-xs text-gray-500 font-light mt-1.5 leading-relaxed">
                     {f.desc}
                   </p>
@@ -170,7 +177,7 @@ const FacultySection = () => {
         
         {/* Left Side: Editorial Text */}
         <div className="w-full lg:w-1/2 h-full flex flex-col pt-32 px-6 sm:px-12 xl:px-[120px] bg-white z-20 border-b lg:border-b-0 lg:border-r border-gray-100 relative">
-          <div className="max-w-md w-full text-left mr-auto">
+          <div className="max-w-xl w-full text-left mr-auto">
             <motion.div
               key={activeIndex}
               initial={{ opacity: 0, x: -40 }}
@@ -181,10 +188,8 @@ const FacultySection = () => {
               <div className="inline-block px-4 py-1.5 bg-primary-light text-primary text-[10px] font-bold tracking-[0.4em] uppercase rounded-full mb-10">
                 MEET THE MENTORS
               </div>
-              <h2 className="text-5xl lg:text-[88px] font-display text-dark leading-[0.85] mb-10 font-normal">
-                {FACULTY[activeIndex].name.split(' ').map((word, i) => (
-                  <span key={i} className="block">{word}</span>
-                ))}
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[50px] font-display text-dark leading-tight mb-8 font-normal tracking-tight">
+                {FACULTY[activeIndex].name}
               </h2>
               <div className="flex flex-col items-start space-y-8">
                 <span className="text-2xl font-display italic text-primary/80">{FACULTY[activeIndex].role}</span>
