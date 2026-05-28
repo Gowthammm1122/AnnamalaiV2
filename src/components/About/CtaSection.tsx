@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { Award } from "lucide-react";
 import Lanyard from "../Lanyard/Lanyard";
+import Ctabg from "../../assets/images/ctabg.jpg";
 
 interface CtaSectionProps {
     onApply?: () => void;
@@ -11,6 +12,19 @@ interface CtaSectionProps {
 const CtaSection = ({ onApply, onRegisterDemo }: CtaSectionProps) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const [isInteractive, setIsInteractive] = React.useState(true);
+    const [isInView, setIsInView] = React.useState(false);
+
+    React.useEffect(() => {
+        if (!containerRef.current) return;
+        const observer = new IntersectionObserver(([entry]) => {
+            setIsInView(entry.isIntersecting);
+        }, { 
+            rootMargin: "600px 0px 600px 0px", // Pre-render when component is within 600px of viewport
+            threshold: 0 
+        });
+        observer.observe(containerRef.current);
+        return () => observer.disconnect();
+    }, []);
 
     const handleMouseMove = (e: React.MouseEvent) => {
         if (!containerRef.current) return;
@@ -32,15 +46,17 @@ const CtaSection = ({ onApply, onRegisterDemo }: CtaSectionProps) => {
                     onMouseLeave={() => setIsInteractive(false)}
                     className="bg-white/5 border border-white/10 rounded-[40px] p-12 lg:p-24 overflow-hidden relative group"
                 >
-                    {/* Subtle Grid Grain texture for premium look */}
+                    {/* Background Image of the Card */}
                     <div
-                        className="absolute inset-0 pointer-events-none opacity-10"
+                        className="absolute inset-0 pointer-events-none z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.02]"
                         style={{
-                            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+                            backgroundImage: `url(${Ctabg})`,
                         }}
                     />
+                    {/* Dark gradient overlay for contrast and readability */}
+                    <div className="absolute inset-0 z-10 bg-dark/80 transition-opacity duration-300 group-hover:opacity-75 pointer-events-none" />
 
-                    <div className="grid lg:grid-cols-2 gap-16 items-center relative z-0">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center relative z-20">
                         {/* Left Content Column */}
                         <div>
                             <motion.div
@@ -49,8 +65,7 @@ const CtaSection = ({ onApply, onRegisterDemo }: CtaSectionProps) => {
                                 transition={{ duration: 0.8 }}
                             >
                                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full mb-6">
-                                    <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></div>
-                                    <span className="text-[10px] font-bold text-white uppercase tracking-[0.2em]">Admissions Open 2024-25</span>
+                                    <span className="text-[10px] font-bold text-white uppercase tracking-[0.2em]">Admissions Open</span>
                                 </div>
                                 <h2 className="text-5xl lg:text-7xl font-display text-white leading-tight mb-8">
                                     Your <span className="italic text-primary-light font-medium">Legacy</span> Begins Here.
@@ -80,14 +95,16 @@ const CtaSection = ({ onApply, onRegisterDemo }: CtaSectionProps) => {
                         <div className="hidden lg:block h-[480px] lg:h-[550px]"></div>
                     </div>
 
-          {/* Absolute overlay for Lanyard spanning the entire container width to prevent clipping, z-20 to float on top of text */}
-          <div className="absolute inset-0 w-full h-full pointer-events-none z-20 hidden lg:block">
-            <Lanyard position={[-1.5, -0.5, 14]} gravity={[0, -40, 0]} fov={18} interactive={isInteractive} />
+          {/* Absolute overlay for Lanyard spanning the entire container width to prevent clipping, z-30 to float on top of text */}
+          <div className="absolute inset-0 w-full h-full pointer-events-none z-30 hidden lg:block">
+            {isInView && (
+              <Lanyard position={[-1.5, -0.5, 14]} gravity={[0, -40, 0]} fov={18} interactive={isInteractive} />
+            )}
           </div>
 
           {/* Visual indicator that card is interactive */}
-          <div className="absolute bottom-6 right-6 bg-dark/80 px-4 py-2 border border-white/10 rounded-full pointer-events-none backdrop-blur-md shadow-lg z-30">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-primary-light animate-pulse">Drag & Throw the Badge</p>
+          <div className="absolute bottom-6 right-6 px-4 py-2 z-30">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-primary-light animate-pulse">Drag your card</p>
           </div>
         </div>
       </div>

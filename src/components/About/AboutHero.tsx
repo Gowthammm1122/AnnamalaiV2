@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion"; // Kept to your standard package path variant
+import { ArrowRight } from "lucide-react";
 import Image1 from "../../assets/images/banner1.png";
 import Image2 from "../../assets/images/banner3.png";
 
@@ -26,6 +27,24 @@ const AboutHero: React.FC = () => {
   // Spotlight load-in scale animation (starts at 0, grows to 1)
   const revealScaleRef = useRef(0);
 
+  // Ref to track if the element is visible in the viewport to pause drawing
+  const isInViewRef = useRef(true);
+
+  // Intersection Observer to track viewport visibility for draw pause
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isInViewRef.current = entry.isIntersecting;
+      },
+      { threshold: 0 }
+    );
+    observer.observe(containerRef.current);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   useEffect(() => {
     const img1 = new Image();
     img1.src = Image1;
@@ -33,7 +52,7 @@ const AboutHero: React.FC = () => {
       isLoaded1.current = true;
       console.debug("AboutHero: img1 loaded", img1.src, img1.naturalWidth, img1.naturalHeight);
     };
-    img1.onerror = (err) => {
+    img1.onerror = err => {
       console.error("AboutHero: img1 failed to load", img1.src, err);
     };
 
@@ -43,7 +62,7 @@ const AboutHero: React.FC = () => {
       isLoaded2.current = true;
       console.debug("AboutHero: img2 loaded", img2.src, img2.naturalWidth, img2.naturalHeight);
     };
-    img2.onerror = (err) => {
+    img2.onerror = err => {
       console.error("AboutHero: img2 failed to load", img2.src, err);
     };
 
@@ -52,18 +71,13 @@ const AboutHero: React.FC = () => {
   }, []);
 
   // Cover Scaling Function: Scales and centers image to fully cover target dimensions
-  const drawOriginalCentered = (
-    ctx: CanvasRenderingContext2D,
-    img: HTMLImageElement,
-    w: number,
-    h: number
-  ) => {
+  const drawOriginalCentered = (ctx: CanvasRenderingContext2D, img: HTMLImageElement, w: number, h: number) => {
     const iw = img.naturalWidth || img.width;
     const ih = img.naturalHeight || img.height;
 
     // Cover math: Calculate size to completely fill container, cropping excess
     // Apply a scale factor of 0.85 to scale the image down and show more of it
-    const scaleFactor = 0.80;
+    const scaleFactor = 0.8;
     const ratio = Math.max(w / iw, h / ih) * scaleFactor;
     const drawW = iw * ratio;
     const drawH = ih * ratio;
@@ -105,16 +119,20 @@ const AboutHero: React.FC = () => {
     if (isLoaded2.current && img2Ref.current) {
       if (!offscreenCanvasRef.current) {
         offscreenCanvasRef.current = document.createElement("canvas");
+        offscreenCanvasRef.current.width = w;
+        offscreenCanvasRef.current.height = h;
       }
       const offCanvas = offscreenCanvasRef.current;
-      offCanvas.width = w;
-      offCanvas.height = h;
+      if (offCanvas.width !== w || offCanvas.height !== h) {
+        offCanvas.width = w;
+        offCanvas.height = h;
+      }
       const offCtx = offCanvas.getContext("2d");
 
       if (offCtx) {
         offCtx.clearRect(0, 0, w, h);
         drawOriginalCentered(offCtx, img2Ref.current, w, h);
-        
+
         // Mask using destination-in compositing
         offCtx.globalCompositeOperation = "destination-in";
 
@@ -126,9 +144,8 @@ const AboutHero: React.FC = () => {
 
         if (radius > 0) {
           // Soft feathered radial gradient mask
-          const gradient = offCtx.createRadialGradient(
-            cursorX, cursorY, radius * 0.4, // central fully-opaque comparison core
-            cursorX, cursorY, radius      // outer soft transition boundary
+          const gradient = offCtx.createRadialGradient(cursorX, cursorY, radius * 0.4, // central fully-opaque comparison core
+          cursorX, cursorY, radius // outer soft transition boundary
           );
           gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
           gradient.addColorStop(0.75, "rgba(255, 255, 255, 0.95)");
@@ -136,7 +153,7 @@ const AboutHero: React.FC = () => {
 
           offCtx.beginPath();
           offCtx.arc(cursorX, cursorY, radius, 0, 2 * Math.PI);
-          offCtx.fillStyle = gradient; 
+          offCtx.fillStyle = gradient;
           offCtx.fill();
         }
 
@@ -149,13 +166,19 @@ const AboutHero: React.FC = () => {
   // Cursor & Touch Interaction Listeners
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
+      mouseRef.current = {
+        x: e.clientX,
+        y: e.clientY
+      };
       lastInteractionTime.current = Date.now();
     };
 
     const handleTouchMove = (e: TouchEvent) => {
       if (e.touches.length > 0) {
-        mouseRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        mouseRef.current = {
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY
+        };
         lastInteractionTime.current = Date.now();
       }
     };
@@ -163,15 +186,25 @@ const AboutHero: React.FC = () => {
     const handleTouchStart = (e: TouchEvent) => {
       if (e.touches.length > 0) {
         // Snap smooth coordinates on initial touch to prevent sliding in from outside
-        mouseRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        smoothRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        mouseRef.current = {
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY
+        };
+        smoothRef.current = {
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY
+        };
         lastInteractionTime.current = Date.now();
       }
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("touchmove", handleTouchMove, { passive: true });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, {
+      passive: true
+    });
+    window.addEventListener("touchstart", handleTouchStart, {
+      passive: true
+    });
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
@@ -186,8 +219,14 @@ const AboutHero: React.FC = () => {
       const rect = containerRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
-      mouseRef.current = { x: centerX, y: centerY };
-      smoothRef.current = { x: centerX, y: centerY };
+      mouseRef.current = {
+        x: centerX,
+        y: centerY
+      };
+      smoothRef.current = {
+        x: centerX,
+        y: centerY
+      };
     }
   }, []);
 
@@ -197,10 +236,18 @@ const AboutHero: React.FC = () => {
       if (containerRef.current && canvasRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
         const dpr = window.devicePixelRatio || 1;
+        const w = Math.max(1, Math.round(rect.width * dpr));
+        const h = Math.max(1, Math.round(rect.height * dpr));
+
         canvasRef.current.style.width = `${Math.round(rect.width)}px`;
         canvasRef.current.style.height = `${Math.round(rect.height)}px`;
-        canvasRef.current.width = Math.max(1, Math.round(rect.width * dpr));
-        canvasRef.current.height = Math.max(1, Math.round(rect.height * dpr));
+        canvasRef.current.width = w;
+        canvasRef.current.height = h;
+
+        if (offscreenCanvasRef.current) {
+          offscreenCanvasRef.current.width = w;
+          offscreenCanvasRef.current.height = h;
+        }
       }
     };
     handleResize();
@@ -212,6 +259,10 @@ const AboutHero: React.FC = () => {
   useEffect(() => {
     let animId: number;
     const update = () => {
+      if (!isInViewRef.current) {
+        animId = requestAnimationFrame(update);
+        return;
+      }
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
         const now = Date.now();
@@ -220,7 +271,7 @@ const AboutHero: React.FC = () => {
         // 1. Calculate default float orbit trajectory (centered in viewport)
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-        
+
         // Elegant Lissajous dual-frequency trajectory for natural wandering path
         const floatX = centerX + Math.sin(time * 0.7) * (rect.width * 0.18);
         const floatY = centerY + Math.cos(time * 0.5) * (rect.height * 0.15);
@@ -229,7 +280,7 @@ const AboutHero: React.FC = () => {
         const timeSinceInteraction = now - lastInteractionTime.current;
         const idleDelay = 2500; // 2.5s threshold
         const fadeDuration = 1500; // 1.5s visual blend phase
-        
+
         let idleBlend = 0;
         if (timeSinceInteraction > idleDelay) {
           idleBlend = Math.min(1, (timeSinceInteraction - idleDelay) / fadeDuration);
@@ -284,25 +335,48 @@ const AboutHero: React.FC = () => {
       {/* Primary Canvas Render Layer */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-10 block" />
 
-      {/* Cinematic Vignette: Vertical Gradient Overlay for Text Readability Contrast */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none z-20" />
-
-      {/* Typography Overlay Layer */}
-      <div className="absolute inset-0 z-30 pointer-events-none flex items-end bg-transparent">
-        <div className="w-full pl-6 sm:pl-10 xl:pl-12 pb-8 md:pb-16 pointer-events-auto">
+      {/* Typography & Interactive CTA Overlay Layer */}
+      <div className="absolute inset-0 z-30 pointer-events-none flex items-end justify-start bg-transparent">
+        <div className="w-full pl-6 sm:pl-12 xl:pl-[120px] pb-12 md:pb-20 pointer-events-auto">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="max-w-xs md:max-w-xl space-y-3"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+            className="max-w-md md:max-w-xl space-y-6"
           >
-            <h1 id="about-hero-headline" className="text-2xl md:text-4.5xl font-sans font-black text-white tracking-tighter leading-none uppercase">
-              Nurturing India's <br className="hidden md:block" />
-              Officials <span className="italic font-extrabold text-blue-300">Since Two Decades</span>
-            </h1>
-            <p id="about-hero-bottom-text" className="text-gray-200 font-normal text-xs md:text-sm leading-relaxed max-w-md">
-              Dr. P. Annamalai IAS Academy is committed to transforming civil service aspirations into structured achievements, leveraging continuous subjective mentorship and personal guidance plans.
-            </p>
+            {/* Context Header Tag */}
+            <div className="inline-flex items-center gap-2 py-1">
+              <span className="text-[10px] font-bold text-dark uppercase tracking-widest">
+                Your Dream • Our Guidance • Your Success
+              </span>
+            </div>
+
+            {/* High-End Clean Typography */}
+            <div className="space-y-3">
+              <h1 id="about-hero-headline" className="text-3xl sm:text-4xl md:text-5.5xl font-display font-medium text-dark tracking-tight leading-[1.08]">
+                Dream High. <br />
+                Achieve Your <span className="font-serif italic text-[#1E40AF]">Mission</span>
+              </h1>
+              
+              <p id="about-hero-bottom-text" className="text-gray-500 font-light text-xs md:text-sm leading-relaxed max-w-sm">
+                Promoted by veteran IAS officers with over 30 years of administrative excellence to transform competitive aspirations into verified success.
+              </p>
+            </div>
+
+            {/* Premium Interactive CTA Link */}
+            <div className="pt-2">
+              <button
+                type="button"
+                onClick={() => {
+                  const target = document.getElementById("about-content-section");
+                  if (target) target.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="group inline-flex items-center gap-2.5 px-6 py-3.5 bg-dark hover:bg-[#1E40AF] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-[0_4px_16px_rgba(15,23,42,0.08)] transition-all duration-300 transform active:scale-[0.98] cursor-pointer"
+              >
+                <span>Start Your Journey Now</span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
+            </div>
           </motion.div>
         </div>
       </div>

@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { Calendar, Clock, Users, CheckCircle2, ArrowRight } from "lucide-react";
 
 interface CourseItem {
   id: string;
   name: string;
-  category: "all" | "foundation" | "optional" | "interview" | "test-series";
+  category: "all" | "civil-services" | "banking-insurance" | "technical-ssc";
   duration: string;
   level: string;
   capacity: string;
-  price: string;
   description: string;
   introPoints: string[];
   features: string[];
@@ -19,138 +18,182 @@ interface CourseItem {
 
 const COURSES_DATA: CourseItem[] = [
   {
-    id: "upsc-foundation",
-    name: "UPSC Civil Services Foundation (Target 2025)",
-    category: "foundation",
-    duration: "12 Months Regular",
-    level: "Beginner to Advanced",
-    capacity: "45 Candidates / Batch",
-    price: "₹85,000 / Year",
+    id: "upsc-civil-services",
+    name: "UPSC Civil Services Examination Coaching",
+    category: "civil-services",
+    duration: "Integrated Regular / Weekend",
+    level: "Degree Level",
+    capacity: "Personal Care Focused Batches",
     color: "#1E40AF",
-    description: "Our hallmark master program. Reconstructs administrative study from basic NCERT levels up to high-yield analytical answer drafting modules. Features strict checklist monitoring under our senior coordinators cell.",
+    description: "Specialized premium training for all 27 categories of premier central posts (IAS, IPS, IFS, and Central Services Group A & B). The curriculum emphasizes framing public policies, mental composition, and conceptual clarity required to crack the premier evaluation board.",
     introPoints: [
-      "GS Prelims (Paper I & II) fully synthesized",
-      "Mains structural outline draft checks",
-      "Comprehensive digital tracker subscription"
+      "Coaching for IAS, IPS, IFS & Group A/B posts",
+      "Conceptual clarity & disciplined approach",
+      "Comprehensive Preliminary & Main integration"
     ],
     features: [
-      "Weekly diagnostic MCQ mock evaluations",
-      "Exclusive current affairs summary briefs (The Hindu/PIB)",
-      "Daily personal copy evaluations under Dr. P. Annamalai"
+      "Daily, Weekly, and Monthly diagnostic tests",
+      "Answer writing practice and evaluation under active panel codes",
+      "Detailed mock interviews guided by Dr. P. Annamalai, IAS & Mr. C. Kamaraj, IAS"
     ],
     syllabus: [
-      "Module I: Ancient & Medieval Historical Heritage (GS I)",
-      "Module II: Indian Polity, Global Geo-Political Maps (GS II)",
-      "Module III: Economic Planning, Digital Bio-Tech Trends (GS III)",
-      "Module IV: Administrative Integrity, Ethics Case Solves (GS IV)"
+      "Stage 1: Preliminary Exam (General Studies & Qualifying CSAT)",
+      "Stage 2: Main Examination (2 Eligibility Papers + 7 Descriptive Merit Papers)",
+      "Stage 3: Personality Test / Interview Panel (275 Marks Marks Management)"
     ]
   },
   {
-    id: "tamil-literature",
-    name: "Tamil Literature Optional Specialization",
-    category: "optional",
-    duration: "4.5 Months Support",
-    level: "Graduation Depth",
-    capacity: "30 Scholars",
-    price: "₹18,500 Single",
-    color: "#5B21B6",
-    description: "Tailored personally under Dr. P. Annamalai's native literary expertise. The course navigates classical Sangam poetry, medieval dramas, modern novels, and historical folklore trends, securing massive score boosts.",
-    introPoints: [
-      "Rigorous structural sheet drills",
-      "Exclusive self-authored classical dictionary notes",
-      "Complete question bank spanning 25 years"
-    ],
-    features: [
-      "Bi-weekly detailed optional answer sheet markings",
-      "One-on-one virtual face counsel times",
-      "Model reference frameworks for classical grammar items"
-    ],
-    syllabus: [
-      "Module I: History of Tamil Language & Classical Literature",
-      "Module II: Sangam Poetry, Epic Dramaturgy, Folklore",
-      "Module III: Critical Essays & Analysis on Modern Novels",
-      "Module IV: Answer Framing with Quotes & Verse Citations"
-    ]
-  },
-  {
-    id: "tnpsc-group-one",
-    name: "TNPSC Group I & II Advanced Program",
-    category: "foundation",
-    duration: "8 Months Focus",
-    level: "Intermediate Depth",
-    capacity: "60 Candidates",
-    price: "₹45,000 Package",
+    id: "tnpsc-group-1-2-4",
+    name: "TNPSC Combined Civil Services (Group 1, 2, 2A & 4)",
+    category: "civil-services",
+    duration: "Syllabus Milestone Based",
+    level: "10th Standard to Degree Level",
+    capacity: "Bilingual Integrated Batches",
     color: "#065F46",
-    description: "Optimized syllabus path designed specifically to address standard state commission requirements. Core coverage spans Tamil Nadu historical developments, Unit 8 & 9 governance matrices, and extensive aptitude sets.",
+    description: "Comprehensive state commission path mapping out Group 1 (Deputy Collector, DSP), Group 2/2A (Municipal Commissioner, Sub-Registrar, Assistant), and Group 4 (VAO, Junior Assistant). Covers comprehensive General Studies grids and deep regional Tamil language modules.",
     introPoints: [
-      "Complete Unit 8 & 9 specific draft keys",
-      "Thirukkural analytical references",
-      "Aptitude & Mental Ability shortcut systems"
+      "Covers Deputy Collector, DSP, VAO & Assistant posts",
+      "Deep focus on Unit 8 & Unit 9 administration systems",
+      "Tamil Language eligibility & General Studies synthesis"
     ],
     features: [
-      "In-depth bilingual lectures (Tamil & English)",
-      "State-level comparative mock leaderboards",
-      "Regular interactions with selected state officers"
+      "Custom printed books and model papers mapped per standard syllabi",
+      "Comparative mock test leaderboards matching state Commission criteria",
+      "Single-stage and multi-tier tracking arrays tailored per target exam tier"
     ],
     syllabus: [
-      "Module I: History & Social Movements of Tamil Nadu",
-      "Module II: Unit 9 Development Administration System",
-      "Module III: Indian National Movement with State Relevance",
-      "Module IV: General Mental Aptitude & Shortcut Formulae"
+      "Module I: History, Culture, Heritage and Socio-Political Movements in TN",
+      "Module II: Development Administration in Tamil Nadu (Unit 9 Grid)",
+      "Module III: General Studies (Polity, Geography, Economy, Mental Ability, Current Affairs)",
+      "Module IV: Tamil Language Eligibility and Scoring Components"
     ]
   },
   {
-    id: "aipmts-series",
-    name: "All India Prelims Mock Test Series (AIPMTS)",
-    category: "test-series",
-    duration: "6 Months Weekend",
-    level: "Exam Simulation",
-    capacity: "150 Core Seats",
-    price: "₹12,500 Full",
+    id: "banking-ibps-sbi-rbi",
+    name: "Banking Services Recruitment (IBPS, SBI & RBI)",
+    category: "banking-insurance",
+    duration: "Intensive Crack Course",
+    level: "Any Degree Level",
+    capacity: "Speed-Drill Specialized Batches",
+    color: "#5B21B6",
+    description: "Rigorous computer-based training for Probationary Officers (PO), Specialist Officers (SO), Clerks, and RBI Assistants / Grade A & B Officers. Focuses heavily on high-speed quantitative aptitude, analytical reasoning shortcuts, and financial awareness parameters.",
+    introPoints: [
+      "Targeting IBPS, SBI, and RBI Officer & Clerical posts",
+      "High-speed computer-based simulation environments",
+      "Comprehensive shortcuts for quantitative and verbal sections"
+    ],
+    features: [
+      "Daily computer-based testing (CBT) assessing real-time speed parameters",
+      "Descriptive analytical test series exclusively engineered for PO candidates",
+      "Custom reference frameworks for banking awareness and general economics"
+    ],
+    syllabus: [
+      "Phase I: Preliminary Exam (Reasoning, Quantitative Aptitude, Verbal Aptitude)",
+      "Phase II: Main Exam CBT (Data Interpretation, General Awareness, Verbal, Reasoning)",
+      "Phase III: Specialized PO Descriptive Test & Mock Interview Boards"
+    ]
+  },
+  {
+    id: "insurance-recruitment",
+    name: "Insurance Corporation Recruitment (LIC, GIC, NIACL, UIIC)",
+    category: "banking-insurance",
+    duration: "Regular Selection Batches",
+    level: "Any Degree Standard",
+    capacity: "Targeted Merit Groups",
+    color: "#B45309",
+    description: "Specialized curriculum for Assistant Administrative Officer (AAO) and Assistant Grade posts across top participating firms including LIC, NICL, OIC, UIIC, NIACL, and GIC. Combines objective scoring accuracy with dedicated professional interview training panels.",
+    introPoints: [
+      "Coaching for Assistant Administrative Officer (AAO) & Assistant Grades",
+      "Integrated multi-stage computer-based test curriculum",
+      "Specialized modules on financial and insurance awareness metrics"
+    ],
+    features: [
+      "Model notes and custom documentation addressing core insurance patterns",
+      "Weekly qualifying sectional simulations spanning logical aptitude and English",
+      "Viva-voce alignment protocols overseen by veteran academy heads"
+    ],
+    syllabus: [
+      "Stage 1: Preliminary Exam CBT (Reasoning, Quantitative Aptitude, English Qualifying)",
+      "Stage 2: Main Examination Final Merit CBT (Objective Content + Descriptive Frameworks)",
+      "Stage 3: Personality Interview and Document Verification Rounds"
+    ]
+  },
+  {
+    id: "rrb-technical-popular",
+    name: "Railway Recruitment Board (RRB NTPC, JE, SSE & ALP)",
+    category: "technical-ssc",
+    duration: "Multi-Tier Dedicated Path",
+    level: "10th / ITI to Any Degree",
+    capacity: "Technical & Non-Technical Batches",
     color: "#9A3412",
-    description: "Highly structural exam simulation framework. Features exact UPSC style questions, diagnostic error spreadsheets, negative scoring analysis, and detailed video answers post-exam.",
+    description: "Targeted curriculum for Non-Technical Popular Posts (NTPC Traffic Assistants, etc.), Junior Engineer (JE), Senior Section Engineer (SSE), Assistant Loco Pilot (ALP), and Group-D. Built around high-yield mathematics matrices, reasoning diagnostics, and general awareness maps.",
     introPoints: [
-      "22 Sectional Tests & 8 Full Mock Papers",
-      "Detailed visual scorecard metrics",
-      "Bilingual video answer key access"
+      "Coaching for RRB NTPC, JE, SSE, ALP, and Group-D tracks",
+      "Focus on General Intelligence, Test of Reasoning, and General Awareness",
+      "Comprehensive strategy for multi-stage Computer Based Tests (CBT-1 & CBT-2)"
     ],
     features: [
-      "Real-time state and national rank percentages",
-      "Subject-wise weaknesses checklist charts",
-      "CSAT special full papers with shortcuts"
+      "Customized printed books and notes mapped accurately to RRB criteria",
+      "Specialized shortcut classes for Mathematics and analytical logic puzzles",
+      "Guidance for subsequent stages including Typing Tests, PET, and skill alignments"
     ],
     syllabus: [
-      "Sectional Series I: Polity, Governance & Constitutions",
-      "Sectional Series II: Economy Planning, Modern Budgets",
-      "Sectional Series III: Environment, Ecology & Current Affairs",
-      "Sectional Series IV: Integrated CSAT & Full-Length Mocks"
+      "Stage 1: CBT-1 Preliminary Exam (Qualifying Math, Reasoning, General Awareness)",
+      "Stage 2: CBT-2 Main Exam (Advanced Difficulty Core Technical / Applied Syllabus)",
+      "Stage 3: Exam-Specific Skill Test / Typing Drill / Physical Efficiency Test (PET)",
+      "Stage 4: Final Document Verification and Medical Examination Strategy"
     ]
   },
   {
-    id: "interview-prep",
-    name: "UPSC Mock Interview & Personality Program",
-    category: "interview",
-    duration: "4 Weeks Boot-camp",
-    level: "Personal Tuning",
-    capacity: "20 Select Finalists",
-    price: "Free for Mains Selected",
-    color: "#1E3A8A",
-    description: "Complete polish program. Designed for aspirants who cleared Mains written tests. Consists of deep DAF analysis, body language counseling, and mock panels with retired IAS/IPS board officers.",
+    id: "ssc-cgl-chsl-mts",
+    name: "Staff Selection Commission (CGL, CHSL, MTS & JE)",
+    category: "technical-ssc",
+    duration: "Integrated Tier-1 & Tier-2 Model",
+    level: "Matric to Any Degree Level",
+    capacity: "Central Ministries Core Batches",
+    color: "#0369A1",
+    description: "Premier training program for various key ministerial, department, and organizational posts within the Government of India. Prepares candidates comprehensively for CGL, CHSL, MTS (Non-Technical), Stenographer Grade C & D, Junior Engineer (JE), CAPF, and CISF.",
     introPoints: [
-      "Detailed Application Form (DAF) line-by-line review",
-      "Video recorded mock trials with analysis",
-      "Current state and homeland topic counseling"
+      "Recruitment path for central ministries and organizations",
+      "Rigorous tracking of Tier-1 and Compulsory Tier-2 paper parameters",
+      "Data Entry Speed Test (DEST) and computer knowledge mapping"
     ],
     features: [
-      "Mock panels with veteran civil servants & psychologists",
-      "Personalized DAF-based question lists",
-      "Pressure handling, voice moderation & posture coaching"
+      "Bilingual class architecture providing precise subject delivery",
+      "Daily evaluations addressing mathematical abilities and english comprehension tracking",
+      "Specialized modules for statistical additions (JSO / Paper II & III components)"
     ],
     syllabus: [
-      "Sprint I: DAF Analysis, Hobby Profile & Home State Prep",
-      "Sprint II: National Policy Positions & Administrative Crisis",
-      "Sprint III: Body Language, Attire, and Demeanor Drill",
-      "Sprint IV: Final Simulated Board Mock Trial and Feedback"
+      "Tier 1 CBT: General Intelligence, General Awareness, Quantitative Aptitude, English Comprehension",
+      "Tier 2 CBT Paper I: Mathematical Abilities, Reasoning, English Language, Computer Knowledge",
+      "Tier 2 DEST: Data Entry Speed Test and technical typing verification protocols",
+      "Specialized Tiers: Paper II & III Statistics frameworks tailored for Junior Statistical Officers"
+    ]
+  },
+  {
+    id: "tnusrb-police-si",
+    name: "TNUSRB Police Sub-Inspector (SI) Examination",
+    category: "technical-ssc",
+    duration: "6 Months Comprehensive",
+    level: "Any Degree Level",
+    capacity: "Uniformed Services Dedicated Batches",
+    color: "#1E3A8A",
+    description: "Targeted physical and academic model tailored to address Tamil Nadu Uniformed Services Recruitment Board SI parameters. Maximizes score output across objective written metrics, qualifying benchmarks, and administrative viva-voce rounds.",
+    introPoints: [
+      "Specialized preparation for Sub-Inspector of Police positions",
+      "Integrated balance between objective written metrics and physical strategies",
+      "Viva-voce performance coaching under experienced advisory panels"
+    ],
+    features: [
+      "Complete study books and printed evaluation content as per TNUSRB syllabus",
+      "Performance benchmarking across objective parameters and current affairs summaries",
+      "Exclusive guidance for physical test metrics (PMT, ET, and Physical Efficiency Tests)"
+    ],
+    syllabus: [
+      "Stage 1: Written Examination (70 Marks Objective Evaluation Structure)",
+      "Stage 2: Physical Measurement Test (PMT), Endurance Test (ET), and Physical Efficiency Test (PET)",
+      "Stage 3: Viva-Voce Assessment Board Panel (10 Marks Core Metrics)",
+      "Stage 4: Special Marks Optimization (5 Marks allocation for NCC, NSS, and Sports Profiles)"
     ]
   }
 ];
@@ -182,12 +225,12 @@ const CoursesHero = () => {
           </span>
           
           <h1 className="text-4xl md:text-5.5xl font-display font-medium text-dark tracking-tight leading-tight">
-            Curated Curriculums & <br/>
-            Strategic <span className="italic font-normal font-serif text-[#1e40af]">Aspirations Classrooms</span>
+            Integrated Curriculums & <br/>
+            Strategic <span className="italic font-normal font-serif text-[#1e40af]">Competitive Classrooms</span>
           </h1>
           
           <p className="text-gray-500 font-light text-sm max-w-xl mx-auto leading-relaxed">
-            Filter through our regular foundation programs, optional specializations, simulated mock trials and final interview matrices.
+            Explore our specialized state and central examination modules under a single roof, engineered for consistent academic success.
           </p>
         </motion.div>
       </div>
@@ -196,7 +239,7 @@ const CoursesHero = () => {
 };
 
 const CoursesList = () => {
-  const [selectedTab, setSelectedTab] = useState<"all" | "foundation" | "optional" | "interview" | "test-series">("all");
+  const [selectedTab, setSelectedTab] = useState<"all" | "civil-services" | "banking-insurance" | "technical-ssc">("all");
   const [activeCourseId, setActiveCourseId] = useState<string | null>(null);
 
   const filteredCourses = selectedTab === "all" 
@@ -207,29 +250,34 @@ const CoursesList = () => {
     setActiveCourseId(activeCourseId === id ? null : id);
   };
 
+  const handleEnquireClick = (e: React.MouseEvent, courseName: string) => {
+    e.stopPropagation(); // Avoid triggering accordion toggle
+    alert(`Redirecting to admissions desk for: ${courseName}. Please call 8015390090 or email admin@drpannamalaiiasacademy.com`);
+  };
+
   return (
     <section className="py-20 bg-white select-none">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 xl:px-[120px]">
         
         {/* Course Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-16 border-b border-gray-150 pb-8">
-          {(["all", "foundation", "optional", "test-series", "interview"] as const).map((tab) => (
+        <div className="flex flex-wrap justify-center gap-2 mb-16 pb-8">
+          {(["all", "civil-services", "banking-insurance", "technical-ssc"] as const).map((tab) => (
             <button
               key={tab}
               type="button"
               onClick={() => setSelectedTab(tab)}
-              className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all uppercase cursor-pointer border ${
+              className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all uppercase cursor-pointer border ${
                 selectedTab === tab
                   ? "bg-[#1E40AF] text-white border-transparent shadow-sm"
                   : "bg-gray-50 text-gray-400 border-gray-150 hover:bg-gray-100 hover:text-dark"
               }`}
             >
-              {tab === "all" ? "All Programs" : tab === "foundation" ? "Foundation" : tab === "optional" ? "Optional Special" : tab === "test-series" ? "Test Series" : "Mock Interviews"}
+              {tab === "all" ? "All Streams" : tab === "civil-services" ? "Civil Services (UPSC/TNPSC)" : tab === "banking-insurance" ? "Banking & Insurance" : "Technical & SSC / Railways"}
             </button>
           ))}
         </div>
 
-        {/* Courses Stack Accordion / List */}
+        {/* Courses Stack Accordion List */}
         <div className="space-y-6 max-w-4xl mx-auto">
           {filteredCourses.map((c) => {
             const isExpanded = activeCourseId === c.id;
@@ -238,7 +286,7 @@ const CoursesList = () => {
                 key={c.id}
                 className={`border border-gray-150 rounded-[28px] overflow-hidden bg-white transition-all duration-300 ${isExpanded ? 'shadow-lg border-[#1e4fc0]/20' : 'hover:border-gray-300'}`}
               >
-                {/* Header block (clickable summary) */}
+                {/* Header block */}
                 <div 
                   onClick={() => handleCourseClick(c.id)}
                   className="p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 cursor-pointer"
@@ -246,7 +294,7 @@ const CoursesList = () => {
                   <div className="space-y-2 flex-grow">
                     <div className="flex items-center gap-3">
                       <span className="text-[9px] font-bold text-white px-2.5 py-1 rounded uppercase tracking-widest" style={{ backgroundColor: c.color }}>
-                        {c.category === 'foundation' ? 'Foundation' : c.category === 'optional' ? 'Optional' : c.category === 'test-series' ? 'Test Series' : 'Interview'}
+                        {c.category === 'civil-services' ? 'Civil Services' : c.category === 'banking-insurance' ? 'Banking & Insurance' : 'Technical & Civil'}
                       </span>
                       <span className="text-[10px] text-gray-400 font-medium">
                         {c.duration}
@@ -265,11 +313,15 @@ const CoursesList = () => {
                     </ul>
                   </div>
 
+                  {/* Enquire CTA Block replacing price text */}
                   <div className="flex items-center gap-4 shrink-0 w-full md:w-auto justify-between md:justify-end border-t md:border-t-0 border-gray-100 pt-4 md:pt-0">
-                    <div className="text-right">
-                      <p className="text-[9px] text-[#9ca3af] uppercase tracking-wider font-bold">FEES SLAB</p>
-                      <p className="text-sm font-semibold text-dark">{c.price}</p>
-                    </div>
+                    <button
+                      type="button"
+                      onClick={(e) => handleEnquireClick(e, c.name)}
+                      className="px-5 py-2.5 text-xs font-semibold tracking-wide text-white bg-dark hover:bg-[#1E40AF] rounded-xl transition-all shadow-sm shrink-0 cursor-pointer"
+                    >
+                      Enquire Now
+                    </button>
                     
                     <button
                       type="button"
@@ -289,9 +341,9 @@ const CoursesList = () => {
                     className="border-t border-gray-150 bg-[#FAFBFD]"
                   >
                     <div className="p-8 space-y-8">
-                      {/* Desc block */}
+                      {/* Course Strategy Overview */}
                       <div className="space-y-3">
-                        <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest">COURSE STRATEGY OVERVIEW</h4>
+                        <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest">STREAM STRATEGY OVERVIEW</h4>
                         <p className="text-[#4b5563] text-xs md:text-sm font-light leading-relaxed">
                           {c.description}
                         </p>
@@ -303,7 +355,7 @@ const CoursesList = () => {
                         <div className="space-y-4">
                           <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                            COMPREHENSIVE FEATURES
+                            ACADEMY TRAINING FEATURES
                           </h4>
                           <ul className="space-y-2.5 text-xs text-[#4b5563] font-light pl-0 list-none">
                             {c.features.map((feat, fIdx) => (
@@ -319,7 +371,7 @@ const CoursesList = () => {
                         <div className="space-y-4">
                           <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-violet-500"></span>
-                            SYLLABUS MODULES
+                            EXAMINATION CORES & MODULES
                           </h4>
                           <ul className="space-y-2.5 text-xs text-[#4b5563] font-light pl-0 list-none">
                             {c.syllabus.map((syll, sIdx) => (
@@ -332,19 +384,19 @@ const CoursesList = () => {
                         </div>
                       </div>
 
-                      {/* Mini parameters */}
+                      {/* Parameters Footer */}
                       <div className="border-t border-gray-150 pt-6 flex flex-wrap gap-y-4 gap-x-12 text-xs text-gray-400 font-light">
                         <div className="flex gap-2 items-center">
                           <Clock className="w-4 h-4 text-primary" />
-                          <span>Duration: <strong className="text-dark font-medium">{c.duration}</strong></span>
+                          <span>Structure: <strong className="text-dark font-medium">{c.duration}</strong></span>
                         </div>
                         <div className="flex gap-2 items-center">
                           <Users className="w-4 h-4 text-primary" />
-                          <span>Batch Capacity: <strong className="text-dark font-medium">{c.capacity}</strong></span>
+                          <span>Training Environment: <strong className="text-dark font-medium">{c.capacity}</strong></span>
                         </div>
                         <div className="flex gap-2 items-center">
                           <Calendar className="w-4 h-4 text-primary" />
-                          <span>Course Standard: <strong className="text-dark font-medium">{c.level}</strong></span>
+                          <span>Standard Mapped: <strong className="text-dark font-medium">{c.level}</strong></span>
                         </div>
                       </div>
 

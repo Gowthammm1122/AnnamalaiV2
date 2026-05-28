@@ -289,3 +289,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, dragged, drag, po
     </>
   );
 }
+
+// Preload heavy GLTF models and textures for zero-delay instant rendering
+useGLTF.preload(cardGLB);
+useTexture.preload(lanyard);

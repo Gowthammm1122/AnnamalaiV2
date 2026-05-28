@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { Award } from "lucide-react";
+import ctabg2 from "../../assets/images/ctabg2.jpg";
 
 interface FinalCTAProps {
   onApply?: () => void;
@@ -16,15 +17,15 @@ const FinalCTA = ({ onApply, onRegisterDemo }: FinalCTAProps) => {
 
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 xl:px-[120px] relative z-10">
         <div className="bg-white/5 border border-white/10 rounded-[40px] p-12 lg:p-24 overflow-hidden relative group">
-          {/* Grain texture for the card */}
-          <div 
-            className="absolute inset-0 pointer-events-none opacity-10"
+          {/* Background Image of the Card */}
+          <div
+            className="absolute inset-0 pointer-events-none z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.02]"
             style={{ 
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+              backgroundImage: `url(${ctabg2})`,
             }}
           />
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center relative z-20">
             <div>
               <motion.div
                 initial={{ opacity: 0, x: -20 }}

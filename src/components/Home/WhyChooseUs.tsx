@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useSpring } from "motion/react";
-import { Award, GraduationCap, BookText, Globe, Microscope, Sparkles, ArrowRight } from "lucide-react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { Award, GraduationCap, BookText, ShieldAlert, Layers, Sparkles, CheckSquare } from "lucide-react";
 
 const WhyChooseUs = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -8,7 +8,7 @@ const WhyChooseUs = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
@@ -19,8 +19,7 @@ const WhyChooseUs = () => {
   });
 
   // Calculate the precise transform based on container width vs viewport width
-  // This value will be mapped to the actual translation in px or %
-  const xRaw = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const xRaw = useTransform(scrollYProgress, [0, 1], ["0%", "-35%"]);
   
   const x = useSpring(xRaw, {
     stiffness: 100,
@@ -31,33 +30,33 @@ const WhyChooseUs = () => {
   const features = [
     {
       icon: <Award className="w-6 h-6" />,
-      title: "Expert Faculty",
-      desc: "Learn from top-tier educators with years of experience in civil services coaching.",
+      title: "Subjectwise Experienced Faculties",
+      desc: "Aspirants are trained by a highly skilled team of educators with vast experience in coaching for various competitive streams.",
     },
     {
       icon: <GraduationCap className="w-6 h-6" />,
-      title: "Personalized Mentorship",
-      desc: "One-on-one guidance to tailor study plans according to your strengths and weaknesses.",
+      title: "Personal Care and Attention",
+      desc: "We maintain a dedicated tracking framework to ensure that every individual gets focused direction to achieve absolute success.",
     },
     {
       icon: <BookText className="w-6 h-6" />,
-      title: "Comprehensive Material",
-      desc: "Meticulously curated study resources covering all aspects of the UPSC syllabus.",
+      title: "Excellent Prepared Materials",
+      desc: "Get access to specialized notes and comprehensively printed books curated strictly as per the latest examination syllabi.",
     },
     {
-      icon: <Globe className="w-6 h-6" />,
-      title: "Current Affairs Analysis",
-      desc: "Daily updates and in-depth analysis of national and international importance.",
+      icon: <CheckSquare className="w-6 h-6" />,
+      title: "Daily & Weekly Routine Tests",
+      desc: "Build continuous consistency and evaluate active subject memory recall with our automated daily and weekly test matrices.",
     },
     {
-      icon: <Microscope className="w-6 h-6" />,
-      title: "Regular Mock Tests",
-      desc: "Simulated examination environment to track progress and improve time management.",
+      icon: <Layers className="w-6 h-6" />,
+      title: "Monthly & Simulated Mock Tests",
+      desc: "Acclimate to strict real-world exam time bounds through integrated monthly assessment structures and full-length mocks.",
     },
     {
-      icon: <Sparkles className="w-6 h-6" />,
-      title: "Interview Guidance",
-      desc: "Mock interview sessions with former civil servants to polish your personality.",
+      icon: <ShieldAlert className="w-6 h-6" />,
+      title: "Affordable Fees Structure",
+      desc: "Attain high-end, premium administrative career guidance that is completely pocket-friendly and accessible to all students.",
     },
   ];
 
@@ -70,8 +69,7 @@ const WhyChooseUs = () => {
         <div className="max-w-[1440px] mx-auto relative z-10">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 text-primary-light uppercase tracking-[0.25em] text-[9px] font-bold mb-3 bg-white/5 px-3.5 py-1.5 rounded-full border border-white/10">
-              <Sparkles className="w-3 h-3 text-primary-light animate-pulse" />
-              The Choice of Toppers
+              THE ASPIRANTS CHOICE
             </div>
             <h2 className="text-2xl sm:text-3xl font-display text-white leading-tight">
               Why Choose <br />
@@ -95,9 +93,6 @@ const WhyChooseUs = () => {
                     {f.desc}
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-white/5 flex items-center text-primary-light text-[8px] font-bold uppercase tracking-widest">
-                  Read More <ArrowRight className="ml-1.5 w-2.5 h-2.5" />
-                </div>
               </div>
             ))}
           </div>
@@ -109,7 +104,7 @@ const WhyChooseUs = () => {
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-dark">
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden bg-dark border-y border-white/5">
-        {/* Dynamic Glow Elements Matching FinalCTA */}
+        {/* Dynamic Glow Elements */}
         <div className="absolute top-0 right-0 w-[850px] h-[850px] bg-primary/20 rounded-full blur-[140px] -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-light/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/4 pointer-events-none"></div>
 
@@ -121,13 +116,11 @@ const WhyChooseUs = () => {
             className="text-center"
           >
             <div className="inline-flex items-center gap-2 text-primary-light uppercase tracking-[0.25em] text-[10px] font-bold mb-4 bg-white/5 px-4 py-2 rounded-full border border-white/10">
-              <Sparkles className="w-3.5 h-3.5 text-primary-light animate-pulse" />
-              The Choice of Toppers
+              THE ASPIRANTS CHOICE
             </div>
-            <h2 className="text-4xl md:text-6xl font-display text-white tracking-tight leading-tight mt-2">
+            <h2 className="text-4xl md:text-6xl font-display text-white tracking-tight leading-tight mt-2 pb-8">
               Why Choose <span className="font-serif italic font-medium text-primary-light">Dr. P. Annamalai IAS Academy?</span>
             </h2>
-            <div className="w-24 h-[1px] bg-primary-light/40 mx-auto mt-6"></div>
           </motion.div>
         </div>
 
@@ -149,15 +142,12 @@ const WhyChooseUs = () => {
                 <p className="text-white/60 leading-relaxed text-sm italic font-light">
                   {f.desc}
                 </p>
-                <div className="mt-8 pt-6 border-t border-white/5 flex items-center text-primary-light text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  Read More <ArrowRight className="ml-2 w-3 h-3" />
-                </div>
               </div>
             ))}
           </motion.div>
         </div>
 
-        {/* Improved Indicator - Moved down and styled better to avoid overlap */}
+        {/* Section Navigation Metrics Indicator */}
         <div className="absolute bottom-10 left-12 right-12 flex items-center justify-between pointer-events-none z-10">
           <div className="flex items-center space-x-4">
             <div className="w-32 h-[1px] bg-white/10">
