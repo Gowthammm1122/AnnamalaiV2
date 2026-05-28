@@ -48,7 +48,7 @@ export default function Lanyard({ position = [0, 0, 20], gravity = [0, -40, 0], 
     <div className="lanyard-wrapper" style={{ pointerEvents: pointerEventsValue }}>
       <Canvas
         camera={{ position: position, fov: fov }}
-        dpr={[1, isMobile ? 1.5 : 2]}
+        dpr={[1, isMobile ? 1.2 : 1.5]}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
         style={{ pointerEvents: pointerEventsValue }}
@@ -201,6 +201,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, dragged, drag, po
 
   useFrame((state, delta) => {
     if (!isInView) return;
+    const clampedDelta = Math.min(delta, 0.03); // Cap delta to prevent massive simulation spikes on activation
     state.camera.position.set(position[0], position[1], position[2]);
     state.camera.lookAt(position[0], position[1], 0);
 
@@ -217,7 +218,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, dragged, drag, po
         const clampedDistance = Math.max(0.1, Math.min(1, ref.current.lerped.distanceTo(ref.current.translation())));
         ref.current.lerped.lerp(
           ref.current.translation(),
-          delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
+          clampedDelta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
         );
       });
       curve.points[0].copy(j3.current.translation());

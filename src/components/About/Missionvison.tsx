@@ -4,7 +4,7 @@ import { Sparkles, Target, Compass, CheckCircle2 } from "lucide-react";
 
 const MissionVision = () => {
   return (
-    <section id="mission-vision-section" className="relative py-24 bg-white select-none text-dark overflow-hidden">
+    <section id="mission-vision-section" className="relative py-24 bg-white text-dark overflow-hidden">
       {/* Editorial Grid Decor */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]" style={{ backgroundImage: "linear-gradient(#1e40af 1px, transparent 1px), linear-gradient(90deg, #1e40af 1px, transparent 1px)", backgroundSize: "40px 40px" }}></div>
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#eff6ff]/40 rounded-full blur-3xl pointer-events-none -z-10"></div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ShieldCheck, GraduationCap } from "lucide-react";
+import FounderImage from '../../assets/Faculties/expanded1.png'
+import KamarajImage from '../../assets/Faculties/KamarajIASnew.png'
 
 const Founders = () => {
   // Custom high-end transition preset for a non-AI feeling animation curve
@@ -10,7 +11,7 @@ const Founders = () => {
   };
 
   return (
-    <section id="founders-section" className="relative py-32 bg-[#FAFBFD] select-none text-dark overflow-hidden">
+    <section id="founders-section" className="relative py-32 bg-[#FAFBFD] text-dark overflow-hidden">
       {/* Decorative Subtle Line Matrix */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] flex justify-between max-w-[1440px] mx-auto px-[120px]">
         <div className="w-[1px] h-full bg-dark"></div>
@@ -53,7 +54,7 @@ const Founders = () => {
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-white p-3 rounded-[32px] border border-gray-200/60 shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-700 group-hover:shadow-[0_20px_50px_rgba(30,64,175,0.06)]">
               <div className="w-full h-full rounded-[24px] overflow-hidden relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=1200" 
+                  src={FounderImage} 
                   alt="Dr. P. Annamalai, IAS., PhD." 
                   className="w-full h-full object-cover object-top filter grayscale contrast-[1.05] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-[1.03]"
                   referrerPolicy="no-referrer"
@@ -91,7 +92,7 @@ const Founders = () => {
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-white p-3 rounded-[32px] border border-gray-200/60 shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-700 group-hover:shadow-[0_20px_50px_rgba(30,64,175,0.06)]">
               <div className="w-full h-full rounded-[24px] overflow-hidden relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1200" 
+                  src={KamarajImage} 
                   alt="Mr. C. Kamaraj, IAS." 
                   className="w-full h-full object-cover object-top filter grayscale contrast-[1.05] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-[1.03]"
                   referrerPolicy="no-referrer"

@@ -1,10 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion"; // Kept to your standard package path variant
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import Image1 from "../../assets/images/banner1.png";
 import Image2 from "../../assets/images/banner3.png";
 
 const AboutHero: React.FC = () => {
+  const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const patternRef = useRef<SVGPatternElement>(null);
@@ -330,7 +332,7 @@ const AboutHero: React.FC = () => {
     <div
       ref={containerRef}
       id="about-hero-section"
-      className="relative w-full h-[calc(100vh-72px)] bg-white border-b border-gray-150/70 select-none overflow-hidden mt-[72px]"
+      className="relative w-full h-[calc(100vh-72px)] bg-white border-b border-gray-150/70 overflow-hidden mt-[72px]"
     >
       {/* Primary Canvas Render Layer */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-10 block" />
@@ -367,10 +369,7 @@ const AboutHero: React.FC = () => {
             <div className="pt-2">
               <button
                 type="button"
-                onClick={() => {
-                  const target = document.getElementById("about-content-section");
-                  if (target) target.scrollIntoView({ behavior: "smooth" });
-                }}
+                onClick={() => navigate("/contact")}
                 className="group inline-flex items-center gap-2.5 px-6 py-3.5 bg-dark hover:bg-[#1E40AF] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-[0_4px_16px_rgba(15,23,42,0.08)] transition-all duration-300 transform active:scale-[0.98] cursor-pointer"
               >
                 <span>Start Your Journey Now</span>

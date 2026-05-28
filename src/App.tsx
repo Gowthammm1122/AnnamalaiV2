@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import Navbar from "./components/common component/Navbar";
 import Footer from "./components/common component/Footer";
@@ -12,6 +12,8 @@ import Contact from "./components/Contact";
 
 function AppContent() {
   const [showLoading, setShowLoading] = useState(false);
+  const { pathname } = useLocation();
+  const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
     const hasVisited = sessionStorage.getItem("annamalai_academy_visited");
@@ -26,6 +28,7 @@ function AppContent() {
       wheelMultiplier: 1.0,
       touchMultiplier: 1.5,
     });
+    lenisRef.current = lenis;
 
     function raf(time: number) {
       lenis.raf(time);
@@ -36,8 +39,17 @@ function AppContent() {
 
     return () => {
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
 
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-primary-light selection:text-primary animate-fade-in">

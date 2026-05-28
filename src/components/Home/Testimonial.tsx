@@ -137,7 +137,6 @@ const TestimonialsSection = () => {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 text-primary uppercase tracking-[0.25em] text-[10px] font-bold mb-4 bg-primary-light px-3.5 py-1.5 rounded-full border border-primary/10"
           >
-            <Sparkles className="w-3.5 h-3.5 text-primary animate-pulse" />
             Aspirant Testimonials
           </motion.div>
           <motion.h2 

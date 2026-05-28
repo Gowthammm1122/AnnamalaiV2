@@ -17,7 +17,7 @@ interface GalleryEvent {
 
 const GalleryHero = () => {
   return (
-    <div className="relative pt-36 pb-16 w-full overflow-hidden bg-[#FAFBFD] border-b border-gray-150/70 select-none">
+    <div className="relative pt-36 pb-16 w-full overflow-hidden bg-[#FAFBFD] border-b border-gray-150/70">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-[10%] right-[10%] w-[450px] h-[450px] rounded-full bg-blue-500/3 blur-[120px]" />
         <div className="absolute bottom-[10%] left-[5%] w-[450px] h-[450px] rounded-full bg-slate-400/3 blur-[120px]" />
@@ -193,7 +193,7 @@ const GalleryContent = () => {
   };
 
   return (
-    <section className="py-20 bg-white select-none">
+    <section className="py-20 bg-white">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 xl:px-[120px]">
         
         {/* Minimal Category Selector and Search */}

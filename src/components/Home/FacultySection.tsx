@@ -117,7 +117,7 @@ const FacultySection = () => {
   // Update active index based on scroll progress
   useEffect(() => {
     if (isMobile) return;
-    return scrollYProgress.onChange((v) => {
+    return scrollYProgress.on("change", (v) => {
       const segmentWidth = 1 / FACULTY.length;
       const slideDuration = segmentWidth * 0.55; // aligned with slideDuration in FacultyImage
       

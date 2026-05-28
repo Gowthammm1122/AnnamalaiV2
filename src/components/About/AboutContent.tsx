@@ -65,7 +65,7 @@ const AboutContent: React.FC = () => {
   const currentStrategy = strategies[activeStrategyTab];
 
   return (
-    <section id="about-content-section" className="relative py-24 bg-[#FCFCFD] select-none text-dark overflow-hidden">
+    <section id="about-content-section" className="relative py-24 bg-[#FCFCFD] text-dark overflow-hidden">
       <div
         className="absolute inset-0 z-0 pointer-events-none opacity-[0.03]"
         style={{
