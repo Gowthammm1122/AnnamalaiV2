@@ -1,7 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, type MotionValue } from "motion/react";
 import { ArrowRight } from "lucide-react";
-
+import Founder from "../../assets/Faculties/expanded1.png"
+import Gunasekaran from "../../assets/Faculties/GunasekaranNew.png"
+import Rajiv from "../../assets/Faculties/RajivGandhiNew.png"
+import Kamaraj from "../../assets/Faculties/KamarajIASnew.png"
+import Vetrivel from "../../assets/Faculties/Vetrivelnew.png"
+import Rahman from "../../assets/Faculties/Rahmannew.png"
 // Sub-component for individual stacking image
 interface FacultyImageProps {
   key?: any;
@@ -13,7 +18,10 @@ interface FacultyImageProps {
 }
 
 const FacultyImage = ({ image, index, total, scrollProgress, isActive }: FacultyImageProps) => {
-  const start = index / total;
+  const segmentWidth = 1 / total;
+  const startOfSegment = (index - 1) / total;
+  const slideDuration = segmentWidth * 0.55; // 65% sliding time, 35% static holding/waiting time
+  const slideUpEnd = startOfSegment + slideDuration;
   
   // Create a spring-smoothed version of the scroll progress for this specific image
   const smoothProgress = useSpring(scrollProgress, {
@@ -23,7 +31,7 @@ const FacultyImage = ({ image, index, total, scrollProgress, isActive }: Faculty
   });
 
   const y = useTransform(smoothProgress, 
-    [index === 0 ? 0 : start - 0.2, start], 
+    [index === 0 ? 0 : startOfSegment, index === 0 ? 0 : slideUpEnd], 
     [index === 0 ? "0%" : "100%", "0%"]
   );
 
@@ -39,7 +47,7 @@ const FacultyImage = ({ image, index, total, scrollProgress, isActive }: Faculty
         <motion.img 
           src={image} 
           alt=""
-          className={`w-full h-full object-cover transition-all duration-1000 ${isActive ? 'grayscale-0' : 'grayscale brightness-75 scale-110'}`}
+          className={`w-full h-full object-cover transition-all duration-1000 ${isActive ? 'scale-110' : 'scale-100'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent"></div>
         {/* Decorative corner */}
@@ -72,25 +80,37 @@ const FacultySection = () => {
       name: "Dr. P. Annamalai",
       role: "Founder & Director",
       desc: "15+ years of experience in mentoring over 1,000 successful IAS officers. Expert in General Studies and Strategy.",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=1200",
+      image: Founder ,
     },
     {
       name: "Mr. S. Raghavan",
       role: "Head of History",
       desc: "Distinguished historian with a decade of expertise in Indian Culture and World History modules.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=1200",
+      image: Kamaraj,
     },
     {
       name: "Ms. Deepa Lakshmi",
       role: "Geography Specialist",
       desc: "Renowned for her mapping techniques and comprehensive analysis of Environmental Impact.",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1200",
+      image: Vetrivel,
     },
     {
       name: "Mr. K. Velmurugan",
       role: "Polity Consultant",
       desc: "Specialist in Governance and Indian Constitution. Former legal advisor with deep insights.",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=1200",
+      image: Rahman,
+    },
+    {
+      name: "Mr. K. Velmurugan",
+      role: "Polity Consultant",
+      desc: "Specialist in Governance and Indian Constitution. Former legal advisor with deep insights.",
+      image: Rajiv,
+    },
+    {
+      name: "Mr. K. Velmurugan",
+      role: "Polity Consultant",
+      desc: "Specialist in Governance and Indian Constitution. Former legal advisor with deep insights.",
+      image: Gunasekaran,
     },
   ];
 
