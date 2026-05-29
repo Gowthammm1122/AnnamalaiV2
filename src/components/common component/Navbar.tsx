@@ -116,8 +116,7 @@ const Navbar = () => {
           {/* Student Portal Button */}
           <button
             onClick={() => {
-              // Student Portal redirect link will be added here
-              console.log("Student Portal Clicked");
+              window.open("https://web.classplusapp.com/store/home?tabCategoryId=2", "_blank", "noopener,noreferrer");
             }}
             className="px-5 py-2 rounded-full text-[11px] font-bold tracking-[0.06em] uppercase transition-all duration-300 bg-white/60 hover:bg-white text-gray-700 hover:text-gray-900 border border-gray-200/60 flex items-center space-x-1 group shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
           >
@@ -177,8 +176,7 @@ const Navbar = () => {
 
           <button
             onClick={() => {
-              // Student Portal redirect link will be added here
-              console.log("Student Portal Clicked");
+              window.open("https://web.classplusapp.com/store/home?tabCategoryId=2", "_blank", "noopener,noreferrer");
             }}
             className="w-full py-3.5 bg-white border border-gray-200/80 hover:bg-gray-50 text-gray-800 font-bold text-xs tracking-widest uppercase rounded-full shadow-sm transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
             style={{ fontFamily: "'Anton', sans-serif" }}
