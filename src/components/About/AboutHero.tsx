@@ -262,6 +262,10 @@ const AboutHero: React.FC = () => {
   useEffect(() => {
     let animId: number;
     const update = () => {
+      if (window.innerWidth < 768) {
+        animId = requestAnimationFrame(update);
+        return;
+      }
       if (!isInViewRef.current) {
         animId = requestAnimationFrame(update);
         return;
@@ -333,25 +337,15 @@ const AboutHero: React.FC = () => {
     <div
       ref={containerRef}
       id="about-hero-section"
-      className="relative w-full h-[calc(100vh-72px)] bg-white border-b border-gray-150/70 overflow-hidden mt-[72px]"
+      className="relative w-full h-[620px] md:h-[calc(100vh-72px)] bg-white border-b border-gray-150/70 overflow-hidden mt-[72px]"
     >
       {/* Primary Canvas Render Layer - Hidden on Mobile */}
       <canvas ref={canvasRef} className="hidden md:block absolute inset-0 w-full h-full pointer-events-none z-10" />
 
       {/* Mobile-Only Hero Layout */}
-      <div className="md:hidden relative w-full h-full pt-10 text-center z-20 flex flex-col justify-start">
-        {/* Background Image layer behind */}
-        <div className="absolute bottom-0 left-0 right-0 h-[45vh] flex justify-center items-end pointer-events-none z-10">
-          <img
-            src={Image1}
-            alt="Academy Student"
-            className="h-full object-contain object-bottom origin-bottom scale-[2.05] translate-y-0"
-            draggable={false}
-          />
-        </div>
-
+      <div className="md:hidden flex flex-col justify-between w-full h-full pt-8 pb-0 text-center z-20 bg-white relative">
         {/* Texts layer in front */}
-        <div className="space-y-4 max-w-sm mx-auto px-4 mt-2 z-20 relative pointer-events-auto">
+        <div className="space-y-4 max-w-sm mx-auto px-6 z-10 relative pointer-events-auto">
           <span className="text-[9px] font-bold text-[#1E40AF] bg-blue-50 px-3 py-1 rounded-full uppercase tracking-wider block w-fit mx-auto">
             Your Dream • Our Guidance • Your Success
           </span>
@@ -372,6 +366,16 @@ const AboutHero: React.FC = () => {
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
+        </div>
+
+        {/* Background Image layer behind */}
+        <div className="w-full h-[42%] flex justify-center items-end pointer-events-none z-25 overflow-visible relative mt-auto">
+          <img
+            src={Image1}
+            alt="Academy Student"
+            className="h-full object-contain object-bottom origin-bottom scale-[1.3] translate-y-1"
+            draggable={false}
+          />
         </div>
       </div>
 

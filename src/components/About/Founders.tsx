@@ -20,7 +20,7 @@ const Founders = () => {
       </div>
 
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 xl:px-[120px] relative z-10">
-        
+
         {/* Editorial Offset Header Layout */}
         <div className="grid lg:grid-cols-12 gap-8 mb-24 items-end">
           <div className="lg:col-span-7 space-y-4">
@@ -41,7 +41,7 @@ const Founders = () => {
 
         {/* Asymmetric Alternating Card Grid */}
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 max-w-5xl mx-auto items-start pt-6">
-          
+
           {/* Founder 1 - Dr. P. Annamalai */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -53,10 +53,10 @@ const Founders = () => {
             {/* Image Box with Custom Cut Shape and Border Accent */}
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-white p-3 rounded-[32px] border border-gray-200/60 shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-700 group-hover:shadow-[0_20px_50px_rgba(30,64,175,0.06)]">
               <div className="w-full h-full rounded-[24px] overflow-hidden relative">
-                <img 
-                  src={FounderImage} 
-                  alt="Dr. P. Annamalai, IAS., PhD." 
-                  className="w-full h-full object-cover object-top filter grayscale contrast-[1.05] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-[1.03]"
+                <img
+                  src={FounderImage}
+                  alt="Dr. P. Annamalai, IAS., PhD."
+                  className="w-full h-full object-cover object-top transition-all duration-1000 scale-100 group-hover:scale-[1.03]"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/15 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-95" />
@@ -70,7 +70,7 @@ const Founders = () => {
                 </h3>
               </div>
             </div>
-            
+
             {/* Text Bio */}
             <div className="mt-6 px-3 space-y-3">
               <p className="text-gray-500 font-light text-sm leading-relaxed">
@@ -91,15 +91,15 @@ const Founders = () => {
             {/* Image Box with Custom Cut Shape and Border Accent */}
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-white p-3 rounded-[32px] border border-gray-200/60 shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-700 group-hover:shadow-[0_20px_50px_rgba(30,64,175,0.06)]">
               <div className="w-full h-full rounded-[24px] overflow-hidden relative">
-                <img 
-                  src={KamarajImage} 
-                  alt="Mr. C. Kamaraj, IAS." 
-                  className="w-full h-full object-cover object-top filter grayscale contrast-[1.05] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-[1.03]"
+                <img
+                  src={KamarajImage}
+                  alt="Mr. C. Kamaraj, IAS."
+                  className="w-full h-full object-cover object-top transition-all duration-1000 scale-100 group-hover:scale-[1.03]"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/15 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-95" />
               </div>
-              
+
               {/* Identity Footer Contextual Blocks */}
               <div className="absolute bottom-8 left-8 right-8 text-white">
                 <div className="text-[9px] font-mono tracking-[0.25em] text-blue-300 uppercase mb-1.5 font-bold">CO-PROMOTER & MENTOR</div>
@@ -108,7 +108,7 @@ const Founders = () => {
                 </h3>
               </div>
             </div>
-            
+
             {/* Text Bio */}
             <div className="mt-6 px-3 space-y-3">
               <p className="text-gray-500 font-light text-sm leading-relaxed">

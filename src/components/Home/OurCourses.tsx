@@ -9,7 +9,7 @@ import Combined from '../../assets/Courses/combined.png';
 import Insurance from '../../assets/Courses/Insurance.png';
 import Railway from '../../assets/Courses/railway.png';
 import Sub from '../../assets/Courses/Subinspector.png';
-import SSC from '../../assets/Courses/railway.png';
+import SSC from '../../assets/Courses/optional.png';
 
 
 
@@ -25,45 +25,45 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
 
   const COURSES = [
     {
-      name: 'UPSC Civil Services',
-      src: Civil,
-      bg: '#1e40af',
-      desc: 'Specialized premium training for all 27 categories of premier central posts (IAS, IPS, IFS, and Central Services Group A & B).'
-    },
-    {
       name: 'TNPSC Civil Services',
       src: Combined,
-      bg: '#065f46',
+      bg: '#1e4fc0',
       desc: 'Comprehensive state commission path mapping out Group 1 (Deputy Collector, DSP), Group 2/2A, and Group 4 (VAO, Junior Assistant).'
     },
     {
       name: 'Banking Services',
       src: Banking,
-      bg: '#5b21b6',
+      bg: '#1e4fc0',
       desc: 'Rigorous computer-based training for Probationary Officers (PO), Specialist Officers (SO), Clerks, and RBI Assistants / Grade A & B Officers.'
     },
     {
       name: 'Insurance Recruitment',
       src: Insurance,
-      bg: '#b45309',
+      bg: '#1e4fc0',
       desc: 'Specialized curriculum for Assistant Administrative Officer (AAO) and Assistant Grade posts across top participating firms.'
+    },
+    {
+      name: 'UPSC Civil Services',
+      src: Civil,
+      bg: '#1e4fc0',
+      desc: 'Specialized premium training for all 27 categories of premier central posts (IAS, IPS, IFS, and Central Services Group A & B).'
     },
     {
       name: 'Railway Board (RRB)',
       src: Railway,
-      bg: '#9a3412',
+      bg: '#1e4fc0',
       desc: 'Targeted curriculum for Non-Technical Popular Posts, Junior Engineer, Senior Section Engineer, Assistant Loco Pilot, and Group-D.'
     },
     {
       name: 'Staff Selection (SSC)',
       src: SSC,
-      bg: '#0369a1',
+      bg: '#1e4fc0',
       desc: 'Premier training program for various key ministerial, department, and organizational posts within the Government of India.'
     },
     {
       name: 'TNUSRB Police SI',
       src: Sub,
-      bg: '#1e3a8a',
+      bg: '#1e4fc0',
       desc: 'Targeted physical and academic model tailored to address Tamil Nadu Uniformed Services Recruitment Board SI parameters.'
     },
   ];
