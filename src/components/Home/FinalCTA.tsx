@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { Award } from "lucide-react";
 import ctabg2 from "../../assets/images/ctabg2.jpg";
+import { useNavigate } from "react-router-dom";
 
 interface FinalCTAProps {
   onApply?: () => void;
@@ -9,6 +10,8 @@ interface FinalCTAProps {
 }
 
 const FinalCTA = ({ onApply, onRegisterDemo }: FinalCTAProps) => {
+  const navigate = useNavigate();
+
   return (
     <section className="py-24 bg-dark relative overflow-hidden">
       {/* Decorative Elements */}
@@ -33,8 +36,7 @@ const FinalCTA = ({ onApply, onRegisterDemo }: FinalCTAProps) => {
                 transition={{ duration: 0.8 }}
               >
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full mb-6">
-                  <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></div>
-                  <span className="text-[10px] font-bold text-white uppercase tracking-[0.2em]">Admissions Open 2024-25</span>
+                  <span className="text-[10px] font-bold text-white uppercase tracking-[0.2em]">Admissions Open</span>
                 </div>
                 <h2 className="text-5xl lg:text-7xl font-display text-white leading-tight mb-8">
                   Your <span className="italic text-primary-light font-medium">Legacy</span> Begins Here.
@@ -44,18 +46,18 @@ const FinalCTA = ({ onApply, onRegisterDemo }: FinalCTAProps) => {
                 </p>
                 
                 <div className="flex flex-wrap gap-6">
-                  <button 
-                    onClick={onApply}
-                    className="px-10 py-5 bg-primary text-white rounded-2xl font-bold uppercase tracking-widest text-xs hover:bg-primary-dark transition-all hover:scale-105 shadow-xl shadow-primary/20 cursor-pointer"
-                  >
-                    Apply Online
-                  </button>
-                  <button 
-                    onClick={onRegisterDemo}
-                    className="px-10 py-5 bg-white/5 text-white border border-white/10 rounded-2xl font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all cursor-pointer"
-                  >
-                    Register for Demo
-                  </button>
+                   <button
+                   onClick={() => navigate("/contact")}
+                   className="px-10 py-5 bg-primary text-white rounded-2xl font-bold uppercase tracking-widest text-xs hover:bg-primary-dark transition-all hover:scale-105 shadow-xl shadow-primary/20 cursor-pointer"
+                   >
+                    Enquire Now
+                   </button>
+                   <button
+                   onClick={() => navigate("/courses")}
+                   className="px-10 py-5 bg-white/5 text-white border border-white/10 rounded-2xl font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all cursor-pointer"
+                   >
+                    View Courses
+                   </button>
                 </div>
               </motion.div>
             </div>

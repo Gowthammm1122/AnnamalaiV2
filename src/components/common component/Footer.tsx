@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Twitter, Linkedin, Github } from "lucide-react";
+import { Instagram, Facebook, Youtube } from "lucide-react";
 import whitelogoImg from "../../assets/images/whitelogo.png";
 
 const Footer = () => {
@@ -45,10 +45,20 @@ const Footer = () => {
           <div className="footer-social-row flex items-center justify-between gap-3 relative z-10">
             <span className="footer-social-label font-caveat text-[17px] font-semibold text-white/90 tracking-[0.3px]">Stay in touch!</span>
             <div className="footer-social-icons flex gap-[7px]">
-              {[Twitter, Linkedin, Github].map((Icon, i) => (
-                <div key={i} className="w-9 h-9 rounded-[9px] bg-[#0e1014] flex items-center justify-center shadow-[0_6px_18px_rgba(0,0,0,0.35),0_2px_6px_rgba(0,0,0,0.2)] hover:bg-black hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 cursor-pointer">
+              {[
+                { Icon: Instagram, link: "https://www.instagram.com/drpannamalaiiasacademy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+                { Icon: Facebook, link: "https://www.facebook.com/1114147231770669?ref=PROFILE_EDIT_xav_ig_profile_page_web" },
+                { Icon: Youtube, link: "https://www.youtube.com/@annamalaiiasacademy" }
+              ].map(({ Icon, link }, i) => (
+                <a
+                  key={i}
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-[9px] bg-[#0e1014] flex items-center justify-center shadow-[0_6px_18px_rgba(0,0,0,0.35),0_2px_6px_rgba(0,0,0,0.2)] hover:bg-black hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 cursor-pointer"
+                >
                   <Icon className="w-[15px] h-[15px] text-white" />
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -86,15 +96,39 @@ const Footer = () => {
             <div className="footer-col min-w-[120px]">
               <h4 className="footer-col-title font-caveat text-2xl font-semibold italic text-[#9ca3af] mb-[18px]">Academics</h4>
               <nav className="flex flex-col gap-3.5">
-                {["UPSC CSE", "TNPSC", "Current Affairs", "Test Series", "Resources"].map((link, i) => (
-                  <a key={i} href="#" onClick={(e) => e.preventDefault()} className="font-dmsans text-sm font-semibold text-[#111827] hover:text-[#1f65d6] transition-colors">{link}</a>
+                {[
+                  { name: "UPSC CSE", target: "courses" as const },
+                  { name: "TNPSC", target: "courses" as const },
+                  { name: "Current Affairs", target: "gallery" as const },
+                  { name: "Test Series", target: "gallery" as const },
+                  { name: "Resources", target: "gallery" as const }
+                ].map((link, i) => (
+                  <a
+                    key={i}
+                    href="#"
+                    onClick={(e) => handleNavClick(link.target, e)}
+                    className="font-dmsans text-sm font-semibold text-[#111827] hover:text-[#1f65d6] transition-colors"
+                  >
+                    {link.name}
+                  </a>
                 ))}
               </nav>
             </div>
           </div>
 
           <div className="footer-bottom flex flex-col sm:flex-row items-end justify-between mt-12 gap-8 sm:gap-0">
-            <p className="footer-copyright font-dmsans text-[12.5px] font-medium text-[#9ca3af]">© 2025 Dr. P. Annamalai IAS Academy. All rights reserved.</p>
+            <p className="footer-copyright font-dmsans text-[12.5px] font-medium text-[#9ca3af] leading-relaxed">
+              © 2025 Dr. P. Annamalai IAS Academy. All rights reserved.<br />
+              Designed and developed by{" "}
+              <a
+                href="https://www.instagram.com/behind_brief?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-[#1f65d6] hover:underline"
+              >
+                BehindBrief
+              </a>
+            </p>
             
             <div className="footer-cta-mini flex flex-col gap-3.5 w-full sm:w-auto">
               <h4 className="text-[15px] font-normal text-[#6b7280] leading-[1.45]">
