@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
+import { ArrowRight, Facebook, Twitter, Linkedin, Youtube, CheckCircle2 } from "lucide-react";
 import BannerImg from "../../assets/images/ctabg.jpg"; // Use your existing hero ctabg asset
 import FAQSection from "../Home/FAQSection";
+
+// EmailJS Credentials Configuration (Loaded from your .env file)
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const ContactHero = () => {
   return (
@@ -41,15 +46,51 @@ const ContactContent = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSent, setIsSent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Check if EmailJS is configured
+    if (
+      EMAILJS_SERVICE_ID &&
+      EMAILJS_TEMPLATE_ID &&
+      EMAILJS_PUBLIC_KEY
+    ) {
+      try {
+        await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            service_id: EMAILJS_SERVICE_ID,
+            template_id: EMAILJS_TEMPLATE_ID,
+            user_id: EMAILJS_PUBLIC_KEY,
+            template_params: {
+              name: formData.name,
+              email: formData.email,
+              subject: formData.subject,
+              message: formData.message,
+            },
+          }),
+        });
+      } catch (error) {
+        console.error("EmailJS: Network/API Error during contact form submission:", error);
+      }
+    } else {
+      console.warn("EmailJS: Contact Page keys are not configured yet. Skipping API call.");
+    }
+
+    setIsSubmitting(false);
+    setIsSent(true);
+    setFormData({ name: "", email: "", subject: "", message: "" });
+
+    // Reset success state back to normal after 4 seconds
     setTimeout(() => {
-      setIsSubmitting(false);
-      alert("Inquiry successfully transmitted to the Dr. P. Annamalai IAS Academy administrative panel.");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 1000);
+      setIsSent(false);
+    }, 4000);
   };
 
   return (
@@ -168,11 +209,24 @@ const ContactContent = () => {
                 <div className="pt-4">
                   <button
                     type="submit"
-                    disabled={isSubmitting}
-                    className="inline-flex items-center gap-3 px-6 py-3.5 bg-dark hover:bg-[#1E40AF] text-white text-[11px] font-bold uppercase tracking-widest rounded-full shadow-sm transition-all active:scale-[0.98] cursor-pointer group"
+                    disabled={isSubmitting || isSent}
+                    className={`inline-flex items-center gap-3 px-6 py-3.5 text-[11px] font-bold uppercase tracking-widest rounded-full shadow-sm transition-all active:scale-[0.98] cursor-pointer group ${
+                      isSent
+                        ? "bg-emerald-600 hover:bg-emerald-700 text-white"
+                        : "bg-dark hover:bg-[#1E40AF] text-white"
+                    }`}
                   >
-                    <ArrowRight className="w-3.5 h-3.5 transform -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    <span>{isSubmitting ? "Sending message..." : "Send message"}</span>
+                    {isSent ? (
+                      <>
+                        <CheckCircle2 className="w-3.5 h-3.5 text-white" />
+                        <span>Message Sent!</span>
+                      </>
+                    ) : (
+                      <>
+                        <ArrowRight className="w-3.5 h-3.5 transform -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        <span>{isSubmitting ? "Sending message..." : "Send message"}</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </form>

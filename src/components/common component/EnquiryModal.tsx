@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight, CheckCircle } from "lucide-react";
 
+// EmailJS Credentials Configuration (Loaded from your .env file)
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID ;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_POPUP_TEMPLATE_ID ;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
 const EnquiryModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -29,15 +34,56 @@ const EnquiryModal = () => {
     sessionStorage.setItem("annamalai_enquiry_pop_seen", "true");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitted(true);
     sessionStorage.setItem("annamalai_enquiry_pop_seen", "true");
+
+    // Check if EmailJS is configured
+    if (
+      EMAILJS_SERVICE_ID !== "YOUR_SERVICE_ID" &&
+      EMAILJS_TEMPLATE_ID !== "YOUR_POPUP_TEMPLATE_ID" &&
+      EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY"
+    ) {
+      try {
+        // Map course codes to reader-friendly full names for the email template
+        const courseNames: Record<string, string> = {
+          upsc: "UPSC Civil Services Examination",
+          tnpsc: "TNPSC Combined Services (Group 1, 2, 4)",
+          banking: "Banking & Insurance Services",
+          ssc: "Staff Selection (SSC) / Railways (RRB)",
+          tnusrb: "TNUSRB Police Inspector & SI",
+        };
+
+        const templateParams = {
+          name: formData.name,
+          phone: formData.phone,
+          course: courseNames[formData.course] || formData.course,
+        };
+
+        await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            service_id: EMAILJS_SERVICE_ID,
+            template_id: EMAILJS_TEMPLATE_ID,
+            user_id: EMAILJS_PUBLIC_KEY,
+            template_params: templateParams,
+          }),
+        });
+      } catch (error) {
+        console.error("EmailJS: Network/API Error during popup submission:", error);
+      }
+    } else {
+      console.warn("EmailJS: Popup Modal keys are not configured yet. Skipping API call.");
+    }
     
-    // Simulate API call and success message auto-dismissal
+    // Auto-dismiss the success feedback popup
     setTimeout(() => {
       setIsOpen(false);
-    }, 2500);
+    }, 3000);
   };
 
   return (
