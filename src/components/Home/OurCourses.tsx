@@ -2,12 +2,16 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 
-import civilImg from '../../assets/images/civil.png';
-import tnpscImg from '../../assets/images/Tnpsc 1 &2.png';
-import optionalImg from '../../assets/images/optional.png';
-import csatImg from '../../assets/images/csat.png';
-import ethicsImg from '../../assets/images/ethics.png';
-import interviewImg from '../../assets/images/Interview ready.png';
+//new images
+import Banking from '../../assets/Courses/banking.png';
+import Civil from '../../assets/Courses/civilservice.png';
+import Combined from '../../assets/Courses/combined.png';
+import Insurance from '../../assets/Courses/Insurance.png';
+import Railway from '../../assets/Courses/railway.png';
+import Sub from '../../assets/Courses/Subinspector.png';
+import SSC from '../../assets/Courses/railway.png';
+
+
 
 interface OurCoursesProps {
   onDiscoverMore?: () => void;
@@ -21,40 +25,46 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
 
   const COURSES = [
     {
-      name: 'Civil Services (IAS/IPS)',
-      src: civilImg,
-      bg: '#854d0e',
-      desc: 'Our flagship program providing comprehensive coaching for Prelims, Mains, and Interview.'
-    },
-    {
-      name: 'TNPSC Group I & II',
-      src: tnpscImg,
-      bg: '#166534',
-      desc: 'Specialized coaching for Tamil Nadu Public Service Commission exams with expert local faculty.'
-    },
-    {
-      name: 'Optional Specialization',
-      src: optionalImg,
-      bg: '#9a3412',
-      desc: 'Deep dive into History, Geography, PSIR, and Sociology with our dedicated subject experts.'
-    },
-    {
-      name: 'CSAT & Aptitude',
-      src: csatImg,
-      bg: '#5b21b6',
-      desc: 'Master logical reasoning, analytical ability, and basic numeracy for the CSAT paper.'
-    },
-    {
-      name: 'Ethics & Integrity',
-      src: ethicsImg,
+      name: 'UPSC Civil Services',
+      src: Civil,
       bg: '#1e40af',
-      desc: 'Focused sessions on General Studies Paper IV, covering ethics, integrity, and case studies.'
+      desc: 'Specialized premium training for all 27 categories of premier central posts (IAS, IPS, IFS, and Central Services Group A & B).'
     },
     {
-      name: 'Interview Ready',
-      src: interviewImg,
+      name: 'TNPSC Civil Services',
+      src: Combined,
+      bg: '#065f46',
+      desc: 'Comprehensive state commission path mapping out Group 1 (Deputy Collector, DSP), Group 2/2A, and Group 4 (VAO, Junior Assistant).'
+    },
+    {
+      name: 'Banking Services',
+      src: Banking,
+      bg: '#5b21b6',
+      desc: 'Rigorous computer-based training for Probationary Officers (PO), Specialist Officers (SO), Clerks, and RBI Assistants / Grade A & B Officers.'
+    },
+    {
+      name: 'Insurance Recruitment',
+      src: Insurance,
+      bg: '#b45309',
+      desc: 'Specialized curriculum for Assistant Administrative Officer (AAO) and Assistant Grade posts across top participating firms.'
+    },
+    {
+      name: 'Railway Board (RRB)',
+      src: Railway,
+      bg: '#9a3412',
+      desc: 'Targeted curriculum for Non-Technical Popular Posts, Junior Engineer, Senior Section Engineer, Assistant Loco Pilot, and Group-D.'
+    },
+    {
+      name: 'Staff Selection (SSC)',
+      src: SSC,
+      bg: '#0369a1',
+      desc: 'Premier training program for various key ministerial, department, and organizational posts within the Government of India.'
+    },
+    {
+      name: 'TNUSRB Police SI',
+      src: Sub,
       bg: '#1e3a8a',
-      desc: 'Personality development and mock interview sessions with former board members and bureaucrats.'
+      desc: 'Targeted physical and academic model tailored to address Tamil Nadu Uniformed Services Recruitment Board SI parameters.'
     },
   ];
 
@@ -78,13 +88,14 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
   const navigate = useCallback((direction: 'next' | 'prev') => {
     if (isAnimating) return;
     setIsAnimating(true);
+    const len = COURSES.length;
     if (direction === 'next') {
-      setActiveIndex((prev) => (prev + 1) % 6);
+      setActiveIndex((prev) => (prev + 1) % len);
     } else {
-      setActiveIndex((prev) => (prev + 5) % 6);
+      setActiveIndex((prev) => (prev + len - 1) % len);
     }
     setTimeout(() => setIsAnimating(false), 650);
-  }, [isAnimating]);
+  }, [isAnimating, COURSES.length]);
 
   // Drag and Swipe Tracking Engine with Vertical Scroll Isolation
   const dragStartRef = useRef<{ x: number; y: number } | null>(null);
@@ -183,11 +194,12 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
   };
 
   const getRole = (index: number) => {
+    const len = COURSES.length;
     if (index === activeIndex) return 'center';
-    if (index === (activeIndex + 5) % 6) return 'left';
-    if (index === (activeIndex + 1) % 6) return 'right';
-    if (index === (activeIndex + 4) % 6) return 'back-left';
-    if (index === (activeIndex + 2) % 6) return 'back-right';
+    if (index === (activeIndex + len - 1) % len) return 'left';
+    if (index === (activeIndex + 1) % len) return 'right';
+    if (index === (activeIndex + len - 2) % len) return 'back-left';
+    if (index === (activeIndex + 2) % len) return 'back-right';
     return 'back';
   };
 
