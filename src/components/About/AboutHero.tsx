@@ -3,7 +3,7 @@ import { motion } from "framer-motion"; // Kept to your standard package path va
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Image1 from "../../assets/images/banner1.png";
-import Image2 from "../../assets/images/banner3.png";
+import Image2 from "../../assets/images/banner2.png";
 
 const AboutHero: React.FC = () => {
   const navigate = useNavigate();
@@ -92,6 +92,7 @@ const AboutHero: React.FC = () => {
   };
 
   const draw = () => {
+    if (window.innerWidth < 768) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -334,11 +335,48 @@ const AboutHero: React.FC = () => {
       id="about-hero-section"
       className="relative w-full h-[calc(100vh-72px)] bg-white border-b border-gray-150/70 overflow-hidden mt-[72px]"
     >
-      {/* Primary Canvas Render Layer */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-10 block" />
+      {/* Primary Canvas Render Layer - Hidden on Mobile */}
+      <canvas ref={canvasRef} className="hidden md:block absolute inset-0 w-full h-full pointer-events-none z-10" />
 
-      {/* Typography & Interactive CTA Overlay Layer */}
-      <div className="absolute inset-0 z-30 pointer-events-none flex items-end justify-start bg-transparent">
+      {/* Mobile-Only Hero Layout */}
+      <div className="md:hidden relative w-full h-full pt-10 text-center z-20 flex flex-col justify-start">
+        {/* Background Image layer behind */}
+        <div className="absolute bottom-0 left-0 right-0 h-[45vh] flex justify-center items-end pointer-events-none z-10">
+          <img
+            src={Image1}
+            alt="Academy Student"
+            className="h-full object-contain object-bottom origin-bottom scale-[2.05] translate-y-0"
+            draggable={false}
+          />
+        </div>
+
+        {/* Texts layer in front */}
+        <div className="space-y-4 max-w-sm mx-auto px-4 mt-2 z-20 relative pointer-events-auto">
+          <span className="text-[9px] font-bold text-[#1E40AF] bg-blue-50 px-3 py-1 rounded-full uppercase tracking-wider block w-fit mx-auto">
+            Your Dream • Our Guidance • Your Success
+          </span>
+          <h1 className="text-3xl font-display font-medium text-dark tracking-tight leading-[1.12]">
+            Dream High. <br />
+            Achieve Your <span className="font-serif italic text-[#1E40AF]">Mission</span>
+          </h1>
+          <p className="text-gray-500 font-light text-[11px] leading-relaxed max-w-xs mx-auto">
+            Promoted by veteran IAS officers with over 30 years of administrative excellence to transform competitive aspirations into verified success.
+          </p>
+          <div className="pt-2">
+            <button
+              type="button"
+              onClick={() => navigate("/contact")}
+              className="group inline-flex items-center gap-2 px-5 py-3 bg-dark hover:bg-[#1E40AF] text-white text-[11px] font-bold uppercase tracking-wider rounded-xl transition-all shadow-md active:scale-[0.98] cursor-pointer"
+            >
+              <span>Start Your Journey Now</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop-Only Typography & Interactive CTA Overlay Layer */}
+      <div className="hidden md:flex absolute inset-0 z-30 pointer-events-none items-end justify-start bg-transparent">
         <div className="w-full pl-6 sm:pl-12 xl:pl-[120px] pb-12 md:pb-20 pointer-events-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
