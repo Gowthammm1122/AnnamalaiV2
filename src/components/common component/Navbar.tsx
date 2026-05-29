@@ -112,6 +112,18 @@ const Navbar = () => {
             <span>Contact</span>
             <ArrowUpRight className="w-3 h-3 transition-transform duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
+
+          {/* Student Portal Button */}
+          <button
+            onClick={() => {
+              // Student Portal redirect link will be added here
+              console.log("Student Portal Clicked");
+            }}
+            className="px-5 py-2 rounded-full text-[11px] font-bold tracking-[0.06em] uppercase transition-all duration-300 bg-white/60 hover:bg-white text-gray-700 hover:text-gray-900 border border-gray-200/60 flex items-center space-x-1 group shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+          >
+            <span>Student Portal</span>
+            <ArrowUpRight className="w-3 h-3 transition-transform duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-gray-400 group-hover:text-gray-700" />
+          </button>
         </div>
 
         {/* Modern Mobile Trigger - Icons enlarged to w-6 h-6 for pristine legibility */}
@@ -153,13 +165,25 @@ const Navbar = () => {
         </div>
 
         {/* Action Drawer Area */}
-        <div className="p-8 bg-gray-50/80 border-t border-gray-100 backdrop-blur-md flex flex-col space-y-4">
+        <div className="p-8 bg-gray-50/80 border-t border-gray-100 backdrop-blur-md flex flex-col space-y-3">
           <button
             onClick={() => handleNavigation("/contact")}
-            className="w-full py-4 bg-gray-900 hover:bg-primary text-white font-bold text-xs tracking-widest uppercase rounded-full shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
+            className="w-full py-3.5 bg-gray-900 hover:bg-primary text-white font-bold text-xs tracking-widest uppercase rounded-full shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
             style={{ fontFamily: "'Anton', sans-serif" }}
           >
             <span>Connect Directly</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={() => {
+              // Student Portal redirect link will be added here
+              console.log("Student Portal Clicked");
+            }}
+            className="w-full py-3.5 bg-white border border-gray-200/80 hover:bg-gray-50 text-gray-800 font-bold text-xs tracking-widest uppercase rounded-full shadow-sm transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
+            style={{ fontFamily: "'Anton', sans-serif" }}
+          >
+            <span>Student Portal</span>
             <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
 import BannerImg from "../../assets/images/ctabg.jpg"; // Use your existing hero ctabg asset
+import FAQSection from "../Home/FAQSection";
 
 const ContactHero = () => {
   return (
@@ -202,6 +203,7 @@ const Contact = () => {
     <div className="min-h-screen bg-white">
       <ContactHero />
       <ContactContent />
+      <FAQSection />
     </div>
   );
 };

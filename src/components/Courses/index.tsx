@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, Clock, Users, CheckCircle2, ArrowRight } from "lucide-react";
+import { Calendar, Clock, Users, CheckCircle2, ChevronDown } from "lucide-react";
 
 interface CourseItem {
   id: string;
@@ -313,21 +313,22 @@ const CoursesList = () => {
                     </ul>
                   </div>
 
-                  {/* Enquire CTA Block replacing price text */}
-                  <div className="flex items-center gap-4 shrink-0 w-full md:w-auto justify-between md:justify-end border-t md:border-t-0 border-gray-100 pt-4 md:pt-0">
+                  {/* Dropdown Indicator Button with Text */}
+                  <div className="flex items-center shrink-0">
                     <button
                       type="button"
-                      onClick={(e) => handleEnquireClick(e, c.name)}
-                      className="px-5 py-2.5 text-xs font-semibold tracking-wide text-white bg-dark hover:bg-[#1E40AF] rounded-xl transition-all shadow-sm shrink-0 cursor-pointer"
+                      className={`px-4 py-2 rounded-full flex items-center gap-2 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.06em] transition-all select-none border cursor-pointer ${
+                        isExpanded
+                          ? "bg-[#1E40AF] text-white border-transparent shadow-sm"
+                          : "bg-[#FAFBFD] text-gray-500 border-gray-200 hover:bg-gray-100 hover:text-dark"
+                      }`}
                     >
-                      Enquire Now
-                    </button>
-                    
-                    <button
-                      type="button"
-                      className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${isExpanded ? 'bg-[#1E40AF] text-white rotate-90' : 'bg-[#FAFBFD] text-gray-400 border border-gray-150'}`}
-                    >
-                      <ArrowRight className="w-4 h-4" />
+                      <span>{isExpanded ? "Hide Details" : "See Details"}</span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                          isExpanded ? "rotate-180" : ""
+                        }`}
+                      />
                     </button>
                   </div>
                 </div>
@@ -384,20 +385,32 @@ const CoursesList = () => {
                         </div>
                       </div>
 
-                      {/* Parameters Footer */}
-                      <div className="border-t border-gray-150 pt-6 flex flex-wrap gap-y-4 gap-x-12 text-xs text-gray-400 font-light">
-                        <div className="flex gap-2 items-center">
-                          <Clock className="w-4 h-4 text-primary" />
-                          <span>Structure: <strong className="text-dark font-medium">{c.duration}</strong></span>
+                      {/* Parameters Footer & Enquire CTA */}
+                      <div className="border-t border-gray-150 pt-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-xs text-gray-400 font-light">
+                        {/* Parameters Left */}
+                        <div className="flex flex-wrap gap-y-4 gap-x-8 sm:gap-x-12">
+                          <div className="flex gap-2 items-center">
+                            <Clock className="w-4 h-4 text-primary" />
+                            <span>Structure: <strong className="text-dark font-medium">{c.duration}</strong></span>
+                          </div>
+                          <div className="flex gap-2 items-center">
+                            <Users className="w-4 h-4 text-primary" />
+                            <span>Training Environment: <strong className="text-dark font-medium">{c.capacity}</strong></span>
+                          </div>
+                          <div className="flex gap-2 items-center">
+                            <Calendar className="w-4 h-4 text-primary" />
+                            <span>Standard Mapped: <strong className="text-dark font-medium">{c.level}</strong></span>
+                          </div>
                         </div>
-                        <div className="flex gap-2 items-center">
-                          <Users className="w-4 h-4 text-primary" />
-                          <span>Training Environment: <strong className="text-dark font-medium">{c.capacity}</strong></span>
-                        </div>
-                        <div className="flex gap-2 items-center">
-                          <Calendar className="w-4 h-4 text-primary" />
-                          <span>Standard Mapped: <strong className="text-dark font-medium">{c.level}</strong></span>
-                        </div>
+
+                        {/* Enquire Right */}
+                        <button
+                          type="button"
+                          onClick={(e) => handleEnquireClick(e, c.name)}
+                          className="w-full md:w-auto px-6 py-3 text-xs font-semibold tracking-wide text-white bg-dark hover:bg-[#1E40AF] rounded-xl transition-all shadow-sm shrink-0 cursor-pointer text-center"
+                        >
+                          Enquire Now
+                        </button>
                       </div>
 
                     </div>

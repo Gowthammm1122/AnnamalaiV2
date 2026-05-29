@@ -224,7 +224,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 1,
             zIndex: 30,
             height: '50%',
-            bottom: '32%', // Moved slightly higher to stack perfectly on top of ghost text
+            bottom: '22%', // Lowered from 32% to prevent overlap on mobile screens
           };
         case 'left':
           return {
@@ -235,7 +235,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0.5,
             zIndex: 20,
             height: '18%',
-            bottom: '44%',
+            bottom: '34%', // Lowered from 44% to align with center image shifts
           };
         case 'right':
           return {
@@ -246,7 +246,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0.5,
             zIndex: 20,
             height: '18%',
-            bottom: '44%',
+            bottom: '34%', // Lowered from 44% to align with center image shifts
           };
         case 'back-left':
           return {
@@ -257,7 +257,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0,
             zIndex: 10,
             height: '12%',
-            bottom: '46%',
+            bottom: '36%', // Lowered from 46%
           };
         case 'back-right':
           return {
@@ -268,7 +268,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0,
             zIndex: 10,
             height: '12%',
-            bottom: '46%',
+            bottom: '36%', // Lowered from 46%
           };
         default: // back
           return {
@@ -279,7 +279,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0,
             zIndex: 5,
             height: '10%',
-            bottom: '46%',
+            bottom: '36%', // Lowered from 46%
           };
       }
     }

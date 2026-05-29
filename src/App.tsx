@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import Navbar from "./components/common component/Navbar";
+import FloatingButtons from "./components/common component/FloatingButtons";
 import Footer from "./components/common component/Footer";
 import LoadingScreen from "./components/common component/LoadingScreen";
 import Home from "./components/Home";
@@ -62,6 +63,7 @@ function AppContent() {
       )}
 
       <Navbar />
+      <FloatingButtons />
       
       <Routes>
         <Route path="/" element={<Home />} />

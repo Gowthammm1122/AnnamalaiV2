@@ -12,9 +12,6 @@ const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
     <section className="relative md:sticky md:top-0 md:left-0 h-auto md:h-screen w-full flex flex-col justify-between bg-white overflow-hidden z-0">
       {/* Abstract Background Shapes */}
       <div className="absolute -bottom-20 -left-20 w-64 h-64 border border-gray-50 rounded-full -z-10"></div>
-      <div className="absolute top-1/2 right-10 w-24 h-[1px] bg-primary opacity-30 -z-10"></div>
-      <div className="absolute top-[48%] right-10 w-24 h-[1px] bg-primary opacity-30 -z-10"></div>
-      <div className="absolute top-[46%] right-10 w-24 h-[1px] bg-primary opacity-30 -z-10"></div>
 
       <main className="flex-grow flex flex-col max-w-[1440px] px-6 sm:px-12 xl:px-[120px] mx-auto w-full pt-36 pb-12 justify-center">
         <div className="flex flex-col lg:flex-row justify-between items-center gap-16">

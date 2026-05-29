@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Plus, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 interface FAQItem {
   question: string;
@@ -12,24 +12,24 @@ const FAQSection = () => {
 
   const faqs: FAQItem[] = [
     {
-      question: "What courses does Dr. P. Annamalai IAS Academy offer?",
-      answer: "We offer comprehensive programs for UPSC Civil Services Examination (including Prelims, Mains, and Optional Support), TNPSC Group I & II, and specialized test series/mentorship classes tailored to individual strategy timelines.",
+      question: "Who are the promoters and mentors of Dr. P. Annamalai IAS Academy?",
+      answer: "The Academy is founded and promoted by two retired IAS officers with more than 30 years of distinguished administrative service and deep experience within the Government of Tamil Nadu. Our core mentorship team includes Dr. P. Annamalai, IAS., PhD., who focuses on conceptual clarity and disciplined UPSC strategies, and Mr. C. Kamaraj, IAS., who specializes in strategic consistency and descriptive answer writing.",
     },
     {
-      question: "Is there a hybrid or virtual study model active?",
-      answer: "Yes, we offer live-streamed lectures, interactive digital dashboard portals, and post-lecture video archives for candidates who prefer online or hybrid training schedules.",
+      question: "What specific examination coaching programs are offered under a single roof?",
+      answer: "We run fully integrated, specialized coaching programs covering seven main competitive frameworks: Union Public Service Commission (UPSC), Tamil Nadu Public Service Commission (TNPSC), Banking Services (IBPS/SBI/RBI), Insurance Corporation Recruitment, Railway Recruitment Board (RRB), Staff Selection Commission (SSC), and Tamil Nadu Uniformed Services Recruitment Board (TNUSRB).",
     },
     {
-      question: "What is the process to reserve admission slots?",
-      answer: "Interested candidates can apply online using our Admissions Portal, schedule a direct counseling callback session, or write to our Anna Nagar headquarters to confirm seat availability.",
+      question: "What makes the academy's infrastructure and study resources unique?",
+      answer: "Our academy is situated in a spacious, four-story building featuring vast academic space with all modern facilities gathered under a single roof. In addition to expert, subject-wise experienced faculties, the academy provides excellent custom-prepared notes and printed books that align strictly with the latest updated syllabi.",
     },
     {
-      question: "Are mock examinations included under standard enrollment packages?",
-      answer: "Absolutely. All major standard programs automatically include full access to our national simulated mock tests (such as our hallmark AIPMTS), complete optionals feedback grids, and one-on-one evaluations.",
+      question: "How is the rigorous examination and evaluation test matrix structured?",
+      answer: "Consistency is driven through an intensive evaluation matrix consisting of Daily Tests, Weekly Tests, and Monthly Tests, culminating in comprehensive full-length simulated Mock Tests. This structure is designed to guarantee speed, scoring accuracy, and ultimate success for every candidate.",
     },
     {
-      question: "How do I secure scholarships or fee waivers?",
-      answer: "You can register for our state-wide merit exam known as SCAT (Scholarship Cum Admission Test) conducted during June. Top performing aspirants receive tiered waivers or fully sponsored course admission packages.",
+      question: "What is the location and official contact directory for admissions?",
+      answer: "Our campus headquarters is located at Anthony Nagar Main Road, Kolathur, Chennai - 600099. For admissions and direct support from our counseling coordinators, you can call us at 8015390090 or 6383790090, or email us at admin@drpannamalaiiasacademy.com.",
     }
   ];
 
@@ -47,7 +47,6 @@ const FAQSection = () => {
           <h2 className="text-4xl md:text-5xl font-display text-dark mt-6 mb-4">
             Frequently Asked Questions
           </h2>
-          <div className="w-16 h-0.5 bg-primary/40 mx-auto mt-4"></div>
         </div>
 
         {/* Accordions */}

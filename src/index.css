@@ -13,3 +13,15 @@
   --color-primary-dark: #1e3a8a; /* blue-900 */
   --color-dark: #0f172a; /* slate-900 */
 }
+
+/* Premium Floating Sidebar Buttons (vertical tabs) */
+.floating-vertical-btn {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg) translateX(0);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.floating-vertical-btn:hover {
+  transform: rotate(180deg) translateX(6px); /* Positive translate shifts it to the left when rotated 180 degrees */
+  box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.12);
+}

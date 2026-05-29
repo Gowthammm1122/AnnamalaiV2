@@ -157,7 +157,6 @@ const TestimonialsSection = () => {
           >
             Real testimonies of diligence, strategic transformation, and character refinement shared by civil service aspirants who paved their way to administrative success.
           </motion.p>
-          <div className="w-16 h-0.5 bg-primary/40 mx-auto mt-6"></div>
         </div>
       </div>
 
