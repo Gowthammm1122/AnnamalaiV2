@@ -9,7 +9,7 @@ interface HeroProps {
 
 const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
   return (
-    <section className="relative md:sticky md:top-0 md:left-0 h-auto md:h-screen w-full flex flex-col justify-between bg-white overflow-hidden z-0">
+    <section className="relative lg:sticky lg:top-0 lg:left-0 h-auto lg:h-screen w-full flex flex-col justify-between bg-white overflow-hidden z-0">
       {/* Abstract Background Shapes */}
       <div className="absolute -bottom-20 -left-20 w-64 h-64 border border-gray-50 rounded-full -z-10"></div>
 
@@ -56,7 +56,7 @@ const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative w-full aspect-[4/5] bg-[#FAFBFD] border border-gray-150 p-10 flex flex-col justify-between overflow-hidden group shadow-sm hover:shadow-md transition-shadow rounded-[32px]"
+              className="relative w-full h-auto min-h-[200px] aspect-auto lg:aspect-[4/5] bg-[#FAFBFD] border border-gray-150 p-6 md:p-10 flex flex-col justify-between overflow-hidden group shadow-sm hover:shadow-md transition-shadow rounded-[32px]"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary opacity-10 rounded-bl-full group-hover:scale-110 transition-transform duration-500"></div>
               

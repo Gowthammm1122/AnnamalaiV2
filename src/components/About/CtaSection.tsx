@@ -118,7 +118,7 @@ const CtaSection = ({ onApply, onRegisterDemo }: CtaSectionProps) => {
                     </div>
 
                     {/* Visual indicator that card is interactive */}
-                    <div className="absolute bottom-6 right-6 px-4 py-2 z-30">
+                    <div className="absolute bottom-6 right-6 px-4 py-2 z-30 hidden lg:block">
                         <p className="text-[10px] font-bold uppercase tracking-widest text-primary-light animate-pulse">Drag your card</p>
                     </div>
                 </div>
