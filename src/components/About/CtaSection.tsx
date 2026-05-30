@@ -14,6 +14,14 @@ const CtaSection = ({ onApply, onRegisterDemo }: CtaSectionProps) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const [isInteractive, setIsInteractive] = React.useState(true);
     const [isInView, setIsInView] = React.useState(false);
+    const [isDesktop, setIsDesktop] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsDesktop(window.innerWidth >= 1024);
+        const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     React.useEffect(() => {
         if (!containerRef.current) return;
@@ -98,13 +106,15 @@ const CtaSection = ({ onApply, onRegisterDemo }: CtaSectionProps) => {
 
                     {/* Absolute overlay for Lanyard spanning the entire container width to prevent clipping, z-30 to float on top of text */}
                     <div className="absolute inset-0 w-full h-full pointer-events-none z-30 hidden lg:block">
-                        <Lanyard 
-                            position={[-1.5, -0.5, 14]} 
-                            gravity={[0, -40, 0]} 
-                            fov={18} 
-                            interactive={isInteractive} 
-                            isInView={isInView}
-                        />
+                        {isDesktop && (
+                            <Lanyard 
+                                position={[-1.5, -0.5, 14]} 
+                                gravity={[0, -40, 0]} 
+                                fov={18} 
+                                interactive={isInteractive} 
+                                isInView={isInView}
+                            />
+                        )}
                     </div>
 
                     {/* Visual indicator that card is interactive */}

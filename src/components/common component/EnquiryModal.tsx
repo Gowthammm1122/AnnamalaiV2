@@ -41,9 +41,12 @@ const EnquiryModal = () => {
 
     // Check if EmailJS is configured
     if (
-      EMAILJS_SERVICE_ID !== "YOUR_SERVICE_ID" &&
-      EMAILJS_TEMPLATE_ID !== "YOUR_POPUP_TEMPLATE_ID" &&
-      EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY"
+      EMAILJS_SERVICE_ID &&
+      EMAILJS_TEMPLATE_ID &&
+      EMAILJS_PUBLIC_KEY &&
+      EMAILJS_SERVICE_ID  &&
+      EMAILJS_TEMPLATE_ID  &&
+      EMAILJS_PUBLIC_KEY 
     ) {
       try {
         // Map course codes to reader-friendly full names for the email template

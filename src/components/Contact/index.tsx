@@ -56,7 +56,10 @@ const ContactContent = () => {
     if (
       EMAILJS_SERVICE_ID &&
       EMAILJS_TEMPLATE_ID &&
-      EMAILJS_PUBLIC_KEY
+      EMAILJS_PUBLIC_KEY &&
+      EMAILJS_SERVICE_ID !== "YOUR_SERVICE_ID" &&
+      EMAILJS_TEMPLATE_ID !== "YOUR_CONTACT_TEMPLATE_ID" &&
+      EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY"
     ) {
       try {
         await fetch("https://api.emailjs.com/api/v1.0/email/send", {
