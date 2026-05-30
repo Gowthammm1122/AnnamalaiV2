@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Instagram, Facebook, Youtube } from "lucide-react";
 import whitelogoImg from "../../assets/images/whitelogo.png";
 
 const Footer = () => {
   const navigate = useNavigate();
+  const [subscribed, setSubscribed] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setSubscribed(true);
+    setEmail("");
+  };
 
   const handleNavClick = (page: 'home' | 'about' | 'courses' | 'contact' | 'gallery', e: React.MouseEvent) => {
     e.preventDefault();
@@ -135,10 +144,23 @@ const Footer = () => {
                 Excellence in education.<br />
                 <strong className="block text-[19px] font-bold text-[#111827]">Stay ahead with Annamalai.</strong>
               </h4>
-              <div className="footer-subscribe-row flex items-center w-full sm:w-[310px] bg-white border border-[#e5e7eb] rounded-xl p-[5px] shadow-[0_2px_10px_rgba(0,0,0,0.04)]">
-                <input type="email" placeholder="Enter email address" className="flex-1 px-3.5 py-[11px] bg-transparent border-none outline-none font-dmsans text-[13.5px] text-[#111827] placeholder-[#9ca3af]" />
-                <button type="button" className="px-[22px] py-[11px] bg-[#111214] text-white font-dmsans text-[13.5px] font-semibold rounded-lg shadow-[0_6px_20px_rgba(0,0,0,0.28),0_2px_8px_rgba(0,0,0,0.15)] hover:bg-black hover:shadow-2xl hover:-translate-y-px transition-all">Subscribe</button>
-              </div>
+              {subscribed ? (
+                <div className="flex items-center justify-center w-full sm:w-[310px] py-[11px] px-3.5 bg-emerald-50 text-emerald-600 rounded-xl border border-emerald-200/50 font-dmsans text-[13.5px] font-semibold tracking-wide">
+                  Subscribed
+                </div>
+              ) : (
+                <form onSubmit={handleSubscribe} className="footer-subscribe-row flex items-center w-full sm:w-[310px] bg-white border border-[#e5e7eb] rounded-xl p-[5px] shadow-[0_2px_10px_rgba(0,0,0,0.04)]">
+                  <input 
+                    type="email" 
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter email address" 
+                    className="flex-1 px-3.5 py-[11px] bg-transparent border-none outline-none font-dmsans text-[13.5px] text-[#111827] placeholder-[#9ca3af]" 
+                  />
+                  <button type="submit" className="px-[22px] py-[11px] bg-[#111214] text-white font-dmsans text-[13.5px] font-semibold rounded-lg shadow-[0_6px_20px_rgba(0,0,0,0.28),0_2px_8px_rgba(0,0,0,0.15)] hover:bg-black hover:shadow-2xl hover:-translate-y-px transition-all cursor-pointer">Subscribe</button>
+                </form>
+              )}
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Facebook, Twitter, Linkedin, Youtube, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Facebook, Instagram, Youtube, CheckCircle2 } from "lucide-react";
 import BannerImg from "../../assets/images/ctabg.jpg"; // Use your existing hero ctabg asset
 import FAQSection from "../Home/FAQSection";
 
@@ -145,10 +145,9 @@ const ContactContent = () => {
               <div className="space-y-2">
                 <h4 className="text-[11px] font-bold text-dark uppercase tracking-widest">Social Network</h4>
                 <div className="flex items-center gap-4 pt-1 text-gray-400">
-                  <a href="#" className="hover:text-[#1E40AF] transition-colors"><Facebook className="w-4 h-4" /></a>
-                  <a href="#" className="hover:text-[#1E40AF] transition-colors"><Twitter className="w-4 h-4" /></a>
-                  <a href="#" className="hover:text-[#1E40AF] transition-colors"><Linkedin className="w-4 h-4" /></a>
-                  <a href="#" className="hover:text-[#1E40AF] transition-colors"><Youtube className="w-4 h-4" /></a>
+                  <a href="https://www.instagram.com/drpannamalaiiasacademy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover:text-[#1E40AF] transition-colors"><Instagram className="w-4 h-4" /></a>
+                  <a href="https://www.facebook.com/1114147231770669?ref=PROFILE_EDIT_xav_ig_profile_page_web" target="_blank" rel="noopener noreferrer" className="hover:text-[#1E40AF] transition-colors"><Facebook className="w-4 h-4" /></a>
+                  <a href="https://www.youtube.com/@annamalaiiasacademy" target="_blank" rel="noopener noreferrer" className="hover:text-[#1E40AF] transition-colors"><Youtube className="w-4 h-4" /></a>
                 </div>
               </div>
             </div>
