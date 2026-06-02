@@ -175,7 +175,7 @@ const TestimonialsSection = () => {
           {allTestimonials.map((item, index) => (
             <div key={`orig-${index}`} className="flex-shrink-0">
               <div 
-                className="w-[340px] sm:w-[420px] h-[300px] sm:h-[320px] bg-[#fbfbfd] border border-gray-150/70 p-6 sm:p-8 rounded-[32px] flex flex-col justify-between transition-all duration-300 hover:border-primary/20 hover:shadow-[0_15px_30px_rgba(30,64,175,0.03)] hover:bg-white cursor-pointer select-none"
+                className="w-[340px] sm:w-[420px] h-[250px] sm:h-[270px] bg-[#fbfbfd] border border-gray-150/70 p-6 sm:p-8 rounded-[32px] flex flex-col justify-between transition-all duration-300 hover:border-primary/20 hover:shadow-[0_15px_30px_rgba(30,64,175,0.03)] hover:bg-white cursor-pointer select-none"
               >
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
@@ -192,20 +192,11 @@ const TestimonialsSection = () => {
                   </p>
                 </div>
 
-                <div className="border-t border-gray-100 pt-5 mt-6 flex justify-between items-start">
-                  <div className="min-w-0 pr-2">
-                    <h4 className="text-dark font-sans font-semibold text-sm truncate">
-                      {item.author}
-                    </h4>
-                    <p className="text-gray-400 text-xs font-light mt-0.5 truncate">
-                      {item.role}
-                    </p>
-                  </div>
-                  <div className="bg-primary-light border border-primary/10 rounded-full px-3 py-1 flex-shrink-0">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-primary">
-                      {item.achievement}
-                    </span>
-                  </div>
+                <div className="border-t border-gray-100 pt-4 mt-auto flex items-center">
+                  <div className="w-5 h-[1px] bg-primary/40 mr-2.5"></div>
+                  <h4 className="text-dark font-sans font-semibold text-sm truncate">
+                    {item.author}
+                  </h4>
                 </div>
               </div>
             </div>
@@ -215,7 +206,7 @@ const TestimonialsSection = () => {
           {allTestimonials.map((item, index) => (
             <div key={`dup-${index}`} className="flex-shrink-0">
               <div 
-                className="w-[340px] sm:w-[420px] h-[300px] sm:h-[320px] bg-[#fbfbfd] border border-gray-150/70 p-6 sm:p-8 rounded-[32px] flex flex-col justify-between transition-all duration-300 hover:border-primary/20 hover:shadow-[0_15px_30px_rgba(30,64,175,0.03)] hover:bg-white cursor-pointer select-none"
+                className="w-[340px] sm:w-[420px] h-[250px] sm:h-[270px] bg-[#fbfbfd] border border-gray-150/70 p-6 sm:p-8 rounded-[32px] flex flex-col justify-between transition-all duration-300 hover:border-primary/20 hover:shadow-[0_15px_30px_rgba(30,64,175,0.03)] hover:bg-white cursor-pointer select-none"
               >
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
@@ -232,20 +223,11 @@ const TestimonialsSection = () => {
                   </p>
                 </div>
 
-                <div className="border-t border-gray-100 pt-5 mt-6 flex justify-between items-start">
-                  <div className="min-w-0 pr-2">
-                    <h4 className="text-dark font-sans font-semibold text-sm truncate">
-                      {item.author}
-                    </h4>
-                    <p className="text-gray-400 text-xs font-light mt-0.5 truncate">
-                      {item.role}
-                    </p>
-                  </div>
-                  <div className="bg-primary-light border border-primary/10 rounded-full px-3 py-1 flex-shrink-0">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-primary">
-                      {item.achievement}
-                    </span>
-                  </div>
+                <div className="border-t border-gray-100 pt-4 mt-auto flex items-center">
+                  <div className="w-5 h-[1px] bg-primary/40 mr-2.5"></div>
+                  <h4 className="text-dark font-sans font-semibold text-sm truncate">
+                    {item.author}
+                  </h4>
                 </div>
               </div>
             </div>

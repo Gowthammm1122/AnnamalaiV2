@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Quote } from "lucide-react";
 
 interface HeroProps {
   onViewCourses?: () => void;
@@ -50,29 +50,38 @@ const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
             </motion.div>
           </div>
 
-          {/* Featured Card Column */}
+          {/* Featured Card Column - Option B: Modern Typographic Quote Card */}
           <div className="w-full lg:w-1/3 flex flex-col justify-end">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative w-full h-auto min-h-[200px] aspect-auto lg:aspect-[4/5] bg-[#FAFBFD] border border-gray-150 p-6 md:p-10 flex flex-col justify-between overflow-hidden group shadow-sm hover:shadow-md transition-shadow rounded-[32px]"
+              className="relative w-full h-auto min-h-[360px] aspect-auto lg:aspect-[4/5] bg-gradient-to-b from-[#FAFBFD] to-[#F1F5F9] border border-gray-150 p-8 md:p-10 flex flex-col justify-between overflow-hidden group shadow-sm hover:shadow-lg transition-all duration-500 rounded-[32px]"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary opacity-10 rounded-bl-full group-hover:scale-110 transition-transform duration-500"></div>
+              {/* Dynamic glowing accent in bottom-right corner */}
+              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all duration-500 pointer-events-none"></div>
               
-              <div className="relative z-10">
-                <div className="text-[64px] font-display mb-2 text-dark">84%</div>
-                <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1E40AF]">Success Rate</div>
+              {/* Top Row: Decorative badge & quote mark */}
+              <div className="relative z-10 flex justify-between items-center">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-light border border-blue-150 rounded-full">
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#1e4fc0]">Aspirants' Vision</span>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-gray-100 shadow-xs group-hover:scale-105 transition-transform duration-300">
+                  <Quote className="w-3.5 h-3.5 text-primary" />
+                </div>
               </div>
 
-              <div className="relative z-10">
-                <p className="text-sm md:text-[15px] text-gray-600 italic leading-relaxed mb-6 font-light">
-                  "The systematic approach and expert faculty at Annamalai Academy transformed my preparation into a successful selection."
+              {/* Quote Content Section */}
+              <div className="relative z-10 my-auto py-4">
+                <p className="text-lg md:text-xl font-display text-gray-700 italic leading-relaxed font-normal">
+                  "Success in civil services is not defined by chance, but by the systematic depth of your conviction and the clarity of your strategic path."
                 </p>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-[1px] bg-dark"></div>
-                  <p className="text-[11px] font-bold uppercase tracking-widest text-[#1e4fc0]">S. Karthik, IAS 2023</p>
-                </div>
+              </div>
+
+              {/* Footer Row: Clean, minimalist academy branding */}
+              <div className="relative z-10 flex items-center space-x-3 pt-4 border-t border-gray-150/60">
+                
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#1e4fc0] font-sans">Dr P. Annamalai IAS Academy</p>
               </div>
             </motion.div>
           </div>

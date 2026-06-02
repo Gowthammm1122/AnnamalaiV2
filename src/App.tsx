@@ -11,6 +11,7 @@ import About from "./components/About";
 import Courses from "./components/Courses";
 import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
+import Resources from "./components/Resources";
 
 function AppContent() {
   const [showLoading, setShowLoading] = useState(false);
@@ -75,6 +76,7 @@ function AppContent() {
         <Route path="/about" element={<About />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/resources" element={<Resources />} />
         <Route path="/contact" element={<Contact />} />
         {/* Fallback to home */}
         <Route path="*" element={<Navigate to="/" replace />} />

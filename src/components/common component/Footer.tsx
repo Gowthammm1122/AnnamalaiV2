@@ -15,7 +15,7 @@ const Footer = () => {
     setEmail("");
   };
 
-  const handleNavClick = (page: 'home' | 'about' | 'courses' | 'contact' | 'gallery', e: React.MouseEvent) => {
+  const handleNavClick = (page: 'home' | 'about' | 'courses' | 'contact' | 'gallery' | 'resources', e: React.MouseEvent) => {
     e.preventDefault();
     const path = page === 'home' ? '/' : `/${page}`;
     navigate(path);
@@ -110,7 +110,7 @@ const Footer = () => {
                   { name: "TNPSC", target: "courses" as const },
                   { name: "Current Affairs", target: "gallery" as const },
                   { name: "Test Series", target: "gallery" as const },
-                  { name: "Resources", target: "gallery" as const }
+                  { name: "Resources", target: "resources" as const }
                 ].map((link, i) => (
                   <a
                     key={i}

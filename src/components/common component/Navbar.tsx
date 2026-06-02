@@ -23,6 +23,7 @@ const Navbar = () => {
     { name: "About", key: "about", path: "/about" },
     { name: "Courses", key: "courses", path: "/courses" },
     { name: "Event Gallery", key: "gallery", path: "/gallery" },
+    { name: "Resources", key: "resources", path: "/resources" },
   ];
 
   const getActiveKey = () => {
@@ -31,6 +32,7 @@ const Navbar = () => {
     if (path === "/about") return "about";
     if (path === "/courses") return "courses";
     if (path === "/gallery") return "gallery";
+    if (path === "/resources") return "resources";
     if (path === "/contact") return "contact";
     return "home";
   };

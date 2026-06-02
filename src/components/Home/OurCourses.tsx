@@ -25,6 +25,12 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
 
   const COURSES = [
     {
+      name: 'UPSC Civil Services',
+      src: Civil,
+      bg: '#1e4fc0',
+      desc: 'Specialized premium training for all 27 categories of premier central posts (IAS, IPS, IFS, and Central Services Group A & B).'
+    },
+    {
       name: 'TNPSC Civil Services',
       src: Combined,
       bg: '#1e4fc0',
@@ -43,10 +49,10 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
       desc: 'Specialized curriculum for Assistant Administrative Officer (AAO) and Assistant Grade posts across top participating firms.'
     },
     {
-      name: 'UPSC Civil Services',
-      src: Civil,
+      name: 'TNUSRB Police SI',
+      src: Sub,
       bg: '#1e4fc0',
-      desc: 'Specialized premium training for all 27 categories of premier central posts (IAS, IPS, IFS, and Central Services Group A & B).'
+      desc: 'Targeted physical and academic model tailored to address Tamil Nadu Uniformed Services Recruitment Board SI parameters.'
     },
     {
       name: 'Railway Board (RRB)',
@@ -60,12 +66,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
       bg: '#1e4fc0',
       desc: 'Premier training program for various key ministerial, department, and organizational posts within the Government of India.'
     },
-    {
-      name: 'TNUSRB Police SI',
-      src: Sub,
-      bg: '#1e4fc0',
-      desc: 'Targeted physical and academic model tailored to address Tamil Nadu Uniformed Services Recruitment Board SI parameters.'
-    },
+   
   ];
 
   // Dynamic window sizing triggers responsive breakpoints
