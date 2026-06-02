@@ -13,14 +13,14 @@ interface Testimonial {
 const TestimonialsSection = () => {
   const allTestimonials: Testimonial[] = [
     {
-      quote: "The personalized coaching and rigorous feedback loops entirely restructured my mains writing pattern. Dr. P. Annammalai's personal insight into GS Paper IV case studies was the defining edge.",
+      quote: "The personalized coaching and rigorous feedback loops entirely restructured my mains writing pattern. Dr P. Annamalai's personal insight into GS Paper IV case studies was the defining edge.",
       author: "Swathi S.",
       role: "UPSC Civil Services",
       achievement: "Rank 42, UPSC CSE",
       year: "Cohort 25"
     },
     {
-      quote: "The qualitative answer diagnostics here are unmatched. Unlike commercial centers, Dr. Annamalai’s academy treats you as an aspiring administrator whose ethics and logic are actively built day by day.",
+      quote: "The qualitative answer diagnostics here are unmatched. Unlike commercial centers, Dr Annamalai’s academy treats you as an aspiring administrator whose ethics and logic are actively built day by day.",
       author: "Vigneshwaran K.",
       role: "State Services Academy",
       achievement: "Deputy Collector, TNPSC Group I",
@@ -34,7 +34,7 @@ const TestimonialsSection = () => {
       year: "Current Cohort"
     },
     {
-      quote: "Dr. P. Annammalai IAS Academy taught me that the Civil Services is not about rote memory, but absolute clarity of character. Daily feedback sheets helped me pinpoint weak areas in GS III.",
+      quote: "Dr P. Annamalai IAS Academy taught me that the Civil Services is not about rote memory, but absolute clarity of character. Daily feedback sheets helped me pinpoint weak areas in GS III.",
       author: "Ranganathan G.",
       role: "UPSC Civil Services",
       achievement: "IRS Officer, CSE Merit Rank",

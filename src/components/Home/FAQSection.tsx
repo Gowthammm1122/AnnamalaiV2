@@ -12,8 +12,8 @@ const FAQSection = () => {
 
   const faqs: FAQItem[] = [
     {
-      question: "Who are the promoters and mentors of Dr. P. Annamalai IAS Academy?",
-      answer: "The Academy is founded and promoted by two retired IAS officers with more than 30 years of distinguished administrative service and deep experience within the Government of Tamil Nadu. Our core mentorship team includes Dr. P. Annamalai, IAS., PhD., who focuses on conceptual clarity and disciplined UPSC strategies, and Mr. C. Kamaraj, IAS., who specializes in strategic consistency and descriptive answer writing.",
+      question: "Who are the promoters and mentors of Dr P. Annamalai IAS Academy?",
+      answer: "The Academy is founded and promoted by two retired IAS officers with more than 30 years of distinguished administrative service and deep experience within the Government of Tamil Nadu. Our core mentorship team includes Dr P. Annamalai, IAS., PhD., who focuses on conceptual clarity and disciplined UPSC strategies, and Mr. C. Kamaraj, IAS., who specializes in strategic consistency and descriptive answer writing.",
     },
     {
       question: "What specific examination coaching programs are offered under a single roof?",

@@ -73,7 +73,7 @@ const WhyChooseUs = () => {
             </div>
             <h2 className="text-2xl sm:text-3xl font-display text-white leading-tight">
               Why Choose <br />
-              <span className="font-serif italic text-primary-light font-medium">Dr. P. Annamalai IAS Academy?</span>
+              <span className="font-serif italic text-primary-light font-medium">Dr P. Annamalai IAS Academy?</span>
             </h2>
             <div className="w-16 h-[1px] bg-primary-light/40 mx-auto mt-4"></div>
           </div>
@@ -119,7 +119,7 @@ const WhyChooseUs = () => {
               THE ASPIRANTS CHOICE
             </div>
             <h2 className="text-4xl md:text-6xl font-display text-white tracking-tight leading-tight mt-2 pb-8">
-              Why Choose <span className="font-serif italic font-medium text-primary-light">Dr. P. Annamalai IAS Academy?</span>
+              Why Choose <span className="font-serif italic font-medium text-primary-light">Dr P. Annamalai IAS Academy?</span>
             </h2>
           </motion.div>
         </div>

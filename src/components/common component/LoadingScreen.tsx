@@ -74,7 +74,7 @@ const LoadingScreen = ({ onFinished }: LoadingScreenProps) => {
             className="text-center relative z-10"
           >
             <span className="text-[11px] font-bold text-gray-400 uppercase tracking-[0.5em] block mb-3.5">
-              DR. P ANNAMALAI IAS ACADEMY
+              DR P. ANNAMALAI IAS ACADEMY
             </span>
             <h2 className="text-2xl md:text-3.5xl font-display text-gray-800 tracking-wide font-normal italic">
               "Your journey begins here."

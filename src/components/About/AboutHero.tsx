@@ -3,7 +3,7 @@ import { motion } from "framer-motion"; // Kept to your standard package path va
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Image1 from "../../assets/images/banner1.png";
-import Image2 from "../../assets/images/banner2.png";
+import Image2 from "../../assets/images/banner3.png";
 
 const AboutHero: React.FC = () => {
   const navigate = useNavigate();

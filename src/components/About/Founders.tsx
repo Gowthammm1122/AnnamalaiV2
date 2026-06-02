@@ -42,7 +42,7 @@ const Founders = () => {
         {/* Asymmetric Alternating Card Grid */}
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 max-w-5xl mx-auto items-start pt-6">
 
-          {/* Founder 1 - Dr. P. Annamalai */}
+          {/* Founder 1 - Dr P. Annamalai */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -55,7 +55,7 @@ const Founders = () => {
               <div className="w-full h-full rounded-[24px] overflow-hidden relative">
                 <img
                   src={FounderImage}
-                  alt="Dr. P. Annamalai, IAS., PhD."
+                  alt="Dr P. Annamalai, IAS., PhD."
                   className="w-full h-full object-cover object-top transition-all duration-1000 scale-100 group-hover:scale-[1.03]"
                   referrerPolicy="no-referrer"
                 />
@@ -64,9 +64,9 @@ const Founders = () => {
 
               {/* Identity Footer Contextual Blocks */}
               <div className="absolute bottom-8 left-8 right-8 text-white">
-                <div className="text-[9px] font-mono tracking-[0.25em] text-blue-300 uppercase mb-1.5 font-bold">FOUNDER & CO-PROMOTER</div>
+                <div className="text-[9px] font-mono tracking-[0.25em] text-blue-300 uppercase mb-1.5 font-bold">Chairman of Dr P.Annamalai IAS Academy </div>
                 <h3 className="text-xl sm:text-2xl font-display font-medium tracking-tight">
-                  Dr. P. Annamalai, <span className="font-serif italic font-normal text-white/90 text-lg sm:text-xl">IAS., PhD.</span>
+                  Dr P. Annamalai, <span className="font-serif italic font-normal text-white/90 text-lg sm:text-xl">IAS., PhD.</span>
                 </h3>
               </div>
             </div>
@@ -74,7 +74,7 @@ const Founders = () => {
             {/* Text Bio */}
             <div className="mt-6 px-3 space-y-3">
               <p className="text-gray-500 font-light text-sm leading-relaxed">
-                A distinguished civil servant from Tamil Nadu bringing deep expertise in governance, policy, and public administration[cite: 30]. With a strong commitment to mentoring aspirants, he focuses heavily on building conceptual clarity and a disciplined approach to cracking the UPSC examination.
+                A distinguished civil servant from Tamil Nadu bringing deep expertise in governance, policy, and public administration. With a strong commitment to mentoring aspirants, he focuses heavily on building conceptual clarity and a disciplined approach to cracking the UPSC examination.
               </p>
               <div className="h-[1px] w-12 bg-[#1E40AF]/40 transition-all duration-500 group-hover:w-20" />
             </div>
@@ -102,7 +102,7 @@ const Founders = () => {
 
               {/* Identity Footer Contextual Blocks */}
               <div className="absolute bottom-8 left-8 right-8 text-white">
-                <div className="text-[9px] font-mono tracking-[0.25em] text-blue-300 uppercase mb-1.5 font-bold">CO-PROMOTER & MENTOR</div>
+                <div className="text-[9px] font-mono tracking-[0.25em] text-blue-300 uppercase mb-1.5 font-bold">C.E.O of Dr P.Annamalai IAS Academy</div>
                 <h3 className="text-xl sm:text-2xl font-display font-medium tracking-tight">
                   Mr. C. Kamaraj, <span className="font-serif italic font-normal text-white/90 text-lg sm:text-xl">IAS.</span>
                 </h3>

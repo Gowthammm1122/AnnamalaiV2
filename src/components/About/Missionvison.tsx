@@ -38,7 +38,7 @@ const MissionVision = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-gray-500 font-light text-base md:text-lg leading-relaxed max-w-2xl mx-auto mt-4"
           >
-            How Dr. P. Annamalai IAS Academy translates elite administrative expertise into proven milestones across state and central examinations.
+            How Dr P. Annamalai IAS Academy translates elite administrative expertise into proven milestones across state and central examinations.
           </motion.p>
         </div>
 

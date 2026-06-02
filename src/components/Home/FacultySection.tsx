@@ -77,14 +77,14 @@ const FacultySection = () => {
 
   const FACULTY = [
     {
-      name: "Dr.P Annamalai",
-      role: "Chairman of Dr P.Annamalai IAS Academy",
+      name: "Dr P. Annamalai",
+      role: "Chairman of Dr P. Annamalai IAS Academy",
       desc: "15+ years of experience in mentoring over 1,000 successful IAS officers. Expert in General Studies and Strategy.",
       image: Founder ,
     },
     {
       name: "C.Kamaraj IAS(R)",
-      role: "C.E.O of Dr P Annamalai IAS Academy",
+      role: "C.E.O of Dr P. Annamalai IAS Academy",
       desc: "Distinguished historian with a decade of expertise in Indian Culture and World History modules.",
       image: Kamaraj,
     },

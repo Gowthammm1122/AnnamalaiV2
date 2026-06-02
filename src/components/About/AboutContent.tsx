@@ -85,11 +85,11 @@ const AboutContent: React.FC = () => {
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-medium text-dark tracking-tight leading-tight pb-5">
-              About Dr. P. Annamalai IAS Academy
+              About Dr P. Annamalai IAS Academy
             </h2>
 
             <p className="text-gray-500 font-light text-sm md:text-base leading-relaxed">
-              Dr. P. Annamalai IAS Academy has been promoted by two retired IAS officers with more than 30 years of distinguished service and deep experience in the field of administration within the Government of Tamil Nadu. We provide specialized, integrated coaching across major competitive streams under a single roof.
+              Dr P. Annamalai IAS Academy has been promoted by two retired IAS officers with more than 30 years of distinguished service and deep experience in the field of administration within the Government of Tamil Nadu. We provide specialized, integrated coaching across major competitive streams under a single roof.
             </p>
           </div>
 

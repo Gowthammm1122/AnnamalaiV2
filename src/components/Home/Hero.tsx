@@ -26,7 +26,7 @@ const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
                 Established Excellence since 2008
               </div>
               <h1 className="text-5xl md:text-[80px] leading-[0.95] font-display text-dark font-normal mb-8">
-                Dr. P. Annamalai <br/>
+                Dr P. Annamalai <br/>
                 <span className="italic text-primary font-serif">IAS Academy</span>
               </h1>
               <p className="text-base md:text-lg text-gray-500 leading-relaxed max-w-lg mb-12 font-light">
@@ -84,19 +84,24 @@ const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
         <div className="max-w-[1440px] mx-auto px-6 sm:px-12 xl:px-[120px] w-full grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-150/50">
           <div className="p-6 md:p-8 flex flex-col space-y-1.5 group hover:bg-gray-50/50 transition-colors">
             <span className="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold">Location</span>
-            <span className="text-xs md:text-sm font-semibold text-dark">Anna Nagar, Chennai</span>
+            <span className="text-xs md:text-sm font-semibold text-dark">Plot 12&13, Main road,
+              Anthony Nagar Main Road,
+              Kolathur, Chennai - 600099</span>
           </div>
           <div className="p-6 md:p-8 flex flex-col space-y-1.5 group hover:bg-gray-50/50 transition-colors">
             <span className="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold">Next Batch</span>
-            <span className="text-xs md:text-sm font-semibold text-dark">September 15, 2024</span>
+            <span className="text-xs md:text-sm font-semibold text-dark">June 1, 2026</span>
           </div>
           <div className="p-6 md:p-8 flex flex-col space-y-1.5 group hover:bg-gray-50/50 transition-colors">
             <span className="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold">Students</span>
-            <span className="text-xs md:text-sm font-semibold text-dark">5,000+ Enrolled</span>
+            <span className="text-xs md:text-sm font-semibold text-dark">500+ Enrolled</span>
           </div>
-          <div className="p-6 md:p-8 flex flex-col space-y-1.5 bg-[#1E40AF] text-white hover:bg-blue-800 transition-colors cursor-pointer select-none">
+          <div 
+            onClick={() => window.open("https://wa.me/918015390090", "_blank", "noopener,noreferrer")}
+            className="p-6 md:p-8 flex flex-col space-y-1.5 bg-[#1E40AF] text-white hover:bg-blue-800 transition-colors cursor-pointer select-none"
+          >
             <span className="text-[9px] uppercase tracking-[0.25em] text-blue-200 font-bold">Call for Inquiry</span>
-            <span className="text-xs md:text-sm font-semibold">+91 98450 12345</span>
+            <span className="text-xs md:text-sm font-semibold">+91 80153 90090</span>
           </div>
         </div>
       </div>

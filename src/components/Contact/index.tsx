@@ -30,7 +30,7 @@ const ContactHero = () => {
        {/* Home / Contacts Pill Badge */}
         <div className="absolute bottom-0 right-12 z-20 bg-white px-6 py-2.5 rounded-t-2xl border-t border-x border-gray-150/40 hidden sm:block">
           <div className="flex items-center gap-2 text-[11px] font-medium text-black tracking-wider uppercase">
-            <span>DR P Annamalai IAS Academy</span>
+            <span>DR P. Annamalai IAS Academy</span>
           </div>
         </div>
       </div>

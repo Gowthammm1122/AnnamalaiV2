@@ -34,7 +34,7 @@ const COURSES_DATA: CourseItem[] = [
     features: [
       "Daily, Weekly, and Monthly diagnostic tests",
       "Answer writing practice and evaluation under active panel codes",
-      "Detailed mock interviews guided by Dr. P. Annamalai, IAS & Mr. C. Kamaraj, IAS"
+      "Detailed mock interviews guided by Dr P. Annamalai, IAS & Mr. C. Kamaraj, IAS"
     ],
     syllabus: [
       "Stage 1: Preliminary Exam (General Studies & Qualifying CSAT)",

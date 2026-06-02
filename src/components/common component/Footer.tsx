@@ -33,10 +33,10 @@ const Footer = () => {
           </video>
           
           <div className="footer-logo flex items-center gap-3 relative z-10">
-            <img src={whitelogoImg} alt="Dr. P. Annamalai IAS Academy Logo" className="h-12 w-auto object-contain drop-shadow-sm" />
+            <img src={whitelogoImg} alt="Dr P. Annamalai IAS Academy Logo" className="h-12 w-auto object-contain drop-shadow-sm" />
             <div className="flex flex-col">
               <span className="text-[13px] font-black uppercase text-white tracking-[0.12em] leading-none">
-                Dr. P. Annamalai
+                Dr P. Annamalai
               </span>
               <span className="text-[9px] font-bold uppercase text-white/80 tracking-[0.26em] mt-1 leading-none">
                 IAS Academy
@@ -79,7 +79,7 @@ const Footer = () => {
           {/* Floating Badge */}
           <div className="footer-lucky-graphic absolute -top-9 right-10 z-10 flex flex-col items-start gap-1.5">
             <div className="lucky-cube w-24 h-24 rounded-[22px] -rotate-[10deg] bg-gradient-to-br from-[#5b9ffb] via-[#1e5dd7] to-[#1448be] shadow-[inset_3px_3px_8px_rgba(255,255,255,0.35),inset_-3px_-3px_12px_rgba(0,0,0,0.18),8px_14px_28px_rgba(20,72,200,0.35)] flex items-center justify-center">
-              <img src={whitelogoImg} alt="Dr. P. Annamalai IAS Academy Logo" className="w-14 h-14 object-contain rotate-[10deg] drop-shadow-[0_2px_5px_rgba(0,0,0,0.2)]" />
+              <img src={whitelogoImg} alt="Dr P. Annamalai IAS Academy Logo" className="w-14 h-14 object-contain rotate-[10deg] drop-shadow-[0_2px_5px_rgba(0,0,0,0.2)]" />
             </div>
             <div className="lucky-text-row flex items-center gap-1.5 -rotate-1 mt-1">
               <svg className="w-5.5 h-5.5 text-[#9ca3af]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -127,7 +127,7 @@ const Footer = () => {
 
           <div className="footer-bottom flex flex-col sm:flex-row items-end justify-between mt-12 gap-8 sm:gap-0">
             <p className="footer-copyright font-dmsans text-[12.5px] font-medium text-[#9ca3af] leading-relaxed">
-              © 2025 Dr. P. Annamalai IAS Academy. All rights reserved.<br />
+              © 2025 Dr P. Annamalai IAS Academy. All rights reserved.<br />
               Designed and developed by{" "}
               <a
                 href="https://www.instagram.com/behind_brief?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="

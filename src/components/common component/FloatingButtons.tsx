@@ -3,7 +3,7 @@ import Whatsapp from "../../assets/images/whatsapp.png";
 
 const FloatingButtons = () => {
   const handleWhatsAppClick = () => {
-    // Linked directly to the Dr. P. Annamalai IAS Academy admissions desk line [cite: 300]
+    // Linked directly to the Dr P. Annamalai IAS Academy admissions desk line [cite: 300]
     window.open("https://wa.me/918015390090", "_blank", "noopener,noreferrer");
   };
 

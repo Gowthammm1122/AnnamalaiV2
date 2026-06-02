@@ -90,7 +90,7 @@ const GalleryContent = () => {
       category: "test-series",
       date: "Saturdays & Wednesdays",
       badge: "Mains Optional Program",
-      description: "Comprehensive guidance program tailored under Dr. P. Annamalai's methodology. Includes evaluation on classical poems, dramas, and contemporary novels.",
+      description: "Comprehensive guidance program tailored under Dr P. Annamalai's methodology. Includes evaluation on classical poems, dramas, and contemporary novels.",
       mode: "Offline Only",
       venueOrPlatform: "Main Seminar Boardroom, Chennai HQ",
       timeLine: "Starting from 02:00 PM",
@@ -154,7 +154,7 @@ const GalleryContent = () => {
       category: "special-events",
       date: "First Sunday of June, 2026",
       badge: "Admits & Fee Waivers",
-      description: "Our state-wide merit examination. Exceptional achievers qualify for full tuition and residential program scholarships at Dr. P. Annamalai IAS Academy.",
+      description: "Our state-wide merit examination. Exceptional achievers qualify for full tuition and residential program scholarships at Dr P. Annamalai IAS Academy.",
       mode: "Offline & Online",
       venueOrPlatform: "State-wide partner centers & Proctored Portal",
       timeLine: "Registrations closing in 4 Days",
@@ -281,7 +281,7 @@ const GalleryContent = () => {
         {/* Quick Help Callout */}
         <div className="mt-16 p-6 rounded-2xl border border-blue-100/60 bg-blue-50/20 text-center">
           <p className="text-xs text-blue-900 font-light">
-            💡 <strong>Note about mock events:</strong> All mock exams are curated by the core evaluation cell of Dr. P. Annamalai IAS Academy. If you encounter issues accessing the proctored test portal, please phone our direct helpline immediately.
+            💡 <strong>Note about mock events:</strong> All mock exams are curated by the core evaluation cell of Dr P. Annamalai IAS Academy. If you encounter issues accessing the proctored test portal, please phone our direct helpline immediately.
           </p>
         </div>
 
