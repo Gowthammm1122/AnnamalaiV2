@@ -4,6 +4,7 @@ import Lenis from "lenis";
 import Navbar from "./components/common component/Navbar";
 import FloatingButtons from "./components/common component/FloatingButtons";
 import EnquiryModal from "./components/common component/EnquiryModal";
+import DownloadAppModal from "./components/common component/DownloadAppModal";
 import Footer from "./components/common component/Footer";
 import LoadingScreen from "./components/common component/LoadingScreen";
 import Home from "./components/Home";
@@ -69,6 +70,7 @@ function AppContent() {
       <Navbar />
       <FloatingButtons />
       <EnquiryModal />
+      <DownloadAppModal />
       
       <Routes>
         <Route path="/" element={<Home />} />

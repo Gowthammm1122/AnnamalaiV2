@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight, CheckCircle } from "lucide-react";
 
@@ -8,6 +9,7 @@ const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_POPUP_TEMPLATE_ID ;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const EnquiryModal = () => {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -17,17 +19,30 @@ const EnquiryModal = () => {
   });
 
   useEffect(() => {
-    // Check if the user has already seen or dismissed the enquiry pop-up in this session
-    const hasSeenPopup = sessionStorage.getItem("annamalai_enquiry_pop_seen");
-    
-    if (!hasSeenPopup) {
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, 5000); // 5 seconds delay
+    // Reset submission state on navigation so if they return to homepage they get the form
+    setIsSubmitted(false);
 
-      return () => clearTimeout(timer);
+    let timer: NodeJS.Timeout;
+
+    if (location.pathname === "/") {
+      // Each time the user comes back to the homepage, show the popup after 5 seconds
+      timer = setTimeout(() => {
+        setIsOpen(true);
+      }, 5000);
+    } else {
+      // On other pages, check if the user has already seen or dismissed the pop-up in this session
+      const hasSeenPopup = sessionStorage.getItem("annamalai_enquiry_pop_seen");
+      if (!hasSeenPopup) {
+        timer = setTimeout(() => {
+          setIsOpen(true);
+        }, 5000);
+      }
     }
-  }, []);
+
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [location.pathname]);
 
   const handleClose = () => {
     setIsOpen(false);

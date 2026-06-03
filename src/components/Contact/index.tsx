@@ -41,8 +41,8 @@ const ContactHero = () => {
 const ContactContent = () => {
   const [formData, setFormData] = useState({
     name: "",
+    phone: "",
     email: "",
-    subject: "",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -73,8 +73,8 @@ const ContactContent = () => {
             user_id: EMAILJS_PUBLIC_KEY,
             template_params: {
               name: formData.name,
+              phone: formData.phone,
               email: formData.email,
-              subject: formData.subject,
               message: formData.message,
             },
           }),
@@ -88,7 +88,7 @@ const ContactContent = () => {
 
     setIsSubmitting(false);
     setIsSent(true);
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFormData({ name: "", phone: "", email: "", message: "" });
 
     // Reset success state back to normal after 4 seconds
     setTimeout(() => {
@@ -177,22 +177,24 @@ const ContactContent = () => {
 
                 <div className="relative">
                   <input
-                    type="email"
+                    type="tel"
                     required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="Email"
+                    pattern="[0-9]{10}"
+                    title="Please enter a 10-digit mobile number"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="Mobile number"
                     className="w-full bg-transparent border-b border-gray-200 py-2 text-xs text-dark placeholder-gray-400 focus:outline-none focus:border-dark transition-colors"
                   />
                 </div>
 
                 <div className="relative">
                   <input
-                    type="text"
+                    type="email"
                     required
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    placeholder="Subject"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="Email"
                     className="w-full bg-transparent border-b border-gray-200 py-2 text-xs text-dark placeholder-gray-400 focus:outline-none focus:border-dark transition-colors"
                   />
                 </div>
