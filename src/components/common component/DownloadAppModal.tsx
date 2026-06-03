@@ -6,19 +6,39 @@ import PlayStoreLogo from "../../assets/images/playstore.png";
 
 const DownloadAppModal = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [timerFired, setTimerFired] = useState(false);
 
   useEffect(() => {
+    // Preload the main rocket card image to prevent text-first loading lag
+    const img = new Image();
+    img.src = RocketImg;
+    img.onload = () => {
+      setIsImageLoaded(true);
+    };
+
+    // Preload the playstore icon
+    const playStoreImg = new Image();
+    playStoreImg.src = PlayStoreLogo;
+
     // Check if the user has already seen or closed it during this session
     const hasSeenAppModal = sessionStorage.getItem("annamalai_download_app_seen");
 
     if (!hasSeenAppModal) {
       const timer = setTimeout(() => {
-        setIsOpen(true);
+        setTimerFired(true);
       }, 10000); // 10 seconds delay
 
       return () => clearTimeout(timer);
     }
   }, []);
+
+  // Synchronize: Only open the modal when the timer has fired AND the image is fully loaded/cached
+  useEffect(() => {
+    if (timerFired && isImageLoaded) {
+      setIsOpen(true);
+    }
+  }, [timerFired, isImageLoaded]);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -26,7 +46,7 @@ const DownloadAppModal = () => {
   };
 
   const handleDownload = () => {
-    window.open("https://play.google.com/store/apps/details?id=co.iron.quzwnf", "_blank", "noopener,noreferrer");
+    window.open("https://play.google.com/store/apps/details?id=my.classroom.app&hl=en_IN", "_blank", "noopener,noreferrer");
     setIsOpen(false);
     sessionStorage.setItem("annamalai_download_app_seen", "true");
   };

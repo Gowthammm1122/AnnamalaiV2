@@ -214,31 +214,16 @@ const Navbar = () => {
           </p>
           {navLinks.map((link) => {
             const isActive = link.key === activeKey;
-            const hasDropdown = link.key === "gallery" || link.key === "resources";
             return (
               <div key={link.name} className="flex flex-col space-y-2">
                 <button
                   onClick={() => handleNavigation(link.path)}
-                  className={`text-left text-4xl uppercase tracking-tight transition-all duration-300 outline-none ${
-                    isActive ? "text-primary translate-x-3" : "text-gray-900 hover:text-primary"
+                  className={`text-left text-3.5xl font-display tracking-tight transition-all duration-300 outline-none ${
+                    isActive ? "text-primary translate-x-3 font-medium" : "text-gray-900 hover:text-primary font-normal"
                   }`}
-                  style={{ fontFamily: "'Anton', sans-serif" }}
                 >
                   {link.name}
                 </button>
-                {hasDropdown && (
-                  <div className="flex flex-col pl-4 py-1 space-y-3">
-                    {dropdownData[link.key as "gallery" | "resources"].map((item) => (
-                      <button
-                        key={item.name}
-                        onClick={() => handleNavigation(`${link.path}?tab=${item.tab}`)}
-                        className="text-left text-[11px] font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition-colors outline-none"
-                      >
-                        — {item.name}
-                      </button>
-                    ))}
-                  </div>
-                )}
               </div>
             );
           })}
@@ -248,8 +233,7 @@ const Navbar = () => {
         <div className="p-8 bg-gray-50/80 border-t border-gray-100 backdrop-blur-md flex flex-col space-y-3">
           <button
             onClick={() => handleNavigation("/contact")}
-            className="w-full py-3.5 bg-gray-900 hover:bg-primary text-white font-bold text-xs tracking-widest uppercase rounded-full shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
-            style={{ fontFamily: "'Anton', sans-serif" }}
+            className="w-full py-3.5 bg-gray-900 hover:bg-primary text-white font-sans font-bold text-xs tracking-widest uppercase rounded-full shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
           >
             <span>Contact us</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -259,8 +243,7 @@ const Navbar = () => {
             onClick={() => {
               window.open("https://web.classplusapp.com/login?orgCode=quzwnf", "_blank", "noopener,noreferrer");
             }}
-            className="w-full py-3.5 bg-white border border-gray-200/80 hover:bg-gray-50 text-gray-800 font-bold text-xs tracking-widest uppercase rounded-full shadow-sm transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
-            style={{ fontFamily: "'Anton', sans-serif" }}
+            className="w-full py-3.5 bg-white border border-gray-200/80 hover:bg-gray-50 text-gray-800 font-sans font-bold text-xs tracking-widest uppercase rounded-full shadow-sm transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
           >
             <span>Student Portal</span>
             <ArrowUpRight className="w-4 h-4" />
