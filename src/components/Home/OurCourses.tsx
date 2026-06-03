@@ -3,13 +3,15 @@ import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 
 //new images
-import Banking from '../../assets/Courses/banking.png';
-import Civil from '../../assets/Courses/civilservice.png';
-import Combined from '../../assets/Courses/combined.png';
+import Banking from '../../assets/Courses/newbank.png';
+import Civil from '../../assets/Courses/upsc.png';
+import Combined from '../../assets/Courses/tnpsc.png';
 import Insurance from '../../assets/Courses/Insurance.png';
 import Railway from '../../assets/Courses/railway.png';
 import Sub from '../../assets/Courses/Subinspector.png';
-import SSC from '../../assets/Courses/optional.png';
+import SSC from '../../assets/Courses/optionalnew.png';
+
+//new pics
 
 
 
@@ -28,43 +30,50 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
       name: 'UPSC Civil Services',
       src: Civil,
       bg: '#1e4fc0',
-      desc: 'Specialized premium training for all 27 categories of premier central posts (IAS, IPS, IFS, and Central Services Group A & B).'
+      desc: 'Specialized premium training for all 27 categories of premier central posts (IAS, IPS, IFS, and Central Services Group A & B).',
+      isLarge: true
     },
     {
       name: 'TNPSC Civil Services',
       src: Combined,
       bg: '#1e4fc0',
-      desc: 'Comprehensive state commission path mapping out Group 1 (Deputy Collector, DSP), Group 2/2A, and Group 4 (VAO, Junior Assistant).'
+      desc: 'Comprehensive state commission path mapping out Group 1 (Deputy Collector, DSP), Group 2/2A, and Group 4 (VAO, Junior Assistant).',
+      isLarge: true
     },
     {
       name: 'Banking Services',
       src: Banking,
       bg: '#1e4fc0',
-      desc: 'Rigorous computer-based training for Probationary Officers (PO), Specialist Officers (SO), Clerks, and RBI Assistants / Grade A & B Officers.'
+      desc: 'Rigorous computer-based training for Probationary Officers (PO), Specialist Officers (SO), Clerks, and RBI Assistants / Grade A & B Officers.',
+      isLarge: true
     },
     {
       name: 'Insurance Recruitment',
       src: Insurance,
       bg: '#1e4fc0',
-      desc: 'Specialized curriculum for Assistant Administrative Officer (AAO) and Assistant Grade posts across top participating firms.'
+      desc: 'Specialized curriculum for Assistant Administrative Officer (AAO) and Assistant Grade posts across top participating firms.',
+      isLarge: false
     },
     {
       name: 'TNUSRB Police SI',
       src: Sub,
       bg: '#1e4fc0',
-      desc: 'Targeted physical and academic model tailored to address Tamil Nadu Uniformed Services Recruitment Board SI parameters.'
+      desc: 'Targeted physical and academic model tailored to address Tamil Nadu Uniformed Services Recruitment Board SI parameters.',
+      isLarge: false
     },
     {
       name: 'Railway Board (RRB)',
       src: Railway,
       bg: '#1e4fc0',
-      desc: 'Targeted curriculum for Non-Technical Popular Posts, Junior Engineer, Senior Section Engineer, Assistant Loco Pilot, and Group-D.'
+      desc: 'Targeted curriculum for Non-Technical Popular Posts, Junior Engineer, Senior Section Engineer, Assistant Loco Pilot, and Group-D.',
+      isLarge: false
     },
     {
       name: 'Staff Selection (SSC)',
       src: SSC,
       bg: '#1e4fc0',
-      desc: 'Premier training program for various key ministerial, department, and organizational posts within the Government of India.'
+      desc: 'Premier training program for various key ministerial, department, and organizational posts within the Government of India.',
+      isLarge: true
     },
    
   ];
@@ -205,7 +214,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
   };
 
   // 3-Tier Card Layout Styling Breakpoints (Adapts perfectly on Mobile, Tablet, and Desktop)
-  const getStyle = (role: string) => {
+  const getStyle = (role: string, isLarge: boolean = false) => {
     const base: any = {
       position: 'absolute',
       aspectRatio: '0.8 / 1',
@@ -220,12 +229,14 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           return {
             ...base,
             left: '50%',
-            transform: 'translate3d(-50%, 0, 0) scale(1.35)', // a little bit bigger zoom in view
+            transform: isLarge 
+              ? 'translate3d(-50%, 0, 0) scale(1.55)' 
+              : 'translate3d(-50%, 0, 0) scale(1.35)',
             filter: 'none', // Remove GPU-heavy blurs on mobile screens for seamless 120Hz frames
             opacity: 1,
             zIndex: 30,
-            height: '50%',
-            bottom: '22%', // Lowered from 32% to prevent overlap on mobile screens
+            height: isLarge ? '58%' : '50%',
+            bottom: isLarge ? '18%' : '22%', // Lowered from 32% to prevent overlap on mobile screens
           };
         case 'left':
           return {
@@ -235,8 +246,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             filter: 'none',
             opacity: 0.5,
             zIndex: 20,
-            height: '18%',
-            bottom: '34%', // Lowered from 44% to align with center image shifts
+            height: isLarge ? '22%' : '18%',
+            bottom: isLarge ? '32%' : '34%', // Lowered from 44% to align with center image shifts
           };
         case 'right':
           return {
@@ -246,8 +257,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             filter: 'none',
             opacity: 0.5,
             zIndex: 20,
-            height: '18%',
-            bottom: '34%', // Lowered from 44% to align with center image shifts
+            height: isLarge ? '22%' : '18%',
+            bottom: isLarge ? '32%' : '34%', // Lowered from 44% to align with center image shifts
           };
         case 'back-left':
           return {
@@ -257,8 +268,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             filter: 'none',
             opacity: 0,
             zIndex: 10,
-            height: '12%',
-            bottom: '36%', // Lowered from 46%
+            height: isLarge ? '15%' : '12%',
+            bottom: isLarge ? '34%' : '36%', // Lowered from 46%
           };
         case 'back-right':
           return {
@@ -268,8 +279,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             filter: 'none',
             opacity: 0,
             zIndex: 10,
-            height: '12%',
-            bottom: '36%', // Lowered from 46%
+            height: isLarge ? '15%' : '12%',
+            bottom: isLarge ? '34%' : '36%', // Lowered from 46%
           };
         default: // back
           return {
@@ -279,8 +290,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             filter: 'none',
             opacity: 0,
             zIndex: 5,
-            height: '10%',
-            bottom: '36%', // Lowered from 46%
+            height: isLarge ? '12%' : '10%',
+            bottom: isLarge ? '34%' : '36%', // Lowered from 46%
           };
       }
     }
@@ -291,12 +302,14 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           return {
             ...base,
             left: '50%',
-            transform: 'translate3d(-50%, 0, 0) scale(1.2)',
+            transform: isLarge 
+              ? 'translate3d(-50%, 0, 0) scale(1.45)' 
+              : 'translate3d(-50%, 0, 0) scale(1.2)',
             filter: 'blur(0px)',
             opacity: 1,
             zIndex: 30,
-            height: '48%',
-            bottom: '30%', // Shifted upward for vertical tablet profiles
+            height: isLarge ? '60%' : '48%',
+            bottom: isLarge ? '24%' : '30%', // Shifted upward for vertical tablet profiles
           };
         case 'left':
           return {
@@ -306,8 +319,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             filter: 'blur(1px)',
             opacity: 0.7,
             zIndex: 20,
-            height: '18%',
-            bottom: '42%',
+            height: isLarge ? '24%' : '18%',
+            bottom: isLarge ? '39%' : '42%',
           };
         case 'right':
           return {
@@ -317,8 +330,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             filter: 'blur(1px)',
             opacity: 0.7,
             zIndex: 20,
-            height: '18%',
-            bottom: '42%',
+            height: isLarge ? '24%' : '18%',
+            bottom: isLarge ? '39%' : '42%',
           };
         case 'back-left':
           return {
@@ -328,8 +341,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             filter: 'blur(2px)',
             opacity: 0.35,
             zIndex: 10,
-            height: '14%',
-            bottom: '45%',
+            height: isLarge ? '18%' : '14%',
+            bottom: isLarge ? '43%' : '45%',
           };
         case 'back-right':
           return {
@@ -339,8 +352,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             filter: 'blur(2px)',
             opacity: 0.35,
             zIndex: 10,
-            height: '14%',
-            bottom: '45%',
+            height: isLarge ? '18%' : '14%',
+            bottom: isLarge ? '43%' : '45%',
           };
         default: // back
           return {
@@ -350,8 +363,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             filter: 'blur(4px)',
             opacity: 0,
             zIndex: 5,
-            height: '12%',
-            bottom: '45%',
+            height: isLarge ? '15%' : '12%',
+            bottom: isLarge ? '43%' : '45%',
           };
       }
     }
@@ -362,12 +375,14 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
         return {
           ...base,
           left: '50%',
-          transform: 'translate3d(-50%, 0, 0) scale(1.25)',
+          transform: isLarge 
+            ? 'translate3d(-50%, 0, 0) scale(1.4)' 
+            : 'translate3d(-50%, 0, 0) scale(1.25)',
           filter: 'blur(0px)',
           opacity: 1,
           zIndex: 30,
-          height: '65%',
-          bottom: '6%',
+          height: isLarge ? '78%' : '65%',
+          bottom: isLarge ? '2%' : '6%',
         };
       case 'left':
         return {
@@ -377,8 +392,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           filter: 'blur(1px)',
           opacity: 0.8,
           zIndex: 20,
-          height: '22%',
-          bottom: '14%',
+          height: isLarge ? '30%' : '22%',
+          bottom: isLarge ? '10%' : '14%',
         };
       case 'right':
         return {
@@ -388,8 +403,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           filter: 'blur(1px)',
           opacity: 0.8,
           zIndex: 20,
-          height: '22%',
-          bottom: '14%',
+          height: isLarge ? '30%' : '22%',
+          bottom: isLarge ? '10%' : '14%',
         };
       case 'back-left':
         return {
@@ -399,8 +414,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           filter: 'blur(3px)',
           opacity: 0.4,
           zIndex: 10,
-          height: '16%',
-          bottom: '18%',
+          height: isLarge ? '22%' : '16%',
+          bottom: isLarge ? '15%' : '18%',
         };
       case 'back-right':
         return {
@@ -410,8 +425,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           filter: 'blur(3px)',
           opacity: 0.4,
           zIndex: 10,
-          height: '16%',
-          bottom: '18%',
+          height: isLarge ? '22%' : '16%',
+          bottom: isLarge ? '15%' : '18%',
         };
       default: // back
         return {
@@ -421,8 +436,8 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           filter: 'blur(5px)',
           opacity: 0,
           zIndex: 5,
-          height: '12%',
-          bottom: '20%',
+          height: isLarge ? '16%' : '12%',
+          bottom: isLarge ? '18%' : '20%',
         };
     }
   };
@@ -463,13 +478,15 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
       {/* Graphic Carousel Deck (Transparent to Mouse events to support section dragging) */}
       <div className="absolute inset-0 z-[10] pointer-events-none">
         {COURSES.map((course, i) => (
-          <div key={i} style={getStyle(getRole(i)) as any} className="pointer-events-none select-none flex items-end justify-center">
+          <div key={i} style={getStyle(getRole(i), course.isLarge) as any} className="pointer-events-none select-none flex items-end justify-center">
             <img
               src={course.src}
               alt={course.name}
               className="mx-auto block w-full h-full object-contain object-bottom select-none drop-shadow-2xl pointer-events-none"
               style={{ 
-                maxWidth: isMobile ? '160px' : isTablet ? '260px' : '420px', 
+                maxWidth: course.isLarge 
+                  ? (isMobile ? '300px' : isTablet ? '500px' : '750px') 
+                  : (isMobile ? '160px' : isTablet ? '260px' : '420px'), 
                 maxHeight: '100%',
                 willChange: 'transform, opacity' // Hardware-accelerate the image texture layers directly
               }}

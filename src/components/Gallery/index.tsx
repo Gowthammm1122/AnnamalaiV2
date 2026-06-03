@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import { Search, Calendar, ChevronRight, X, Clock, MapPin, CheckCircle2, ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 interface GalleryEvent {
   id: string;
@@ -58,7 +58,19 @@ const GalleryHero = () => {
 
 const GalleryContent = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState<"all" | "test-series" | "workshops" | "special-events">("all");
+
+  React.useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tab = params.get("tab");
+    if (tab && ["test-series", "workshops", "special-events"].includes(tab)) {
+      setSelectedCategory(tab as any);
+    } else {
+      setSelectedCategory("all");
+    }
+  }, [location.search]);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedEvent, setSelectedEvent] = useState<GalleryEvent | null>(null);
 

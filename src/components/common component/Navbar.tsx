@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X, ChevronUp } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import Logo from "../../assets/images/logo.png";
 
 const Navbar = () => {
@@ -8,6 +9,20 @@ const Navbar = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<"gallery" | "resources" | null>(null);
+
+  const dropdownData = {
+    gallery: [
+      { name: "Test Series", tab: "test-series" },
+      { name: "Workshops and Talks", tab: "workshops" },
+      { name: "Scholarships", tab: "special-events" },
+    ],
+    resources: [
+      { name: "PYQs and Mocks", tab: "pyqs" },
+      { name: "Current Affairs", tab: "current-affairs" },
+      { name: "Optional Subjects", tab: "optional-lit" },
+    ],
+  };
 
   // Monitors scroll position to add depth and shadow dynamically
   useEffect(() => {
@@ -62,15 +77,14 @@ const Navbar = () => {
         Responsive behavior: Spans full width on mobile, locks into a beautifully balanced pill dock on desktop
       */}
       <div
-        className={`w-full max-w-full md:max-w-fit flex items-center justify-between md:justify-center md:space-x-2 p-1.5 rounded-full border transition-all duration-500 ease-out pointer-events-auto ${
-          mobileMenuOpen
-            ? "bg-transparent border-transparent shadow-none" // Dissolve container bubbles when mobile drawer is open
-            : scrolled
+        className={`w-full max-w-full md:max-w-fit flex items-center justify-between md:justify-center md:space-x-2 p-1.5 rounded-full border transition-all duration-500 ease-out pointer-events-auto ${mobileMenuOpen
+          ? "bg-transparent border-transparent shadow-none" // Dissolve container bubbles when mobile drawer is open
+          : scrolled
             ? "bg-white/80 backdrop-blur-md border-gray-200/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
             : "bg-white/40 backdrop-blur-sm border-white/20 shadow-none"
-        }`}
+          }`}
       >
-        
+
         {/* Minimalist Logo Anchor */}
         <div
           onClick={() => handleNavigation("/")}
@@ -87,6 +101,55 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-1">
           {navLinks.map((link) => {
             const isActive = link.key === activeKey;
+            const hasDropdown = link.key === "gallery" || link.key === "resources";
+            
+            if (hasDropdown) {
+              return (
+                <div
+                  key={link.name}
+                  onMouseEnter={() => setActiveDropdown(link.key as any)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                  className="relative py-2"
+                >
+                  <button
+                    onClick={() => handleNavigation(link.path)}
+                    className={`px-5 py-2 rounded-full text-[11px] font-bold tracking-[0.06em] uppercase transition-all duration-300 flex items-center space-x-1.5 ${
+                      isActive
+                        ? "bg-white text-gray-900 shadow-[0_2px_8px_rgba(0,0,0,0.06)]"
+                        : "text-gray-500 hover:text-gray-900 hover:bg-white/40"
+                    }`}
+                  >
+                    <span>{link.name}</span>
+                    <ChevronUp className={`w-3 h-3 opacity-60 transition-transform duration-300 ${
+                      activeDropdown === link.key ? "rotate-180" : "rotate-0"
+                    }`} />
+                  </button>
+
+                  <AnimatePresence>
+                    {activeDropdown === link.key && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                        transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-48 bg-white/95 backdrop-blur-md border border-gray-200/50 shadow-[0_10px_30px_rgba(0,0,0,0.08)] rounded-2xl py-2 z-50 overflow-hidden flex flex-col pointer-events-auto"
+                      >
+                        {dropdownData[link.key as "gallery" | "resources"].map((item) => (
+                          <button
+                            key={item.name}
+                            onClick={() => handleNavigation(`${link.path}?tab=${item.tab}`)}
+                            className="w-full text-left px-5 py-3 text-[10px] font-bold uppercase tracking-wider text-gray-500 hover:text-gray-900 hover:bg-gray-50/80 transition-colors"
+                          >
+                            {item.name}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+
             return (
               <button
                 key={link.name}
@@ -118,12 +181,23 @@ const Navbar = () => {
           {/* Student Portal Button */}
           <button
             onClick={() => {
-              window.open("https://web.classplusapp.com/store/home?tabCategoryId=2", "_blank", "noopener,noreferrer");
+              window.open("https://web.classplusapp.com/login?orgCode=quzwnf", "_blank", "noopener,noreferrer");
             }}
             className="px-5 py-2 rounded-full text-[11px] font-bold tracking-[0.06em] uppercase transition-all duration-300 bg-white/60 hover:bg-white text-gray-700 hover:text-gray-900 border border-gray-200/60 flex items-center space-x-1 group shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
           >
             <span>Student Portal</span>
             <ArrowUpRight className="w-3 h-3 transition-transform duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-gray-400 group-hover:text-gray-700" />
+          </button>
+
+          {/* Download App Button */}
+          <button
+            onClick={() => {
+              window.open("https://play.google.com/store/apps/details?id=my.classroom.app&hl=en_IN", "_blank", "noopener,noreferrer");
+            }}
+            className="px-5 py-2 rounded-full text-[11px] font-bold tracking-[0.06em] uppercase transition-all duration-300 bg-primary-light hover:bg-primary text-primary hover:text-white border border-primary/20 flex items-center space-x-1.5 group shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+          >
+            <span>Download App</span>
+            <ArrowUpRight className="w-3 h-3 transition-transform duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-primary/60 group-hover:text-white" />
           </button>
         </div>
 
@@ -150,17 +224,32 @@ const Navbar = () => {
           </p>
           {navLinks.map((link) => {
             const isActive = link.key === activeKey;
+            const hasDropdown = link.key === "gallery" || link.key === "resources";
             return (
-              <button
-                key={link.name}
-                onClick={() => handleNavigation(link.path)}
-                className={`text-left text-4xl uppercase tracking-tight transition-all duration-300 outline-none ${
-                  isActive ? "text-primary translate-x-3" : "text-gray-900 hover:text-primary"
-                }`}
-                style={{ fontFamily: "'Anton', sans-serif" }}
-              >
-                {link.name}
-              </button>
+              <div key={link.name} className="flex flex-col space-y-2">
+                <button
+                  onClick={() => handleNavigation(link.path)}
+                  className={`text-left text-4xl uppercase tracking-tight transition-all duration-300 outline-none ${
+                    isActive ? "text-primary translate-x-3" : "text-gray-900 hover:text-primary"
+                  }`}
+                  style={{ fontFamily: "'Anton', sans-serif" }}
+                >
+                  {link.name}
+                </button>
+                {hasDropdown && (
+                  <div className="flex flex-col pl-4 py-1 space-y-3">
+                    {dropdownData[link.key as "gallery" | "resources"].map((item) => (
+                      <button
+                        key={item.name}
+                        onClick={() => handleNavigation(`${link.path}?tab=${item.tab}`)}
+                        className="text-left text-[11px] font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition-colors outline-none"
+                      >
+                        — {item.name}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
@@ -172,18 +261,29 @@ const Navbar = () => {
             className="w-full py-3.5 bg-gray-900 hover:bg-primary text-white font-bold text-xs tracking-widest uppercase rounded-full shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
             style={{ fontFamily: "'Anton', sans-serif" }}
           >
-            <span>Connect Directly</span>
+            <span>Contact us</span>
             <ArrowUpRight className="w-4 h-4" />
           </button>
 
           <button
             onClick={() => {
-              window.open("https://web.classplusapp.com/store/home?tabCategoryId=2", "_blank", "noopener,noreferrer");
+              window.open("https://web.classplusapp.com/login?orgCode=quzwnf", "_blank", "noopener,noreferrer");
             }}
             className="w-full py-3.5 bg-white border border-gray-200/80 hover:bg-gray-50 text-gray-800 font-bold text-xs tracking-widest uppercase rounded-full shadow-sm transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
             style={{ fontFamily: "'Anton', sans-serif" }}
           >
             <span>Student Portal</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={() => {
+              window.open("https://play.google.com/store/apps/details?id=co.classplusapp", "_blank", "noopener,noreferrer");
+            }}
+            className="w-full py-3.5 bg-primary hover:bg-primary-dark text-white font-bold text-xs tracking-widest uppercase rounded-full shadow-sm transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
+            style={{ fontFamily: "'Anton', sans-serif" }}
+          >
+            <span>Download App</span>
             <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>

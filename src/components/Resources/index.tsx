@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import { Search, Calendar, ChevronRight, X, Download, CheckCircle2, ArrowRight, FileText } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 interface ResourceItem {
   id: string;
@@ -58,7 +58,19 @@ const ResourcesHero = () => {
 
 const ResourcesContent = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState<"all" | "syllabus" | "pyqs" | "current-affairs" | "optional-lit">("all");
+
+  React.useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tab = params.get("tab");
+    if (tab && ["syllabus", "pyqs", "current-affairs", "optional-lit"].includes(tab)) {
+      setSelectedCategory(tab as any);
+    } else {
+      setSelectedCategory("all");
+    }
+  }, [location.search]);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedResource, setSelectedResource] = useState<ResourceItem | null>(null);
 
