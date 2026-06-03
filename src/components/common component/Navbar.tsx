@@ -189,16 +189,6 @@ const Navbar = () => {
             <ArrowUpRight className="w-3 h-3 transition-transform duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-gray-400 group-hover:text-gray-700" />
           </button>
 
-          {/* Download App Button */}
-          <button
-            onClick={() => {
-              window.open("https://play.google.com/store/apps/details?id=my.classroom.app&hl=en_IN", "_blank", "noopener,noreferrer");
-            }}
-            className="px-5 py-2 rounded-full text-[11px] font-bold tracking-[0.06em] uppercase transition-all duration-300 bg-primary-light hover:bg-primary text-primary hover:text-white border border-primary/20 flex items-center space-x-1.5 group shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
-          >
-            <span>Download App</span>
-            <ArrowUpRight className="w-3 h-3 transition-transform duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-primary/60 group-hover:text-white" />
-          </button>
         </div>
 
         {/* Modern Mobile Trigger - Icons enlarged to w-6 h-6 for pristine legibility */}
@@ -273,17 +263,6 @@ const Navbar = () => {
             style={{ fontFamily: "'Anton', sans-serif" }}
           >
             <span>Student Portal</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={() => {
-              window.open("https://play.google.com/store/apps/details?id=co.classplusapp", "_blank", "noopener,noreferrer");
-            }}
-            className="w-full py-3.5 bg-primary hover:bg-primary-dark text-white font-bold text-xs tracking-widest uppercase rounded-full shadow-sm transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
-            style={{ fontFamily: "'Anton', sans-serif" }}
-          >
-            <span>Download App</span>
             <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>
