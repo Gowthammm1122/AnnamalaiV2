@@ -27,7 +27,7 @@ const TestimonialsSection = () => {
       year: "Cohort 24"
     },
     {
-      quote: "Joining the Anna Nagar campus turned my preparation around. Sincere mentorship, exhaustive mock exam analysis, and dedicated optional guidance built absolute mental clarity.",
+      quote: "Joining the Kolathur campus turned my preparation around. The teaching is exceptionally good with deep subject-wise guidance, and the modern, resource-rich infrastructure built absolute mental clarity.",
       author: "Priyadharshini M.",
       role: "Civil Services Aspirant",
       achievement: "Mains Selected Candidate",
@@ -41,14 +41,14 @@ const TestimonialsSection = () => {
       year: "Cohort 24"
     },
     {
-      quote: "The SCAT merit scholarship program provided a level playing field for standard tier-2 city aspirants like me. Premium resources, mock evaluation criteria, and direct counselor support changed my life.",
+      quote: "The teaching is incredibly good and simplified even for beginners, and the academy's infrastructure is top-notch. With premium study resources and a perfect library environment, it completely changed my preparation.",
       author: "Arulmozhi P.",
       role: "State Civil Services",
       achievement: "Municipal Commissioner Grade-I",
       year: "Cohort 23"
     },
     {
-      quote: "Our answer diagnostics sessions didn't just point out mistakes; they offered structural and conceptual corrections. This level of precise mentoring is extremely rare in India today.",
+      quote: "The teaching methodology is uniquely good, focusing on conceptual clarity, and the custom learning infrastructure is excellent for long study sessions. This level of precise mentoring is extremely rare in India today.",
       author: "Meera K.",
       role: "UPSC Civil Sevices",
       achievement: "IAS Aspirant, AIPMTS Topper",

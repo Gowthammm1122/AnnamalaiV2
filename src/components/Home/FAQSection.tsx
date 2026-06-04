@@ -29,7 +29,7 @@ const FAQSection = () => {
     },
     {
       question: "What is the location and official contact directory for admissions?",
-      answer: "Our campus headquarters is located at Anthony Nagar Main Road, Kolathur, Chennai - 600099. For admissions and direct support from our counseling coordinators, you can call us at 8015390090 or 6383790090, or email us at admin@drpannamalaiiasacademy.com.",
+      answer: "Our campus headquarters is located at Plot 12&13, Main road, Anthony Nagar Main Road, Kolathur, Chennai - 600099. For admissions and direct support from our counseling coordinators, you can call us at 8015390090 or 6383790090, or email us at admin@drpannamalaiiasacademy.com.",
     }
   ];
 

@@ -236,7 +236,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 1,
             zIndex: 30,
             height: isLarge ? '58%' : '50%',
-            bottom: isLarge ? '18%' : '22%', // Lowered from 32% to prevent overlap on mobile screens
+            bottom: isLarge ? '22%' : '24%', // Lifted to prevent touching the bottom edge
           };
         case 'left':
           return {
@@ -247,7 +247,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0.5,
             zIndex: 20,
             height: isLarge ? '22%' : '18%',
-            bottom: isLarge ? '32%' : '34%', // Lowered from 44% to align with center image shifts
+            bottom: isLarge ? '34%' : '36%', // Lifted to align with center image shifts
           };
         case 'right':
           return {
@@ -258,7 +258,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0.5,
             zIndex: 20,
             height: isLarge ? '22%' : '18%',
-            bottom: isLarge ? '32%' : '34%', // Lowered from 44% to align with center image shifts
+            bottom: isLarge ? '34%' : '36%', // Lifted to align with center image shifts
           };
         case 'back-left':
           return {
@@ -269,7 +269,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0,
             zIndex: 10,
             height: isLarge ? '15%' : '12%',
-            bottom: isLarge ? '34%' : '36%', // Lowered from 46%
+            bottom: isLarge ? '36%' : '38%',
           };
         case 'back-right':
           return {
@@ -280,7 +280,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0,
             zIndex: 10,
             height: isLarge ? '15%' : '12%',
-            bottom: isLarge ? '34%' : '36%', // Lowered from 46%
+            bottom: isLarge ? '36%' : '38%',
           };
         default: // back
           return {
@@ -291,7 +291,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0,
             zIndex: 5,
             height: isLarge ? '12%' : '10%',
-            bottom: isLarge ? '34%' : '36%', // Lowered from 46%
+            bottom: isLarge ? '36%' : '38%',
           };
       }
     }
@@ -309,7 +309,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 1,
             zIndex: 30,
             height: isLarge ? '60%' : '48%',
-            bottom: isLarge ? '24%' : '30%', // Shifted upward for vertical tablet profiles
+            bottom: isLarge ? '28%' : '32%', // Shifted upward for vertical tablet profiles
           };
         case 'left':
           return {
@@ -320,7 +320,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0.7,
             zIndex: 20,
             height: isLarge ? '24%' : '18%',
-            bottom: isLarge ? '39%' : '42%',
+            bottom: isLarge ? '41%' : '44%',
           };
         case 'right':
           return {
@@ -331,7 +331,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0.7,
             zIndex: 20,
             height: isLarge ? '24%' : '18%',
-            bottom: isLarge ? '39%' : '42%',
+            bottom: isLarge ? '41%' : '44%',
           };
         case 'back-left':
           return {
@@ -342,7 +342,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0.35,
             zIndex: 10,
             height: isLarge ? '18%' : '14%',
-            bottom: isLarge ? '43%' : '45%',
+            bottom: isLarge ? '45%' : '47%',
           };
         case 'back-right':
           return {
@@ -353,7 +353,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0.35,
             zIndex: 10,
             height: isLarge ? '18%' : '14%',
-            bottom: isLarge ? '43%' : '45%',
+            bottom: isLarge ? '45%' : '47%',
           };
         default: // back
           return {
@@ -364,7 +364,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
             opacity: 0,
             zIndex: 5,
             height: isLarge ? '15%' : '12%',
-            bottom: isLarge ? '43%' : '45%',
+            bottom: isLarge ? '45%' : '47%',
           };
       }
     }
@@ -382,7 +382,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           opacity: 1,
           zIndex: 30,
           height: isLarge ? '78%' : '65%',
-          bottom: isLarge ? '2%' : '6%',
+          bottom: isLarge ? '18%' : '14%', // Lifted to prevent touching the bottom edge
         };
       case 'left':
         return {
@@ -393,7 +393,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           opacity: 0.8,
           zIndex: 20,
           height: isLarge ? '30%' : '22%',
-          bottom: isLarge ? '10%' : '14%',
+          bottom: isLarge ? '26%' : '22%', // Lifted to align with center card
         };
       case 'right':
         return {
@@ -404,7 +404,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           opacity: 0.8,
           zIndex: 20,
           height: isLarge ? '30%' : '22%',
-          bottom: isLarge ? '10%' : '14%',
+          bottom: isLarge ? '26%' : '22%', // Lifted to align with center card
         };
       case 'back-left':
         return {
@@ -415,7 +415,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           opacity: 0.4,
           zIndex: 10,
           height: isLarge ? '22%' : '16%',
-          bottom: isLarge ? '15%' : '18%',
+          bottom: isLarge ? '31%' : '26%',
         };
       case 'back-right':
         return {
@@ -426,7 +426,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           opacity: 0.4,
           zIndex: 10,
           height: isLarge ? '22%' : '16%',
-          bottom: isLarge ? '15%' : '18%',
+          bottom: isLarge ? '31%' : '26%',
         };
       default: // back
         return {
@@ -437,7 +437,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           opacity: 0,
           zIndex: 5,
           height: isLarge ? '16%' : '12%',
-          bottom: isLarge ? '18%' : '20%',
+          bottom: isLarge ? '34%' : '28%',
         };
     }
   };

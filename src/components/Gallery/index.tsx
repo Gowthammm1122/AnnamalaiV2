@@ -83,7 +83,7 @@ const GalleryContent = () => {
       badge: "UPSC Prelims Mock",
       description: "Our hallmark national review simulation. Aligns with exact UPSC timing, style, paper weights, and negative scoring calibrations.",
       mode: "Offline & Online",
-      venueOrPlatform: "Anna Nagar East Campus Corridor & Online Portal",
+      venueOrPlatform: "Plot 12&13, Main road, Anthony Nagar Main Road, Kolathur Campus & Online Portal",
       timeLine: "09:30 AM Onwards (Paper I & II)",
       features: [
         "Real-time comparative leaderboard metrics",
@@ -371,7 +371,7 @@ const GalleryContent = () => {
                     }}
                     className="w-full py-3 bg-[#1E40AF] hover:bg-blue-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer group"
                   >
-                    Enroll Now
+                    Pre Register now
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
