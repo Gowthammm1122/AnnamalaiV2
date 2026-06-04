@@ -1,12 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, type MotionValue } from "motion/react";
 import { ArrowRight } from "lucide-react";
-import Founder from "../../assets/Faculties/expanded1.png"
-import Gunasekaran from "../../assets/Faculties/GunasekaranNew.png"
-import Rajiv from "../../assets/Faculties/RajivGandhiNew.png"
-import Kamaraj from "../../assets/Faculties/KamarajIASnew.png"
-import Vetrivel from "../../assets/Faculties/Vetrivelnew.png"
-import Rahman from "../../assets/Faculties/Rahmannew.png"
+import Founder from "../../assets/Faculties/1.png"
+import Gunasekaran from "../../assets/Faculties/2.png"
+import Rajiv from "../../assets/Faculties/4.png"
+import Kamaraj from "../../assets/Faculties/6.png"
+import Vetrivel from "../../assets/Faculties/5.png"
+import Rahman from "../../assets/Faculties/3.png"
 // Sub-component for individual stacking image
 interface FacultyImageProps {
   key?: any;
@@ -207,10 +207,6 @@ const FacultySection = () => {
                         </div>
                       ))}
                    </div>
-                   <button className="flex items-center gap-3 text-dark text-xs font-bold uppercase tracking-widest group">
-                      <span>View Bio</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                   </button>
                 </div>
               </div>
             </motion.div>
