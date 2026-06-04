@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import FounderImage from '../../assets/Faculties/expanded1.png'
-import KamarajImage from '../../assets/Faculties/KamarajIASnew.png'
+import FounderImage from '../../assets/Faculties/1.png'
+import KamarajImage from '../../assets/Faculties/6.png'
 
 const Founders = () => {
   // Custom high-end transition preset for a non-AI feeling animation curve
