@@ -99,7 +99,7 @@ const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
           </div>
           <div className="p-6 md:p-8 flex flex-col space-y-1.5 group hover:bg-gray-50/50 transition-colors">
             <span className="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold">Next Batch</span>
-            <span className="text-xs md:text-sm font-semibold text-dark">June 1, 2026</span>
+            <span className="text-xs md:text-sm font-semibold text-dark">July 1, 2026</span>
           </div>
           <div className="p-6 md:p-8 flex flex-col space-y-1.5 group hover:bg-gray-50/50 transition-colors">
             <span className="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold">Students</span>

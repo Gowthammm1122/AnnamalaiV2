@@ -18,8 +18,32 @@ const WhyChooseUs = () => {
     target: targetRef,
   });
 
+  const [xRange, setXRange] = useState([0, 0]);
+
+  useEffect(() => {
+    if (isMobile) return;
+
+    const updateXRange = () => {
+      if (scrollContainerRef.current) {
+        const scrollWidth = scrollContainerRef.current.scrollWidth;
+        const windowWidth = window.innerWidth;
+        const maxScroll = Math.max(0, scrollWidth - windowWidth);
+        setXRange([0, -maxScroll]);
+      }
+    };
+
+    updateXRange();
+    const timer = setTimeout(updateXRange, 100);
+
+    window.addEventListener("resize", updateXRange);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", updateXRange);
+    };
+  }, [isMobile]);
+
   // Calculate the precise transform based on container width vs viewport width
-  const xRaw = useTransform(scrollYProgress, [0, 1], ["0%", "-35%"]);
+  const xRaw = useTransform(scrollYProgress, (value) => value * xRange[1]);
   
   const x = useSpring(xRaw, {
     stiffness: 100,

@@ -69,7 +69,7 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
       isLarge: false
     },
     {
-      name: 'Staff Selection (SSC)',
+      name: 'Staff Selection Commission (SSC)',
       src: SSC,
       bg: '#1e4fc0',
       desc: 'Premier training program for various key ministerial, department, and organizational posts within the Government of India.',

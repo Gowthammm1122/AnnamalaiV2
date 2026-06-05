@@ -12,8 +12,13 @@ const FloatingButtons = () => {
   };
 
   const handlePhoneClick = () => {
-    navigate("/contact");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const isMobileOrTablet = window.innerWidth < 1024;
+    if (isMobileOrTablet) {
+      window.location.href = "tel:+918015390090";
+    } else {
+      navigate("/contact");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (

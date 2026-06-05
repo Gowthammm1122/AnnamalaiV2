@@ -8,9 +8,20 @@ const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID ;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_POPUP_TEMPLATE_ID ;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-const EnquiryModal = () => {
+interface EnquiryModalProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+  initialCourse?: string;
+}
+
+const EnquiryModal: React.FC<EnquiryModalProps> = ({
+  isOpen: propIsOpen,
+  onClose: propOnClose,
+  initialCourse,
+}) => {
+  const isControlled = propIsOpen !== undefined;
   const location = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -18,7 +29,23 @@ const EnquiryModal = () => {
     course: "upsc",
   });
 
+  const isOpen = isControlled ? propIsOpen : internalIsOpen;
+
   useEffect(() => {
+    if (isOpen) {
+      setIsSubmitted(false);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen && initialCourse) {
+      setFormData((prev) => ({ ...prev, course: initialCourse }));
+    }
+  }, [initialCourse, isOpen]);
+
+  useEffect(() => {
+    if (isControlled) return;
+
     // Reset submission state on navigation so if they return to homepage they get the form
     setIsSubmitted(false);
 
@@ -27,14 +54,14 @@ const EnquiryModal = () => {
     if (location.pathname === "/") {
       // Each time the user comes back to the homepage, show the popup after 5 seconds
       timer = setTimeout(() => {
-        setIsOpen(true);
+        setInternalIsOpen(true);
       }, 5000);
     } else {
       // On other pages, check if the user has already seen or dismissed the pop-up in this session
       const hasSeenPopup = sessionStorage.getItem("annamalai_enquiry_pop_seen");
       if (!hasSeenPopup) {
         timer = setTimeout(() => {
-          setIsOpen(true);
+          setInternalIsOpen(true);
         }, 5000);
       }
     }
@@ -42,17 +69,23 @@ const EnquiryModal = () => {
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [location.pathname]);
+  }, [location.pathname, isControlled]);
 
   const handleClose = () => {
-    setIsOpen(false);
-    sessionStorage.setItem("annamalai_enquiry_pop_seen", "true");
+    if (isControlled) {
+      if (propOnClose) propOnClose();
+    } else {
+      setInternalIsOpen(false);
+      sessionStorage.setItem("annamalai_enquiry_pop_seen", "true");
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitted(true);
-    sessionStorage.setItem("annamalai_enquiry_pop_seen", "true");
+    if (!isControlled) {
+      sessionStorage.setItem("annamalai_enquiry_pop_seen", "true");
+    }
 
     // Check if EmailJS is configured
     if (
@@ -100,7 +133,7 @@ const EnquiryModal = () => {
     
     // Auto-dismiss the success feedback popup
     setTimeout(() => {
-      setIsOpen(false);
+      handleClose();
     }, 3000);
   };
 

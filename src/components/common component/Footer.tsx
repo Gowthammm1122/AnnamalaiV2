@@ -142,7 +142,7 @@ const Footer = () => {
             <div className="footer-cta-mini flex flex-col gap-3.5 w-full sm:w-auto">
               <h4 className="text-[15px] font-normal text-[#6b7280] leading-[1.45]">
                 Excellence in education.<br />
-                <strong className="block text-[19px] font-bold text-[#111827]">Stay ahead with Annamalai.</strong>
+                <strong className="block text-[19px] font-bold text-[#111827]">Stay ahead with Dr P.Annamalai IAS Academy.</strong>
               </h4>
               {subscribed ? (
                 <div className="flex items-center justify-center w-full sm:w-[310px] py-[11px] px-3.5 bg-emerald-50 text-emerald-600 rounded-xl border border-emerald-200/50 font-dmsans text-[13.5px] font-semibold tracking-wide">

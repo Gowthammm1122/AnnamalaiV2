@@ -9,9 +9,18 @@ const Navbar = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<"gallery" | "resources" | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<"courses" | "gallery" | "resources" | null>(null);
 
   const dropdownData = {
+    courses: [
+      { name: "UPSC Civil Services", id: "upsc-civil-services" },
+      { name: "TNPSC Group 1, 2, 4", id: "tnpsc-group-1-2-4" },
+      { name: "Banking Services", id: "banking-ibps-sbi-rbi" },
+      { name: "Insurance Corporation", id: "insurance-recruitment" },
+      { name: "RRB (Railways)", id: "rrb-technical-popular" },
+      { name: "SSC CGL / CHSL", id: "ssc-cgl-chsl-mts" },
+      { name: "TNUSRB Police SI", id: "tnusrb-police-si" },
+    ],
     gallery: [
       { name: "Test Series", tab: "test-series" },
       { name: "Workshops and Talks", tab: "workshops" },
@@ -101,7 +110,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-1">
           {navLinks.map((link) => {
             const isActive = link.key === activeKey;
-            const hasDropdown = link.key === "gallery" || link.key === "resources";
+            const hasDropdown = link.key === "courses" || link.key === "gallery" || link.key === "resources";
             
             if (hasDropdown) {
               return (
@@ -134,15 +143,18 @@ const Navbar = () => {
                         transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-48 bg-white/95 backdrop-blur-md border border-gray-200/50 shadow-[0_10px_30px_rgba(0,0,0,0.08)] rounded-2xl py-2 z-50 overflow-hidden flex flex-col pointer-events-auto"
                       >
-                        {dropdownData[link.key as "gallery" | "resources"].map((item) => (
-                          <button
-                            key={item.name}
-                            onClick={() => handleNavigation(`${link.path}?tab=${item.tab}`)}
-                            className="w-full text-left px-5 py-3 text-[10px] font-bold uppercase tracking-wider text-gray-500 hover:text-gray-900 hover:bg-gray-50/80 transition-colors"
-                          >
-                            {item.name}
-                          </button>
-                        ))}
+                        {dropdownData[link.key as "courses" | "gallery" | "resources"].map((item) => {
+                          const queryParam = "id" in item ? `course=${item.id}` : `tab=${item.tab}`;
+                          return (
+                            <button
+                              key={item.name}
+                              onClick={() => handleNavigation(`${link.path}?${queryParam}`)}
+                              className="w-full text-left px-5 py-3 text-[10px] font-bold uppercase tracking-wider text-gray-500 hover:text-gray-900 hover:bg-gray-50/80 transition-colors"
+                            >
+                              {item.name}
+                            </button>
+                          );
+                        })}
                       </motion.div>
                     )}
                   </AnimatePresence>

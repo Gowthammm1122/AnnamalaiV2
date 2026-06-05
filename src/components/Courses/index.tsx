@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Calendar, Clock, Users, CheckCircle2, ChevronDown } from "lucide-react";
+import EnquiryModal from "../common component/EnquiryModal";
 
 interface CourseItem {
   id: string;
@@ -241,6 +243,30 @@ const CoursesHero = () => {
 const CoursesList = () => {
   const [selectedTab, setSelectedTab] = useState<"all" | "civil-services" | "banking-insurance" | "technical-ssc">("all");
   const [activeCourseId, setActiveCourseId] = useState<string | null>(null);
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+  const [enquiryCourse, setEnquiryCourse] = useState("upsc");
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const courseId = params.get("course");
+    if (courseId) {
+      const course = COURSES_DATA.find(c => c.id === courseId);
+      if (course) {
+        setSelectedTab(course.category);
+        setActiveCourseId(courseId);
+        
+        // Wait slightly for layout to settle and set tab
+        setTimeout(() => {
+          const element = document.getElementById(courseId);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        }, 300);
+      }
+    }
+  }, [location.search]);
 
   const filteredCourses = selectedTab === "all" 
     ? COURSES_DATA 
@@ -250,9 +276,17 @@ const CoursesList = () => {
     setActiveCourseId(activeCourseId === id ? null : id);
   };
 
-  const handleEnquireClick = (e: React.MouseEvent, courseName: string) => {
+  const handleEnquireClick = (e: React.MouseEvent, course: CourseItem) => {
     e.stopPropagation(); // Avoid triggering accordion toggle
-    alert(`Redirecting to admissions desk for: ${courseName}. Please call 8015390090 or email admin@drpannamalaiiasacademy.com`);
+    let courseCode = "upsc";
+    if (course.id.includes("upsc")) courseCode = "upsc";
+    else if (course.id.includes("tnpsc")) courseCode = "tnpsc";
+    else if (course.id.includes("banking") || course.id.includes("insurance")) courseCode = "banking";
+    else if (course.id.includes("ssc") || course.id.includes("rrb")) courseCode = "ssc";
+    else if (course.id.includes("tnusrb")) courseCode = "tnusrb";
+
+    setEnquiryCourse(courseCode);
+    setIsEnquiryOpen(true);
   };
 
   return (
@@ -284,6 +318,7 @@ const CoursesList = () => {
             return (
               <div 
                 key={c.id}
+                id={c.id}
                 className={`border border-gray-150 rounded-[28px] overflow-hidden bg-white transition-all duration-300 ${isExpanded ? 'shadow-lg border-[#1e4fc0]/20' : 'hover:border-gray-300'}`}
               >
                 {/* Header block */}
@@ -406,7 +441,7 @@ const CoursesList = () => {
                         {/* Enquire Right */}
                         <button
                           type="button"
-                          onClick={(e) => handleEnquireClick(e, c.name)}
+                          onClick={(e) => handleEnquireClick(e, c)}
                           className="w-full md:w-auto px-6 py-3 text-xs font-semibold tracking-wide text-white bg-dark hover:bg-[#1E40AF] rounded-xl transition-all shadow-sm shrink-0 cursor-pointer text-center"
                         >
                           Enquire Now
@@ -420,6 +455,13 @@ const CoursesList = () => {
             );
           })}
         </div>
+
+        {/* Enquiry Modal Popup */}
+        <EnquiryModal 
+          isOpen={isEnquiryOpen} 
+          onClose={() => setIsEnquiryOpen(false)} 
+          initialCourse={enquiryCourse} 
+        />
 
       </div>
     </section>
