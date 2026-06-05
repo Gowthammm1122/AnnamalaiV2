@@ -7,7 +7,7 @@ import EnquiryModal from "../common component/EnquiryModal";
 interface CourseItem {
   id: string;
   name: string;
-  category: "all" | "civil-services" | "banking-insurance" | "technical-ssc";
+  category: "all" | "civil-services" | "banking-insurance" | "ssc-rrb" | "TNUSRB";
   duration: string;
   level: string;
   capacity: string;
@@ -123,7 +123,7 @@ const COURSES_DATA: CourseItem[] = [
   {
     id: "rrb-technical-popular",
     name: "Railway Recruitment Board (RRB NTPC, JE, SSE & ALP)",
-    category: "technical-ssc",
+    category: "ssc-rrb",
     duration: "Multi-Tier Dedicated Path",
     level: "10th / ITI to Any Degree",
     capacity: "Technical & Non-Technical Batches",
@@ -149,7 +149,7 @@ const COURSES_DATA: CourseItem[] = [
   {
     id: "ssc-cgl-chsl-mts",
     name: "Staff Selection Commission (CGL, CHSL, MTS & JE)",
-    category: "technical-ssc",
+    category: "ssc-rrb",
     duration: "Integrated Tier-1 & Tier-2 Model",
     level: "Matric to Any Degree Level",
     capacity: "Central Ministries Core Batches",
@@ -175,7 +175,7 @@ const COURSES_DATA: CourseItem[] = [
   {
     id: "tnusrb-police-si",
     name: "TNUSRB Police Sub-Inspector (SI) Examination",
-    category: "technical-ssc",
+    category: "TNUSRB",
     duration: "6 Months Comprehensive",
     level: "Any Degree Level",
     capacity: "Uniformed Services Dedicated Batches",
@@ -241,7 +241,7 @@ const CoursesHero = () => {
 };
 
 const CoursesList = () => {
-  const [selectedTab, setSelectedTab] = useState<"all" | "civil-services" | "banking-insurance" | "technical-ssc">("all");
+  const [selectedTab, setSelectedTab] = useState<"all" | "civil-services" | "banking-insurance" | "ssc-rrb" | "TNUSRB">("all");
   const [activeCourseId, setActiveCourseId] = useState<string | null>(null);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [enquiryCourse, setEnquiryCourse] = useState("upsc");
@@ -295,7 +295,7 @@ const CoursesList = () => {
         
         {/* Course Filter Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-16 pb-8">
-          {(["all", "civil-services", "banking-insurance", "technical-ssc"] as const).map((tab) => (
+          {(["all", "civil-services", "banking-insurance", "ssc-rrb", "TNUSRB"] as const).map((tab) => (
             <button
               key={tab}
               type="button"
@@ -306,7 +306,15 @@ const CoursesList = () => {
                   : "bg-gray-50 text-gray-400 border-gray-150 hover:bg-gray-100 hover:text-dark"
               }`}
             >
-              {tab === "all" ? "All Streams" : tab === "civil-services" ? "Civil Services (UPSC/TNPSC)" : tab === "banking-insurance" ? "Banking & Insurance" : "Technical & SSC / Railways"}
+              {tab === "all"
+                ? "All Streams"
+                : tab === "civil-services"
+                ? "Civil Services (UPSC/TNPSC)"
+                : tab === "banking-insurance"
+                ? "Banking & Insurance"
+                : tab === "ssc-rrb"
+                ? "SSC & Railways"
+                : "TNUSRB (Police)"}
             </button>
           ))}
         </div>
@@ -329,7 +337,13 @@ const CoursesList = () => {
                   <div className="space-y-2 flex-grow">
                     <div className="flex items-center gap-3">
                       <span className="text-[9px] font-bold text-white px-2.5 py-1 rounded uppercase tracking-widest" style={{ backgroundColor: c.color }}>
-                        {c.category === 'civil-services' ? 'Civil Services' : c.category === 'banking-insurance' ? 'Banking & Insurance' : 'Technical & Civil'}
+                        {c.category === 'civil-services'
+                          ? 'Civil Services'
+                          : c.category === 'banking-insurance'
+                          ? 'Banking & Insurance'
+                          : c.category === 'ssc-rrb'
+                          ? 'SSC & Railways'
+                          : 'TNUSRB (Police)'}
                       </span>
                       <span className="text-[10px] text-gray-400 font-medium">
                         {c.duration}
