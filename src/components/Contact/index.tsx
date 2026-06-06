@@ -110,10 +110,10 @@ const ContactContent = () => {
               Get in touch
               </span>
               <h2 className="text-4xl md:text-5.5xl font-display font-medium text-dark tracking-tight leading-[1.15] max-w-xl">
-                We are always ready to help you and answer your questions
+                We are always ready to help you and answer your queries
               </h2>
               <p className="text-gray-400 font-light text-sm leading-relaxed max-w-md">
-                Connect directly with our veteran administrative counsels to map out your structural preparation timeline and batch details.
+                Connect directly with our veteran administrative counsels to discuss your structural preparation,timeline and batch details.
               </p>
             </div>
 
@@ -132,6 +132,9 @@ const ContactContent = () => {
                 <p className="text-sm font-light text-gray-500 leading-relaxed">
                   Plot 12&13, Main road,<br />Anthony Nagar Main Road, <br />
                   Kolathur, Chennai - 600099
+                </p>
+                <p className="text-xs font-light text-gray-400 leading-relaxed mt-1">
+                  <span className="font-semibold text-gray-500">Landmark:</span> Near Hotel SRM GRANDS & Salem RR Briyani on the 200ft Road
                 </p>
               </div>
 

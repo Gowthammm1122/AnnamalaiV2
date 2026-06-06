@@ -77,39 +77,39 @@ const FacultySection = () => {
 
   const FACULTY = [
     {
-      name: "Dr P. Annamalai",
+      name: "Dr P.Annamalai , IAS.,(R) PhD.,",
       role: "Chairman of Dr P. Annamalai IAS Academy",
-      desc: "15+ years of experience in mentoring over 1,000 successful IAS officers. Expert in General Studies and Strategy.",
+      desc: "More than 30 years of field experience as an IAS officer to guide and mentor the Aspirants.",
       image: Founder ,
     },
     {
-      name: "C.Kamaraj IAS(R)",
-      role: "C.E.O of Dr P. Annamalai IAS Academy",
-      desc: "Distinguished historian with a decade of expertise in Indian Culture and World History modules.",
+      name: "C.Kamaraj , IAS .,(R)",
+      role: "CEO of Dr P. Annamalai IAS Academy",
+      desc: "More than 30 years of service to the people of Tamil Nadu and his vast experience as an IAS Officer to manage and mentor the aspirants.",
       image: Kamaraj,
     },
     {
-      name: "Vetrivel D",
+      name: "D. Vetrivel , M.E ., BA(Public Administration)",
       role: "Faculty - Indian Economy",
-      desc: "Education: BA, ME. Specializes in Indian Economy with 5 years of teaching and mentoring experience.",
+      desc: "Expert in Indian Economy with 5 years of teaching and mentoring experience.",
       image: Vetrivel,
     },
     {
-      name: "Rahman",
+      name: "A. Rahman Basha , B.E .,",
       role: "Faculty - History",
-      desc: "Qualification: B.E. Electrical and Electronics Engineering. 7 years of experience in mentoring students in History.",
+      desc: "Expert in History with 7 years of experience in mentoring students.",
       image: Rahman,
     },
     {
-      name: "P. Rajiv Gandhi",
+      name: "P. Rajiv Gandhi ,MA.,(History) DEEE",
       role: "Faculty - Tamil Society & TN Development",
-      desc: "Qualification: MA History, DEEE. 5 years of experience specializing in Tamil Society and TN Development.",
+      desc: "Expert in Tamil Society & TN Development with 5 years of experience in teaching and mentoring.",
       image: Rajiv,
     },
     {
-      name: "Gunasekaran V",
+      name: "V. Gunasekaran ,B.E.,",
       role: "Maths & Reasoning Faculty",
-      desc: "Qualification: B.E. - EEE. 5 years of experience in simplifying Maths and Logical Reasoning.",
+      desc: "Expert in Mathematics and Reasoning with 5 years of experience in teaching and mentoring.",
       image: Gunasekaran,
     },
   ];

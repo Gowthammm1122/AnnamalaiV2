@@ -13,23 +13,23 @@ const FAQSection = () => {
   const faqs: FAQItem[] = [
     {
       question: "Who are the promoters and mentors of Dr P. Annamalai IAS Academy?",
-      answer: "The Academy is founded and promoted by two retired IAS officers with more than 30 years of distinguished administrative service and deep experience within the Government of Tamil Nadu. Our core mentorship team includes Dr P. Annamalai, IAS., PhD., who focuses on conceptual clarity and disciplined UPSC strategies, and Mr. C. Kamaraj, IAS., who specializes in strategic consistency and descriptive answer writing.",
+      answer: "The Academy has been founded and promoted by two former IAS officers with more than 30 years of administrative service and vast experience in the Government of Tamil Nadu. Our core mentorship team includes Dr P. Annamalai, IAS.,(R) PhD., who focuses on conceptual clarity and disciplined UPSC strategies and Mr. C. Kamaraj, IAS.,(R) who specializes in strategic consistency and descriptive answer writing.",
     },
     {
-      question: "What specific examination coaching programs are offered under a single roof?",
-      answer: "We run fully integrated, specialized coaching programs covering seven main competitive frameworks: Union Public Service Commission (UPSC), Tamil Nadu Public Service Commission (TNPSC), Banking Services (IBPS/SBI/RBI), Insurance Corporation Recruitment, Railway Recruitment Board (RRB), Staff Selection Commission (SSC), and Tamil Nadu Uniformed Services Recruitment Board (TNUSRB).",
+      question: "What are the various coaching programs offered under a single roof?",
+      answer: "We run fully integrated and specialized coaching programs covering the main competitive examinations viz., Union Public Service Commission (UPSC), Tamil Nadu Public Service Commission (TNPSC), Banking Services (IBPS/SBI/RBI), Insurance Companies, Railway Recruitment Board (RRB), Staff Selection Commission (SSC) , Tamil Nadu Uniformed Services Recruitment Board (TNUSRB) ,etc.",
     },
     {
-      question: "What makes the academy's infrastructure and study resources unique?",
+      question: "What are the unique features of the Academy’s infrastructure and resources?",
       answer: "Our academy is situated in a spacious, four-story building featuring vast academic space with all modern facilities gathered under a single roof. In addition to expert, subject-wise experienced faculties, the academy provides excellent custom-prepared notes and printed books that align strictly with the latest updated syllabi.",
     },
     {
-      question: "How is the rigorous examination and evaluation test matrix structured?",
-      answer: "Consistency is driven through an intensive evaluation matrix consisting of Daily Tests, Weekly Tests, and Monthly Tests, culminating in comprehensive full-length simulated Mock Tests. This structure is designed to guarantee speed, scoring accuracy, and ultimate success for every candidate.",
+      question: "How are the rigorous examination and evaluation test matrices structured?",
+      answer: "Consistency is driven through an intensive evaluation matrix consisting of Daily Tests, Weekly Tests and Monthly Tests, culminating in the comprehensive full-length Mock Tests. This structure is designed to guarantee speed, accuracy, scoring and ultimate success of each candidate.",
     },
     {
-      question: "What is the location and official contact directory for admissions?",
-      answer: "Our campus headquarters is located at Plot 12&13, Main road, Anthony Nagar Main Road, Kolathur, Chennai - 600099. For admissions and direct support from our counseling coordinators, you can call us at 8015390090 or 6383790090, or email us at admin@drpannamalaiiasacademy.com.",
+      question: "What are the location and official contact directory for admissions?",
+      answer: "Our campus headquarters is located at Plot 12&13, Anthony Nagar Main Road, Kolathur, Chennai - 600099. For admissions and direct support from our counseling coordinators, you can call us at 8015390090 or 6383790090, or email us at admin@drpannamalaiiasacademy.com.",
     }
   ];
 

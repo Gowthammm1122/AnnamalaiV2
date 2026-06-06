@@ -42,7 +42,7 @@ const FinalCTA = ({ onApply, onRegisterDemo }: FinalCTAProps) => {
                   Your <span className="italic text-primary-light font-medium">Legacy</span> Begins Here.
                 </h2>
                 <p className="text-white/60 text-lg leading-relaxed mb-12 max-w-md">
-                  Join the academy where dreams transform into service. Start your journey with expert mentorship and a community of high-achievers.
+                  Join the Academy where your Dreams are transformed into Reality. Start your journey with expert mentorship and a community of high-achievers.
                 </p>
                 
                 <div className="flex flex-wrap gap-6">
@@ -79,9 +79,13 @@ const FinalCTA = ({ onApply, onRegisterDemo }: FinalCTAProps) => {
                 <div className="absolute inset-0 flex flex-col justify-end p-10">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="flex -space-x-3">
-                      {[1,2,3].map(i => (
-                        <div key={i} className="w-10 h-10 rounded-full border-2 border-dark overflow-hidden">
-                          <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="" />
+                      {[
+                        "https://images.unsplash.com/photo-1598096969068-7f52cac10c83?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Indian female student
+                        "https://plus.unsplash.com/premium_photo-1682089892133-556bde898f2c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Indian male student
+                        "https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&q=80&w=120&h=120"  // Indian female student
+                      ].map((url, idx) => (
+                        <div key={idx} className="w-10 h-10 rounded-full border-2 border-dark overflow-hidden">
+                          <img src={url} alt="Aspirant Avatar" className="w-full h-full object-cover" />
                         </div>
                       ))}
                     </div>

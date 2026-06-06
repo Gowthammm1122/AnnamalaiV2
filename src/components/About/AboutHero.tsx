@@ -347,14 +347,14 @@ const AboutHero: React.FC = () => {
         {/* Texts layer in front */}
         <div className="space-y-4 max-w-sm mx-auto px-6 z-10 relative pointer-events-auto">
           <span className="text-[9px] font-bold text-[#1E40AF] bg-blue-50 px-3 py-1 rounded-full uppercase tracking-wider block w-fit mx-auto">
-            Your Dream • Our Guidance • Your Success
+            Your Dream • Your Hard work with Guidance • Your Success
           </span>
           <h1 className="text-3xl font-display font-medium text-dark tracking-tight leading-[1.12]">
             Dream High. <br />
-            Achieve Your <span className="font-serif italic text-[#1E40AF]">Mission</span>
+            Achieve the <span className="font-serif italic text-[#1E40AF]">Highest</span>
           </h1>
           <p className="text-gray-500 font-light text-[11px] leading-relaxed max-w-xs mx-auto">
-            Promoted by veteran IAS officers with over 30 years of administrative excellence to transform competitive aspirations into verified success.
+            Promoted by veteran former IAS officers with more than 30 years of excellence in administration.Their experience can transform the Aspirants to achieve their Mission.
           </p>
           <div className="pt-2">
             <button

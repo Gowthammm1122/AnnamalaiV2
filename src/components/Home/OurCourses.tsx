@@ -27,52 +27,52 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
 
   const COURSES = [
     {
-      name: 'UPSC Civil Services',
+      name: 'UPSC',
       src: Civil,
       bg: '#1e4fc0',
-      desc: 'Specialized premium training for all 27 categories of premier central posts (IAS, IPS, IFS, and Central Services Group A & B).',
+      desc: 'Specialized premium training for IAS, IFS, IPS,Central Services Group A & B.',
       isLarge: true
     },
     {
-      name: 'TNPSC Civil Services',
+      name: 'TNPSC',
       src: Combined,
       bg: '#1e4fc0',
-      desc: 'Comprehensive state commission path mapping out Group 1 (Deputy Collector, DSP), Group 2/2A, and Group 4 (VAO, Junior Assistant).',
+      desc: 'Combined Civil Services examinations are conducted for recruiting Group 1, Group 2 / 2A & Group 4 posts.',
       isLarge: true
     },
     {
-      name: 'Banking Services',
+      name: 'BANKING',
       src: Banking,
       bg: '#1e4fc0',
-      desc: 'Rigorous computer-based training for Probationary Officers (PO), Specialist Officers (SO), Clerks, and RBI Assistants / Grade A & B Officers.',
+      desc: 'Rigorous training for Probationary Officers (PO), Specialist Officers (SO), clerks and RBI Assistants and Grade A & B Officer examinations.',
       isLarge: true
     },
     {
-      name: 'Insurance Recruitment',
+      name: 'INSURANCE',
       src: Insurance,
       bg: '#1e4fc0',
-      desc: 'Specialized curriculum for Assistant Administrative Officer (AAO) and Assistant Grade posts across top participating firms.',
+      desc: 'Specialized curriculum based training is given for Assistant, Administrative Officer (AAO), Assistant Grade, Clerk and other posts across top participating Insurance Companies.',
       isLarge: false
     },
     {
-      name: 'TNUSRB Police SI',
+      name: 'TNUSRB Sub Inspector of Police',
       src: Sub,
       bg: '#1e4fc0',
       desc: 'Targeted physical and academic model tailored to address Tamil Nadu Uniformed Services Recruitment Board SI parameters.',
       isLarge: false
     },
     {
-      name: 'Railway Board (RRB)',
+      name: 'RAILWAY RECRUITMENT BOARD (RRB)',
       src: Railway,
       bg: '#1e4fc0',
-      desc: 'Targeted curriculum for Non-Technical Popular Posts, Junior Engineer, Senior Section Engineer, Assistant Loco Pilot, and Group-D.',
+      desc: 'Targeted curriculum based training for Non-Technical Popular Posts, Junior Engineer, Senior Section Engineer, Assistant Loco Pilot, and Group-D.',
       isLarge: false
     },
     {
-      name: 'Staff Selection Commission (SSC)',
+      name: 'STAFF SELECTION COMMISSION (SSC)',
       src: SSC,
       bg: '#1e4fc0',
-      desc: 'Premier training program for various key ministerial, department, and organizational posts within the Government of India.',
+      desc: 'Premier training program for various key ministerial, department and organizational posts in the government of India.',
       isLarge: true
     },
    

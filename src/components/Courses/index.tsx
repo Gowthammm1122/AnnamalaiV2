@@ -27,21 +27,21 @@ const COURSES_DATA: CourseItem[] = [
     level: "Degree Level",
     capacity: "Personal Care Focused Batches",
     color: "#1E40AF",
-    description: "Specialized premium training for all 27 categories of premier central posts (IAS, IPS, IFS, and Central Services Group A & B). The curriculum emphasizes framing public policies, mental composition, and conceptual clarity required to crack the premier evaluation board.",
+    description: "Specialized premium training for all the categories of premier central posts (IAS, IPS, IFS and Central Services Group A & B). The curriculum emphasizes framing public policies, mental composition and conceptual clarity required to crack the premier examinations.",
     introPoints: [
       "Coaching for IAS, IPS, IFS & Group A/B posts",
       "Conceptual clarity & disciplined approach",
-      "Comprehensive Preliminary & Main integration"
+      "Comprehensive Preliminary ,Main & Personality Test Integration"
     ],
     features: [
-      "Daily, Weekly, and Monthly diagnostic tests",
+      "Daily, Weekly and Monthly diagnostic tests",
       "Answer writing practice and evaluation under active panel codes",
-      "Detailed mock interviews guided by Dr P. Annamalai, IAS & Mr. C. Kamaraj, IAS"
+      "Detailed mock interviews guided by Dr P. Annamalai, IAS(R) & Mr. C. Kamaraj, IAS(R)"
     ],
     syllabus: [
       "Stage 1: Preliminary Exam (General Studies & Qualifying CSAT)",
       "Stage 2: Main Examination (2 Eligibility Papers + 7 Descriptive Merit Papers)",
-      "Stage 3: Personality Test / Interview Panel (275 Marks Marks Management)"
+      "Stage 3: Personality Test  (275 Marks)"
     ]
   },
   {
@@ -54,7 +54,7 @@ const COURSES_DATA: CourseItem[] = [
     color: "#065F46",
     description: "Comprehensive state commission path mapping out Group 1 (Deputy Collector, DSP), Group 2/2A (Municipal Commissioner, Sub-Registrar, Assistant), and Group 4 (VAO, Junior Assistant). Covers comprehensive General Studies grids and deep regional Tamil language modules.",
     introPoints: [
-      "Covers Deputy Collector, DSP, VAO & Assistant posts",
+      "Covers Deputy Collector, DSP and other posts",
       "Deep focus on Unit 8 & Unit 9 administration systems",
       "Tamil Language eligibility & General Studies synthesis"
     ],
@@ -78,14 +78,14 @@ const COURSES_DATA: CourseItem[] = [
     level: "Any Degree Level",
     capacity: "Speed-Drill Specialized Batches",
     color: "#5B21B6",
-    description: "Rigorous computer-based training for Probationary Officers (PO), Specialist Officers (SO), Clerks, and RBI Assistants / Grade A & B Officers. Focuses heavily on high-speed quantitative aptitude, analytical reasoning shortcuts, and financial awareness parameters.",
+    description: "Rigorous training for Probationary Officers (PO), Specialist Officers (SO), Clerks, and RBI Assistants / Grade A & B Officers. Focuses heavily on high-speed quantitative aptitude, analytical reasoning shortcuts, and financial awareness parameters.",
     introPoints: [
-      "Targeting IBPS, SBI, and RBI Officer & Clerical posts",
+      "Targeting IBPS, SBI and RBI Officer & Clerical posts",
       "High-speed computer-based simulation environments",
       "Comprehensive shortcuts for quantitative and verbal sections"
     ],
     features: [
-      "Daily computer-based testing (CBT) assessing real-time speed parameters",
+      "Daily assessing real-time speed parameters",
       "Descriptive analytical test series exclusively engineered for PO candidates",
       "Custom reference frameworks for banking awareness and general economics"
     ],
@@ -97,13 +97,13 @@ const COURSES_DATA: CourseItem[] = [
   },
   {
     id: "insurance-recruitment",
-    name: "Insurance Corporation Recruitment (LIC, GIC, NIACL, UIIC)",
+    name: "Insurance Companies (LIC, GIC, NIACL, UIIC)",
     category: "banking-insurance",
     duration: "Regular Selection Batches",
     level: "Any Degree Standard",
     capacity: "Targeted Merit Groups",
     color: "#B45309",
-    description: "Specialized curriculum for Assistant Administrative Officer (AAO) and Assistant Grade posts across top participating firms including LIC, NICL, OIC, UIIC, NIACL, and GIC. Combines objective scoring accuracy with dedicated professional interview training panels.",
+    description: "Specialized curriculum for Assistant Administrative Officer (AAO) and Assistant Grade posts across top participating firms including LIC, NICL, OIC, UIIC, NIACL and GIC. Combines objective scoring accuracy with dedicated professional interview training panels.",
     introPoints: [
       "Coaching for Assistant Administrative Officer (AAO) & Assistant Grades",
       "Integrated multi-stage computer-based test curriculum",
@@ -128,16 +128,16 @@ const COURSES_DATA: CourseItem[] = [
     level: "10th / ITI to Any Degree",
     capacity: "Technical & Non-Technical Batches",
     color: "#9A3412",
-    description: "Targeted curriculum for Non-Technical Popular Posts (NTPC Traffic Assistants, etc.), Junior Engineer (JE), Senior Section Engineer (SSE), Assistant Loco Pilot (ALP), and Group-D. Built around high-yield mathematics matrices, reasoning diagnostics, and general awareness maps.",
+    description: "Targeted curriculum for Non-Technical Popular Posts (NTPC Traffic Assistants, etc.), Junior Engineer (JE), Senior Section Engineer (SSE), Assistant Loco Pilot (ALP) and Group-D post. Built around high-yield mathematics matrices, reasoning diagnostics and general awareness maps.",
     introPoints: [
-      "Coaching for RRB NTPC, JE, SSE, ALP, and Group-D tracks",
-      "Focus on General Intelligence, Test of Reasoning, and General Awareness",
+      "Coaching for NTPC, JE, SSE, ALP and Group-D posts by RRB",
+      "Focus on General Intelligence, Test of Reasoning and General Awareness",
       "Comprehensive strategy for multi-stage Computer Based Tests (CBT-1 & CBT-2)"
     ],
     features: [
       "Customized printed books and notes mapped accurately to RRB criteria",
       "Specialized shortcut classes for Mathematics and analytical logic puzzles",
-      "Guidance for subsequent stages including Typing Tests, PET, and skill alignments"
+      "Guidance for subsequent stages including Typing Tests, PET and skill alignments"
     ],
     syllabus: [
       "Stage 1: CBT-1 Preliminary Exam (Qualifying Math, Reasoning, General Awareness)",
@@ -154,16 +154,16 @@ const COURSES_DATA: CourseItem[] = [
     level: "Matric to Any Degree Level",
     capacity: "Central Ministries Core Batches",
     color: "#0369A1",
-    description: "Premier training program for various key ministerial, department, and organizational posts within the Government of India. Prepares candidates comprehensively for CGL, CHSL, MTS (Non-Technical), Stenographer Grade C & D, Junior Engineer (JE), CAPF, and CISF.",
+    description: "Premier training program for various key Ministerial, Department and Organizational posts within the Government of India.The Academy prepares the candidates comprehensively for Combined Graduate Level(CGL), Combined Higher Secondary Level(CHSL), Multi Tasking Staff(MTS) (Non-Technical), Stenographer Grade C & D, Junior Engineer (JE), CAPF and CISF.",
     introPoints: [
-      "Recruitment path for central ministries and organizations",
+      "Recruitment path for Central Ministries and Organizations",
       "Rigorous tracking of Tier-1 and Compulsory Tier-2 paper parameters",
       "Data Entry Speed Test (DEST) and computer knowledge mapping"
     ],
     features: [
-      "Bilingual class architecture providing precise subject delivery",
-      "Daily evaluations addressing mathematical abilities and english comprehension tracking",
-      "Specialized modules for statistical additions (JSO / Paper II & III components)"
+      "Bilingual class architecture providing precise subject delivery.",
+      "Daily evaluations addressing mathematical abilities and english comprehension tracking.",
+      "Specialized modules for statistical additions (JSO / Paper II & III components)."
     ],
     syllabus: [
       "Tier 1 CBT: General Intelligence, General Awareness, Quantitative Aptitude, English Comprehension",
@@ -180,22 +180,22 @@ const COURSES_DATA: CourseItem[] = [
     level: "Any Degree Level",
     capacity: "Uniformed Services Dedicated Batches",
     color: "#1E3A8A",
-    description: "Targeted physical and academic model tailored to address Tamil Nadu Uniformed Services Recruitment Board SI parameters. Maximizes score output across objective written metrics, qualifying benchmarks, and administrative viva-voce rounds.",
+    description: "Targeted physical and academic model tailored to address Tamil Nadu Uniformed Services Recruitment Board SI parameters. Maximizes score output across objective written metrics, qualifying benchmarks and administrative viva-voce rounds.",
     introPoints: [
-      "Specialized preparation for Sub-Inspector of Police positions",
+      "Specialized preparation for the posts Sub-Inspector of Police.",
       "Integrated balance between objective written metrics and physical strategies",
       "Viva-voce performance coaching under experienced advisory panels"
     ],
     features: [
       "Complete study books and printed evaluation content as per TNUSRB syllabus",
       "Performance benchmarking across objective parameters and current affairs summaries",
-      "Exclusive guidance for physical test metrics (PMT, ET, and Physical Efficiency Tests)"
+      "Exclusive guidance for physical test metrics (PMT, ET and Physical Efficiency Tests)"
     ],
     syllabus: [
       "Stage 1: Written Examination (70 Marks Objective Evaluation Structure)",
-      "Stage 2: Physical Measurement Test (PMT), Endurance Test (ET), and Physical Efficiency Test (PET)",
+      "Stage 2: Physical Measurement Test (PMT), Endurance Test (ET) and Physical Efficiency Test (PET)",
       "Stage 3: Viva-Voce Assessment Board Panel (10 Marks Core Metrics)",
-      "Stage 4: Special Marks Optimization (5 Marks allocation for NCC, NSS, and Sports Profiles)"
+      "Stage 4: Special Marks Optimization (5 Marks allocation for NCC, NSS and Sports Profiles)"
     ]
   }
 ];
@@ -227,7 +227,7 @@ const CoursesHero = () => {
           </span>
           
           <h1 className="text-4xl md:text-5.5xl font-display font-medium text-dark tracking-tight leading-tight">
-            Integrated Curriculums & <br/>
+            Integrated Curricula & <br/>
             Strategic <span className="italic font-normal font-serif text-[#1e40af]">Competitive Classrooms</span>
           </h1>
           

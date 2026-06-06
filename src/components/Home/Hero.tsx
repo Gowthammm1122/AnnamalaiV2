@@ -23,14 +23,14 @@ const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
               transition={{ duration: 0.8 }}
             >
               <div className="inline-block px-3 py-1 bg-primary-light text-primary text-[10px] font-bold tracking-[0.2em] uppercase rounded mb-8">
-                Established Excellence since 2008
+                LEARN EXCEL ACHIEVE SERVE
               </div>
               <h1 className="text-5xl md:text-[80px] leading-[0.95] font-display text-dark font-normal mb-8">
                 Dr P. Annamalai <br/>
                 <span className="italic text-primary font-serif">IAS Academy</span>
               </h1>
               <p className="text-base md:text-lg text-gray-500 leading-relaxed max-w-lg mb-12 font-light">
-                Providing strategic guidance and comprehensive mentorship for civil service aspirants. Join a legacy of leaders who have shaped the nation's future through our rigorous training modules.
+               We provide strategic guidance and comprehensive mentorship to government service Aspirants. Do join a legacy of leaders who have shaped the Nation's future through our rigorous training modules.
               </p>
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
                 <button 
@@ -64,7 +64,7 @@ const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
               {/* Top Row: Decorative badge & quote mark */}
               <div className="relative z-10 flex justify-between items-center">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-light border border-blue-150 rounded-full">
-                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#1e4fc0]">Aspirants' Vision</span>
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#1e4fc0]">Vision of Aspirants</span>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-gray-100 shadow-xs group-hover:scale-105 transition-transform duration-300">
                   <Quote className="w-3.5 h-3.5 text-primary" />
@@ -74,14 +74,14 @@ const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
               {/* Quote Content Section */}
               <div className="relative z-10 my-auto py-4">
                 <p className="text-lg md:text-xl font-display text-gray-700 italic leading-relaxed font-normal">
-                  "Success in civil services is not defined by chance, but by the systematic depth of your conviction and the clarity of your strategic path."
+                  "Success in the competitive examinations does not depend upon chance, but on the systematic planning,hard work,perseverance and the clarity of your strategic path."
                 </p>
               </div>
 
               {/* Footer Row: Clean, minimalist academy branding */}
               <div className="relative z-10 flex items-center space-x-3 pt-4 border-t border-gray-150/60">
                 
-                <p className="text-[10px] font-bold uppercase tracking-widest text-[#1e4fc0] font-sans">Dr P. Annamalai IAS Academy</p>
+                <p className="text-[10px] font-medium tracking-widest text-[#1e4fc0] font-sans">Dr P. ANNAMALAI IAS ACADEMY</p>
               </div>
             </motion.div>
           </div>

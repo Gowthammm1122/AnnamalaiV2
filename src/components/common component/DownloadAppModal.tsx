@@ -74,77 +74,77 @@ const DownloadAppModal = () => {
             className="absolute inset-0 bg-black/60 backdrop-blur-sm pointer-events-auto"
           />
 
-          {/* Modal Content Card */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: "spring", duration: 0.5 }}
-            className="relative w-full max-w-[340px] overflow-visible z-10 pointer-events-auto flex flex-col items-center select-none"
-          >
-            {/* Close Button */}
-            <button
-              onClick={handleClose}
-              className="absolute top-[17%] right-[8%] p-1.5 text-white/70 hover:text-white bg-black/35 hover:bg-black/50 rounded-full transition-colors cursor-pointer z-20 border-none outline-none"
-              aria-label="Close dialog"
+          {/* Centering Wrapper to account for the transparent right margin of the image */}
+          <div className="w-full max-w-[480px] transform translate-x-[4%] z-10 pointer-events-auto flex flex-col items-center">
+            {/* Modal Content Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="relative w-full overflow-visible flex flex-col items-center select-none"
             >
-              <X className="w-4 h-4" />
-            </button>
+              {/* Close Button */}
+              <button
+                onClick={handleClose}
+                className="absolute top-[12%] right-[14%] md:top-[10%] md:right-[15%] p-1.5 text-white/70 hover:text-white bg-black/35 hover:bg-black/50 rounded-full transition-colors cursor-pointer z-20 border-none outline-none"
+                aria-label="Close dialog"
+              >
+                <X className="w-5 h-5 md:w-5 md:h-5" />
+              </button>
 
-            {/* Custom Rocket.png Card Image */}
-            <img
-              src={RocketImg}
-              alt="Download Academy App"
-              className="w-full h-auto object-contain block drop-shadow-2xl"
-            />
+              {/* Custom Rocket.png Card Image */}
+              <img
+                src={RocketImg}
+                alt="Download Academy App"
+                className="w-full h-auto object-contain block drop-shadow-2xl"
+              />
 
-            {/* Content overlay matching the white area of the card */}
-            <div className="absolute bottom-[3.5%] left-0 right-0 h-[42%] flex flex-col items-center justify-between px-5 text-center z-10">
-              <div className="flex-1 flex flex-col items-center justify-center">
-                <h3 className="text-[19px] font-display font-normal text-gray-800 leading-tight mb-0.5">
-                  Start Your <span className="italic text-[#1e4fc0] font-serif">Learning Journey</span>
-                </h3>
-                <p className="text-[10px] font-sans text-gray-500 font-light leading-relaxed max-w-[240px]">
-                  Download our official academy app from Play Store or App Store to unlock premium learning materials.
+              {/* Content overlay matching the white area of the card */}
+              <div className="absolute bottom-[4.5%] md:bottom-[4%] left-0 md:left-6 w-[80%] h-[48%] flex flex-col items-center justify-between px-5 md:px-4 text-center z-10">
+                <div className="flex-1 flex flex-col items-center justify-center gap-1.5">
+                  <h3 className="text-[18px] sm:text-[20px] md:text-[22px] font-display font-medium text-gray-800 leading-tight">
+                    Start Your <span className="italic text-[#1e4fc0] font-serif font-semibold">Learning Journey</span>
+                  </h3>
+                  <p className="text-[10px] sm:text-[11px] md:text-[11.5px] font-sans text-gray-500 font-light leading-relaxed max-w-[240px] sm:max-w-[260px] md:max-w-[270px]">
+                    Download our official academy app from Play Store or App Store to unlock premium learning materials.
+                  </p>
+                </div>
+
+                {/* Dual Download Buttons Grid */}
+                <div className="w-[90%] grid grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
+                  {/* Android Button */}
+                  <button
+                    onClick={handleDownloadAndroid}
+                    className="flex items-center justify-center gap-1.5 md:gap-2.5 px-2 md:px-3 py-2 md:py-2.5 bg-black hover:bg-gray-900 text-white rounded-xl active:scale-[0.97] transition-all cursor-pointer text-left w-full shadow-md border-none outline-none"
+                  >
+                    <img src={PlayStoreLogo} alt="Play Store" className="w-[16px] h-[16px] md:w-[20px] md:h-[20px] object-contain" />
+                    <div className="flex flex-col items-start leading-tight">
+                      <span className="text-[6px] md:text-[7.5px] tracking-wider uppercase text-gray-400 font-medium">Get it on</span>
+                      <span className="text-[9px] md:text-[11px] font-bold text-white font-sans">Google Play</span>
+                    </div>
+                  </button>
+
+                  {/* iOS Button */}
+                  <button
+                    onClick={handleDownloadIOS}
+                    className="flex items-center justify-center gap-1.5 md:gap-2.5 px-2 md:px-3 py-2 md:py-2.5 bg-black hover:bg-gray-900 text-white rounded-xl active:scale-[0.97] transition-all cursor-pointer text-left w-full shadow-md border-none outline-none"
+                  >
+                    <img src={AppStoreLogo} alt="App Store" className="w-[16px] h-[16px] md:w-[20px] md:h-[20px] object-contain" />
+                    <div className="flex flex-col items-start leading-tight">
+                      <span className="text-[6px] md:text-[7.5px] tracking-wider uppercase text-gray-400 font-medium">Download on</span>
+                      <span className="text-[9px] md:text-[11px] font-bold text-white font-sans">App Store</span>
+                    </div>
+                  </button>
+                </div>
+
+                {/* iOS Org Code Note */}
+                <p className="text-[9.5px] sm:text-[10px] md:text-[11px] font-sans text-gray-400 font-medium tracking-wide mb-1 leading-normal">
+                  * iOS users: Use organization code <span className="font-bold text-[#1e4fc0] uppercase select-all bg-blue-50 px-1 md:px-1.5 py-0.5 rounded">quzwnf</span>
                 </p>
               </div>
-
-              {/* Separator Line */}
-              <div className="w-[90%] h-[1px] bg-gray-100 my-1.5" />
-
-              {/* Dual Download Buttons Grid */}
-              <div className="w-[90%] grid grid-cols-2 gap-2 mb-1.5">
-                {/* Android Button */}
-                <button
-                  onClick={handleDownloadAndroid}
-                  className="flex items-center justify-center gap-2 px-2.5 py-2.5 bg-black hover:bg-gray-900 text-white rounded-xl border border-gray-800 active:scale-[0.97] transition-all cursor-pointer text-left w-full shadow-sm border-none outline-none"
-                >
-                  <img src={PlayStoreLogo} alt="Play Store" className="w-4.5 h-4.5 object-contain" />
-                  <div className="flex flex-col items-start leading-tight">
-                    <span className="text-[6px] tracking-wider uppercase text-gray-400 font-medium">Get it on</span>
-                    <span className="text-[9px] font-bold text-white font-sans">Google Play</span>
-                  </div>
-                </button>
-
-                {/* iOS Button */}
-                <button
-                  onClick={handleDownloadIOS}
-                  className="flex items-center justify-center gap-2 px-2.5 py-2.5 bg-black hover:bg-gray-900 text-white rounded-xl border border-gray-800 active:scale-[0.97] transition-all cursor-pointer text-left w-full shadow-sm border-none outline-none"
-                >
-                  <img src={AppStoreLogo} alt="App Store" className="w-4.5 h-4.5 object-contain" />
-                  <div className="flex flex-col items-start leading-tight">
-                    <span className="text-[6px] tracking-wider uppercase text-gray-400 font-medium">Download on</span>
-                    <span className="text-[9px] font-bold text-white font-sans">App Store</span>
-                  </div>
-                </button>
-              </div>
-
-              {/* iOS Org Code Note */}
-              <p className="text-[10px] font-sans text-gray-400 font-medium tracking-wide mb-1 leading-normal">
-                * iOS users: Use organization code <span className="font-bold text-[#1e4fc0] uppercase select-all bg-blue-50 px-1 rounded">quzwnf</span>
-              </p>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       )}
     </AnimatePresence>

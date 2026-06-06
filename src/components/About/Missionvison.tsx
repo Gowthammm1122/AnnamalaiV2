@@ -38,7 +38,7 @@ const MissionVision = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-gray-500 font-light text-base md:text-lg leading-relaxed max-w-2xl mx-auto mt-4"
           >
-            How Dr P. Annamalai IAS Academy translates elite administrative expertise into proven milestones across state and central examinations.
+            How Dr P. Annamalai IAS Academy translates elite administrative expertise to proven milestones across state and central service examinations.
           </motion.p>
         </div>
 
@@ -66,10 +66,10 @@ const MissionVision = () => {
               
               <div className="space-y-4">
                 <h3 className="text-3xl font-display text-dark tracking-tight leading-tight">
-                  Training aspirants to <span className="italic font-serif text-primary">achieve their mission.</span>
+                  Training the Aspirants to <span className="italic font-serif text-primary">achieve the mission.</span>
                 </h3>
                 <p className="text-gray-500 font-light text-sm sm:text-base leading-relaxed">
-                  To provide a comprehensive, multi-disciplinary educational roadmap that trains aspirants with systematic, consistent discipline to guarantee undeniable success in public service entry.
+                  To provide a comprehensive, multi-disciplinary educational roadmap that trains the Aspirants with systematic, consistent discipline to guarantee undeniable success in public service entry.
                 </p>
               </div>
 
@@ -82,7 +82,7 @@ const MissionVision = () => {
                   <div className="space-y-1">
                     <h4 className="text-xs font-bold text-dark uppercase tracking-wider">Integrated Exam Architecture</h4>
                     <p className="text-gray-500 text-xs font-light leading-relaxed">
-                      Delivering specialized, tailored coaching across UPSC, TNPSC, Banking, Insurance, RRB, SSC, and TNUSRB programs.
+                      Delivering specialized, tailored coaching for UPSC, TNPSC, Banking, Insurance, RRB, SSC, and TNUSRB examinations.
                     </p>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ const MissionVision = () => {
                   <div className="space-y-1">
                     <h4 className="text-xs font-bold text-dark uppercase tracking-wider">Rigorous Evaluative Metrics</h4>
                     <p className="text-gray-500 text-xs font-light leading-relaxed">
-                      Transforming core learning into proven output via an structured sequence of Daily, Weekly, Monthly, and full Mock Tests.
+                      Transforming core learning into proven output via the structured sequence of Daily, Weekly, Monthly and Mock Tests.
                     </p>
                   </div>
                 </div>
@@ -106,7 +106,7 @@ const MissionVision = () => {
                   <div className="space-y-1">
                     <h4 className="text-xs font-bold text-dark uppercase tracking-wider">Personalized Academic Care</h4>
                     <p className="text-gray-500 text-xs font-light leading-relaxed">
-                      Ensuring every student receives close attention, guidance, and high-quality printed study books aligned strictly to active syllabi.
+                      Ensuring every student receives proper attention, guidance and high-quality printed books aligned strictly with the current syllabi.
                     </p>
                   </div>
                 </div>
@@ -163,7 +163,7 @@ const MissionVision = () => {
                   <div className="space-y-1">
                     <h4 className="text-xs font-bold text-dark uppercase tracking-wider">Administrative Legacy Continuity</h4>
                     <p className="text-gray-500 text-xs font-light leading-relaxed">
-                      Leveraging over 30 years of governance experience to prepare candidates for policy administration and public workflow challenges.
+                      Leveraging over 30 years of governance experience to prepare the candidates for policy preparation & administration and public workflow challenges.
                     </p>
                   </div>
                 </div>

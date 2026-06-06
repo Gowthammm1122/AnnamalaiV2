@@ -22,13 +22,13 @@ const AboutContent: React.FC = () => {
       phase: "01",
       badge: "PRELIMINARY STAGE",
       title: "Conceptual Clarity & Objective Training",
-      subtitle: "Focus: Foundation Notes, Printed Books & Daily Diagnostics",
+      subtitle: "Focus: Foundation Notes, Printed Books & Daily,Weekly & Monthly Diagnostics",
       icon: <GraduationCap className="w-5 h-5 text-indigo-600" />,
-      desc: "Aspirants are trained thoroughly on core subject fundamentals. We emphasize building absolute conceptual clarity across the multi-subject syllabi, reinforced by systematic daily and weekly objective testing to measure active memory recall.",
+      desc: "Aspirants are trained thoroughly on core subject fundamentals. We emphasize building absolute conceptual clarity across the multi-subject syllabi, reinforced by systematic daily, weekly and monthly objective tests to measure the active memory recall of the Aspirants.",
       points: [
-        "Comprehensive coaching utilizing custom-prepared notes and specialized printed books mapped directly to the official syllabi.",
-        "Rigorous Daily Tests and Weekly Tests designed to evaluate subject-matter grasp and speed.",
-        "Syllabus coverage tracking across history, polity, geography, economics, mental ability, and general sciences.",
+        "Comprehensive coaching strategy using the customized notes and specialized printed books mapped directly to the official syllabi",
+        "Rigorous Daily Tests, Weekly Tests and Monthly Tests designed to assess subject-matter grasp and speed.",
+        "Syllabus coverage tracking across History, Polity, Geography, Economics, Mental Ability and General Science.",
       ],
       achievement: "Build a rock-solid foundation to comfortably clear objective preliminary cutoff benchmarks.",
     },
@@ -38,13 +38,13 @@ const AboutContent: React.FC = () => {
       title: "Descriptive Mastery & Advanced Evaluation",
       subtitle: "Focus: Monthly Tests, Mock Exams & Detailed Feedback",
       icon: <BookText className="w-5 h-5 text-blue-600" />,
-      desc: "For multi-stage examinations like UPSC and TNPSC Group 1, 2, & 2A, we transition candidates into high-level descriptive answer preparation. Evaluation is handled strictly to meet the precise structural demands of competitive mains boards.",
+      desc: "For multi-stage examinations like UPSC and TNPSC Group 1, 2 & 2A, we transition the candidates to high-level descriptive answer writing level.  Evaluation is handled strictly to meet the precise structural demands of competitive main examinations.",
       points: [
         "Rigorous training under real exam parameters via structured Monthly Tests and full simulated Mock Tests.",
-        "Detailed answer-sheet evaluation providing critical insights on consistency, presentation, and answer writing style.",
-        "Specialized guidance tailored for both conventional descriptive papers and computer-based tests.",
+        "Detailed answer-sheet evaluation providing critical insights on consistency, presentation and answer writing style.",
+        "Specialized guidance tailored for both the conventional descriptive papers and computer-based tests.",
       ],
-      achievement: "Master descriptive presentation and time management to secure maximum final merit scores.",
+      achievement: "Master descriptive presentation and time management to secure the highest final merit scores",
     },
     phase3: {
       phase: "03",
@@ -52,13 +52,13 @@ const AboutContent: React.FC = () => {
       title: "Interview Preparation & Viva-Voce Poise",
       subtitle: "Focus: Personal Care, Strategic Guidance & Confidence",
       icon: <Award className="w-5 h-5 text-amber-600" />,
-      desc: "The final phase prepares candidates for the definitive viva-voce and interview panels. Spearheaded by experienced retired administrators, this training refines delivery, administrative orientation, and mental composition under pressure.",
+      desc: "The final phase prepares the candidates for the definitive viva-voce and interview panels. Spearheaded by the experienced former administrators, this training refines delivery, administrative orientation and mental composition under pressure.",
       points: [
         "One-on-one personal care and attention to identify individual presentation strengths and communication gaps.",
         "Practical, strategic insights regarding real-world governance demands and public policy administration.",
         "Simulated mock interviews replicating authentic board behaviors to maximize final selection panel marks.",
       ],
-      achievement: "Project top-tier administrative confidence to secure exceptional marks in the final interview.",
+      achievement: "Instil top-tier administrative confidence to secure the exceptional marks in the Final Interview & Personality test.",
     },
   } as const;
 
@@ -78,11 +78,6 @@ const AboutContent: React.FC = () => {
         <div>
           {/* Header Section */}
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5">
-              <span className="text-[9px] font-bold text-[#1E40AF] tracking-[0.2em] uppercase">
-                LEARN • EXCEL • ACHIEVE • SERVE
-              </span>
-            </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-medium text-dark tracking-tight leading-tight pb-5">
               About Dr P. Annamalai IAS Academy
@@ -108,15 +103,11 @@ const AboutContent: React.FC = () => {
                 </h3>
 
                 <p className="text-gray-500 font-light text-sm md:text-base leading-relaxed">
-                 Promoted by veteran IAS officers with 30+ years of service. Delivering custom study materials, comprehensive facilities, and intensive test frameworks for assured exam success.
+                  The Academy provides custom study materials, comprehensive facilities and intensive Daily, Weekly & Monthly tests to ensure the success of the Aspirants in the target Examination.
                 </p>
               </div>
 
-              <div className="pt-6 border-t border-white/10 flex items-center justify-between text-black relative z-20">
-                <span className="text-xs font-semibold tracking-wider uppercase">
-                  30+ YEARS ADMINISTRATIVE SERVICE
-                </span>
-              </div>
+
             </div>
 
             {/* Key Value Pillars */}
@@ -127,7 +118,7 @@ const AboutContent: React.FC = () => {
                 </div>
                 <h4 className="text-base font-semibold text-dark tracking-tight">Experienced Faculty</h4>
                 <p className="text-gray-500 font-light text-xs md:text-sm leading-relaxed">
-                  Aspirants are guided by an exceptional team of subject-wise faculties possessing vast experience in teaching for various state and central competitive streams.
+                  Aspirants are guided by an exceptional team of subject-wise faculties possessing vast experience in teaching for various state and central competitive examinations.
                 </p>
               </div>
 
@@ -137,7 +128,7 @@ const AboutContent: React.FC = () => {
                 </div>
                 <h4 className="text-base font-semibold text-dark tracking-tight">Personal Care & Attention</h4>
                 <p className="text-gray-500 font-light text-xs md:text-sm leading-relaxed">
-                  We maintain a rigorous focus on individual development, tracking progress closely so that every student is equipped to overcome concept gaps.
+                  The Academy maintains a rigorous focus on individual development, tracking progress closely so that every student is equipped to overcome concept gaps.
                 </p>
               </div>
 
@@ -147,7 +138,7 @@ const AboutContent: React.FC = () => {
                 </div>
                 <h4 className="text-base font-semibold text-dark tracking-tight">Complete Test Matrix</h4>
                 <p className="text-gray-500 font-light text-xs md:text-sm leading-relaxed">
-                  Our comprehensive routine drives consistency through an organized sequence of Daily Tests, Weekly Tests, Monthly Tests, and mock environments.
+                  Our comprehensive routine drives consistency through an organized sequence of Daily Tests, Weekly Tests, Monthly Tests and Mock Test
                 </p>
               </div>
 
@@ -157,7 +148,7 @@ const AboutContent: React.FC = () => {
                 </div>
                 <h4 className="text-base font-semibold text-dark tracking-tight">Affordable Fees</h4>
                 <p className="text-gray-500 font-light text-xs md:text-sm leading-relaxed">
-                  We are deeply committed to offering premium administrative and government job exam guidance at highly accessible and affordable fee structures.
+                  We are mainly committed to offering guidance and training for premium administrative and government service examination at largely acceptable and affordable fee structures.
                 </p>
               </div>
             </div>
@@ -174,7 +165,7 @@ const AboutContent: React.FC = () => {
                   Coaching Strategy & Examination Stages
                 </h3>
                 <p className="text-gray-400 font-light text-xs max-w-xl">
-                  Whether attempting single-stage exams or major multi-tier selections, our structured strategic phases ensure clear, step-by-step progress toward secure rankings.
+                  Whether attempting a single-stage or multi-stage examinations, our structured strategic phases ensure clear, step-by-step progress towards securing the requisite ranks.
                 </p>
               </div>
 
@@ -184,8 +175,8 @@ const AboutContent: React.FC = () => {
                     key={tab}
                     onClick={() => setActiveStrategyTab(tab)}
                     className={`px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all duration-305 ${activeStrategyTab === tab
-                        ? "bg-white text-dark shadow-sm border border-gray-150"
-                        : "text-gray-400 hover:text-dark"
+                      ? "bg-white text-dark shadow-sm border border-gray-150"
+                      : "text-gray-400 hover:text-dark"
                       }`}
                   >
                     {tab === "phase1" ? "Stage I" : tab === "phase2" ? "Stage II" : "Stage III"}

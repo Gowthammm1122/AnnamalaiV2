@@ -80,7 +80,7 @@ const CtaSection = ({ onApply, onRegisterDemo }: CtaSectionProps) => {
                                     Your <span className="italic text-primary-light font-medium">Mission</span> Achieved Here.
                                 </h2>
                                 <p className="text-white/60 text-lg leading-relaxed mb-12 max-w-md">
-                                    Join the academy where dreams transform into service. Start your journey with expert mentorship and a community of high-achievers.
+                                    Join the academy where the Dreams are transformed into reality. Start your journey with expert mentorship and a community of high-achievers.
                                 </p>
 
                                 <div className="flex flex-wrap gap-6">

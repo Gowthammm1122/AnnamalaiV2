@@ -64,23 +64,23 @@ const WhyChooseUs = () => {
     },
     {
       icon: <BookText className="w-6 h-6" />,
-      title: "Excellent Prepared Materials",
-      desc: "Get access to specialized notes and comprehensively printed books curated strictly as per the latest examination syllabi.",
+      title: "Excellently Prepared Materials",
+      desc: "Get access to specialized notes and comprehensively printed books curated strictly as per the latest examination syllabi",
     },
     {
       icon: <CheckSquare className="w-6 h-6" />,
-      title: "Daily & Weekly Routine Tests",
+      title: "Daily & Weekly Tests",
       desc: "Build continuous consistency and evaluate active subject memory recall with our automated daily and weekly test matrices.",
     },
     {
       icon: <Layers className="w-6 h-6" />,
-      title: "Monthly & Simulated Mock Tests",
-      desc: "Acclimate to strict real-world exam time bounds through integrated monthly assessment structures and full-length mocks.",
+      title: "Monthly & Mock Tests",
+      desc: "Acclimatise to strict real-world examination time bounds through integrated monthly assessment structures and full-length mock tests.",
     },
     {
       icon: <ShieldAlert className="w-6 h-6" />,
-      title: "Affordable Fees Structure",
-      desc: "Attain high-end, premium administrative career guidance that is completely pocket-friendly and accessible to all students.",
+      title: "Affordable Fee Structure",
+      desc: "Attain high end, premium administrative career guidance that is completely pocket friendly.",
     },
   ];
 

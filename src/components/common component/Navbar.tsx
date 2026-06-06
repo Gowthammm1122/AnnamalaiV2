@@ -195,10 +195,10 @@ const Navbar = () => {
             onClick={() => {
               window.open("https://web.classplusapp.com/login?orgCode=quzwnf", "_blank", "noopener,noreferrer");
             }}
-            className="px-5 py-2 rounded-full text-[11px] font-bold tracking-[0.06em] uppercase transition-all duration-300 bg-white/60 hover:bg-white text-gray-700 hover:text-gray-900 border border-gray-200/60 flex items-center space-x-1 group shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+            className="px-5 py-2 rounded-full text-[11px] font-bold tracking-[0.06em] uppercase transition-all duration-300 bg-white/60 hover:bg-[#1E40AF] text-gray-700 hover:text-white border border-gray-200/60 hover:border-transparent flex items-center space-x-1 group shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
           >
             <span>Student Portal</span>
-            <ArrowUpRight className="w-3 h-3 transition-transform duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-gray-400 group-hover:text-gray-700" />
+            <ArrowUpRight className="w-3 h-3 transition-transform duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-gray-400 group-hover:text-white" />
           </button>
 
         </div>
@@ -255,10 +255,10 @@ const Navbar = () => {
             onClick={() => {
               window.open("https://web.classplusapp.com/login?orgCode=quzwnf", "_blank", "noopener,noreferrer");
             }}
-            className="w-full py-3.5 bg-white border border-gray-200/80 hover:bg-gray-50 text-gray-800 font-sans font-bold text-xs tracking-widest uppercase rounded-full shadow-sm transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none"
+            className="w-full py-3.5 bg-white border border-gray-200/80 hover:bg-[#1E40AF] hover:border-transparent text-gray-800 hover:text-white font-sans font-bold text-xs tracking-widest uppercase rounded-full shadow-sm transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer outline-none group"
           >
             <span>Student Portal</span>
-            <ArrowUpRight className="w-4 h-4" />
+            <ArrowUpRight className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
           </button>
         </div>
       </div>

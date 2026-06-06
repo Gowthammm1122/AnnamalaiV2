@@ -13,21 +13,21 @@ interface Testimonial {
 const TestimonialsSection = () => {
   const allTestimonials: Testimonial[] = [
     {
-      quote: "The personalized coaching and rigorous feedback loops entirely restructured my mains writing pattern. Dr P. Annamalai's personal insight into GS Paper IV case studies was the defining edge.",
+      quote: "The personalized coaching and rigorous feedback loops entirely restructured my mains writing pattern. Dr P. Annamalai IAS Academy’s insight into GS Paper IV case studies was the defining edge.",
       author: "Swathi S.",
       role: "UPSC Civil Services",
       achievement: "Rank 42, UPSC CSE",
       year: "Cohort 25"
     },
     {
-      quote: "The qualitative answer diagnostics here are unmatched. Unlike commercial centers, Dr Annamalai’s academy treats you as an aspiring administrator whose ethics and logic are actively built day by day.",
+      quote: "The qualitative answer diagnostics are unmatched. Unlike commercial centers, Dr P.Annamalai IAS Academy treats you as an aspiring administrator whose ethics and logic are actively built day by day.",
       author: "Vigneshwaran K.",
       role: "State Services Academy",
       achievement: "Deputy Collector, TNPSC Group I",
       year: "Cohort 24"
     },
     {
-      quote: "Joining the Kolathur campus turned my preparation around. The teaching is exceptionally good with deep subject-wise guidance, and the modern, resource-rich infrastructure built absolute mental clarity.",
+      quote: "After joining the Kolathur campus,it turned my preparation around. The teaching is exceptionally good with deep subject-wise guidance and the modern resource-rich infrastructure built my absolute mental clarity.",
       author: "Priyadharshini M.",
       role: "Civil Services Aspirant",
       achievement: "Mains Selected Candidate",
@@ -41,21 +41,21 @@ const TestimonialsSection = () => {
       year: "Cohort 24"
     },
     {
-      quote: "The teaching is incredibly good and simplified even for beginners, and the academy's infrastructure is top-notch. With premium study resources and a perfect library environment, it completely changed my preparation.",
+      quote: "The teaching is incredibly excellent and simplified even for beginners and the Academy's infrastructure is top-notch. With premium study resources and a perfect library environment, it completely changed my preparation.",
       author: "Arulmozhi P.",
       role: "State Civil Services",
       achievement: "Municipal Commissioner Grade-I",
       year: "Cohort 23"
     },
     {
-      quote: "The teaching methodology is uniquely good, focusing on conceptual clarity, and the custom learning infrastructure is excellent for long study sessions. This level of precise mentoring is extremely rare in India today.",
+      quote: "The teaching methodology is quite good, focusing on conceptual clarity and the custom learning infrastructure is excellent for long study sessions. This level of precise mentoring is extremely rare in India today.",
       author: "Meera K.",
       role: "UPSC Civil Sevices",
       achievement: "IAS Aspirant, AIPMTS Topper",
       year: "Current Cohort"
     },
     {
-      quote: "Every single evaluation sheet returned tells you exactly where your structural alignment lacked coherence. This feedback mechanism is a gold standard for serious candidates.",
+      quote: "Every single evaluation sheet returned tells me exactly where my structural alignment lacked coherence. This feedback mechanism is a gold standard for serious candidates.",
       author: "Balaji Swaminathan",
       role: "State Services Aspirant",
       achievement: "Selected Group-II Officer",
@@ -68,6 +68,7 @@ const TestimonialsSection = () => {
       achievement: "IPS Candidate, Upsc Mains Selected",
       year: "Cohort 25"
     }
+
   ];
 
   const marqueeRef = useRef<HTMLDivElement>(null);
@@ -82,11 +83,11 @@ const TestimonialsSection = () => {
   useEffect(() => {
     let animationFrameId: number;
     let currentX = 0;
-    
+
     // speed constants (pixels per frame)
     const speedNormal = 0.95; // Relaxed elegant default scroll speed
     const speedHover = 0.12;  // Slowed down speed for comfortable reading when hovered
-    
+
     let currentSpeed = speedNormal;
     const el = marqueeRef.current;
     if (!el) return;
@@ -94,7 +95,7 @@ const TestimonialsSection = () => {
     const animate = () => {
       if (!el) return;
       const limit = el.scrollWidth / 2; // Loop at half width (after the first set of items)
-      
+
       const targetSpeed = isHoveredRef.current ? speedHover : speedNormal;
       // Linear interpolation (lerp) for beautiful deceleration/acceleration transitions
       currentSpeed += (targetSpeed - currentSpeed) * 0.05;
@@ -103,7 +104,7 @@ const TestimonialsSection = () => {
       if (Math.abs(currentX) >= limit) {
         currentX = 0;
       }
-      
+
       el.style.transform = `translate3d(${currentX}px, 0, 0)`;
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -118,11 +119,11 @@ const TestimonialsSection = () => {
   return (
     <section className="py-24 bg-white relative overflow-hidden select-none border-t border-b border-gray-100">
       {/* Dynamic Grid Background Accent */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.015]" 
-        style={{ 
-          backgroundImage: "linear-gradient(#1e40af 1.5px, transparent 1.5px), linear-gradient(90deg, #1e40af 1.5px, transparent 1.5px)", 
-          backgroundSize: "60px 60px" 
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.015]"
+        style={{
+          backgroundImage: "linear-gradient(#1e40af 1.5px, transparent 1.5px), linear-gradient(90deg, #1e40af 1.5px, transparent 1.5px)",
+          backgroundSize: "60px 60px"
         }}
       ></div>
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full filter blur-[100px] pointer-events-none -z-10"></div>
@@ -139,7 +140,7 @@ const TestimonialsSection = () => {
           >
             Aspirant Testimonials
           </motion.div>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -155,18 +156,18 @@ const TestimonialsSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-gray-500 font-light text-base md:text-lg leading-relaxed max-w-2xl mx-auto mt-4"
           >
-            Real testimonies of diligence, strategic transformation, and character refinement shared by civil service aspirants who paved their way to administrative success.
+            Real testimonials of diligence,strategic transformation and character refinement shared by civil service aspirants who paved their way to administrative success.
           </motion.p>
         </div>
       </div>
 
       {/* Looping Marquee Wrapper */}
-      <div 
+      <div
         className="relative z-20 w-full overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div 
+        <div
           ref={marqueeRef}
           className="flex gap-6 w-max will-change-transform"
           style={{ transform: "translate3d(0px, 0, 0)" }}
@@ -174,7 +175,7 @@ const TestimonialsSection = () => {
           {/* First set of cards */}
           {allTestimonials.map((item, index) => (
             <div key={`orig-${index}`} className="flex-shrink-0">
-              <div 
+              <div
                 className="w-[340px] sm:w-[420px] h-[250px] sm:h-[270px] bg-[#fbfbfd] border border-gray-150/70 p-6 sm:p-8 rounded-[32px] flex flex-col justify-between transition-all duration-300 hover:border-primary/20 hover:shadow-[0_15px_30px_rgba(30,64,175,0.03)] hover:bg-white cursor-pointer select-none"
               >
                 <div className="space-y-4">
@@ -205,7 +206,7 @@ const TestimonialsSection = () => {
           {/* Second duplicate set of cards for seamless infinite looping */}
           {allTestimonials.map((item, index) => (
             <div key={`dup-${index}`} className="flex-shrink-0">
-              <div 
+              <div
                 className="w-[340px] sm:w-[420px] h-[250px] sm:h-[270px] bg-[#fbfbfd] border border-gray-150/70 p-6 sm:p-8 rounded-[32px] flex flex-col justify-between transition-all duration-300 hover:border-primary/20 hover:shadow-[0_15px_30px_rgba(30,64,175,0.03)] hover:bg-white cursor-pointer select-none"
               >
                 <div className="space-y-4">
