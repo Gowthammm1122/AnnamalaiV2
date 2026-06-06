@@ -4,15 +4,12 @@ import { ArrowRight } from "lucide-react";
 
 //new images
 import Banking from '../../assets/Courses/newbank.png';
-import Civil from '../../assets/Courses/upsc.png';
+import Civil from '../../assets/Courses/collector.png';
 import Combined from '../../assets/Courses/tnpscnew.png';
 import Insurance from '../../assets/Courses/Insurance.png';
 import Railway from '../../assets/Courses/railway.png';
 import Sub from '../../assets/Courses/Subinspector.png';
 import SSC from '../../assets/Courses/optionalnew.png';
-
-//new pics
-
 
 
 interface OurCoursesProps {
