@@ -104,10 +104,10 @@ const DownloadAppModal = () => {
               <div className="absolute bottom-[4.5%] md:bottom-[4%] left-0 md:left-6 w-[80%] h-[48%] flex flex-col items-center justify-between px-5 md:px-4 text-center z-10">
                 <div className="flex-1 flex flex-col items-center justify-center gap-1.5">
                   <h3 className="text-[18px] sm:text-[20px] md:text-[22px] font-display font-medium text-gray-800 leading-tight">
-                    Start Your <span className="italic text-[#1e4fc0] font-serif font-semibold">Learning Journey</span>
+                    Start your journey by learning <span className="italic text-[#1e4fc0] font-serif font-semibold">and securing a government service</span>
                   </h3>
                   <p className="text-[10px] sm:text-[11px] md:text-[11.5px] font-sans text-gray-500 font-light leading-relaxed max-w-[240px] sm:max-w-[260px] md:max-w-[270px]">
-                    Download our official academy app from Play Store or App Store to unlock premium learning materials.
+                    Download our official Academy App from Play Store or App Store to unlock premium learning materials.
                   </p>
                 </div>
 

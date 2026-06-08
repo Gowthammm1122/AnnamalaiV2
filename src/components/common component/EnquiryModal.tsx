@@ -172,13 +172,13 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({
                 {/* Header Text */}
                 <div className="space-y-2 pr-6">
                   <span className="text-[10px] font-bold text-primary tracking-[0.2em] uppercase block">
-                    Direct Admissions Enquiry
+                    Direct Enquiry for Admissions
                   </span>
                   <h3 className="text-2xl font-display font-medium text-dark tracking-tight">
-                    Start Your Civil Service Journey Today
+                    Start your preparation journey for government service today.
                   </h3>
                   <p className="text-xs text-gray-400 font-light leading-relaxed">
-                    Leave your details below and our veteran administrative counseling desk will contact you with batch strategies and structural scholarship details.
+                   Kindly Leave your details below and our administrative counseling desk will contact you with batch strategies and  scholarship details.
                   </p>
                 </div>
 
@@ -227,10 +227,10 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({
                       className="w-full bg-transparent border-b border-gray-200 py-2 text-xs text-dark/80 focus:outline-none focus:border-primary transition-colors cursor-pointer"
                     >
                       <option value="upsc">UPSC Civil Services Examination</option>
-                      <option value="tnpsc">TNPSC Combined Services (Group 1, 2, 4)</option>
-                      <option value="banking">Banking & Insurance Services</option>
-                      <option value="ssc">Staff Selection (SSC) / Railways (RRB)</option>
-                      <option value="tnusrb">TNUSRB Police Inspector & SI</option>
+                      <option value="tnpsc">TNPSC Combined services Examinations (Group 1,2/2A,4)</option>
+                      <option value="banking">Banking and Insurance Company Examinations</option>
+                      <option value="ssc">Staff Selection Commission (SSC) / Railways (RRB) Examinations</option>
+                      <option value="tnusrb">TNUSRB Sub Inspector Examinations</option>
                     </select>
                   </div>
 
@@ -240,7 +240,7 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({
                       type="submit"
                       className="w-full inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-[#1E40AF] hover:bg-blue-800 text-white text-[11px] font-bold uppercase tracking-widest rounded-full shadow-md transition-all active:scale-[0.98] cursor-pointer group"
                     >
-                      <span>Submit Enquiry</span>
+                      <span>Submit</span>
                       <ArrowRight className="w-3.5 h-3.5 transform -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </button>
                   </div>
