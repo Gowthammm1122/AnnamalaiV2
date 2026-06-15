@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { Search, Calendar, ChevronRight, X, Download, CheckCircle2, ArrowRight, FileText } from "lucide-react";
+import { Search, Calendar, ChevronRight, X, Download, CheckCircle2, ArrowRight, FileText, Clock } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 interface ResourceItem {
@@ -60,6 +60,8 @@ const ResourcesContent = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState<"all" | "syllabus" | "pyqs" | "current-affairs" | "optional-lit">("all");
+
+  const SHOW_CARDS = false; // Set to true to restore the interactive search, category filters, and cards
 
   React.useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -189,86 +191,121 @@ const ResourcesContent = () => {
     <section className="py-20 bg-white">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 xl:px-[120px]">
         
-        {/* Category Selector and Search */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-12 border-b border-gray-150">
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2">
-            {(["all", "syllabus", "pyqs", "current-affairs", "optional-lit"] as const).map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all uppercase cursor-pointer border ${
-                  selectedCategory === cat
-                    ? "bg-[#1E40AF] text-white border-transparent shadow-sm"
-                    : "bg-gray-50 text-gray-400 border-gray-150 hover:bg-gray-100 hover:text-dark"
-                }`}
-              >
-                {cat === "all" ? "All Materials" : cat === "syllabus" ? "Syllabus Maps" : cat === "pyqs" ? "PYQs & Mocks" : cat === "current-affairs" ? "Current Affairs" : "Optional Subjects"}
-              </button>
-            ))}
-          </div>
+        {SHOW_CARDS ? (
+          <>
+            {/* Category Selector and Search */}
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-12 border-b border-gray-150">
+              {/* Category Tabs */}
+              <div className="flex flex-wrap gap-2">
+                {(["all", "syllabus", "pyqs", "current-affairs", "optional-lit"] as const).map((cat) => (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all uppercase cursor-pointer border ${
+                      selectedCategory === cat
+                        ? "bg-[#1E40AF] text-white border-transparent shadow-sm"
+                        : "bg-gray-50 text-gray-400 border-gray-150 hover:bg-gray-100 hover:text-dark"
+                    }`}
+                  >
+                    {cat === "all" ? "All Materials" : cat === "syllabus" ? "Syllabus Maps" : cat === "pyqs" ? "PYQs & Mocks" : cat === "current-affairs" ? "Current Affairs" : "Optional Subjects"}
+                  </button>
+                ))}
+              </div>
 
-          {/* Search Box */}
-          <div className="relative w-full md:w-64">
-            <input
-              type="text"
-              placeholder="Search resources..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full text-xs pl-8 pr-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:border-[#1E40AF] text-dark placeholder-gray-400 bg-[#FAFBFD]"
-            />
-            <Search className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-3" />
-          </div>
-        </div>
+              {/* Search Box */}
+              <div className="relative w-full md:w-64">
+                <input
+                  type="text"
+                  placeholder="Search resources..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full text-xs pl-8 pr-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:border-[#1E40AF] text-dark placeholder-gray-400 bg-[#FAFBFD]"
+                />
+                <Search className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-3" />
+              </div>
+            </div>
 
-        {/* Dynamic Resources Grid */}
-        {filteredResources.length === 0 ? (
-          <div className="py-24 text-center">
-            <p className="text-gray-400 font-light text-sm">No matching resources found. Please try another search term.</p>
-          </div>
+            {/* Dynamic Resources Grid */}
+            {filteredResources.length === 0 ? (
+              <div className="py-24 text-center">
+                <p className="text-gray-400 font-light text-sm">No matching resources found. Please try another search term.</p>
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pt-12">
+                {filteredResources.map((res) => (
+                  <motion.div
+                    key={res.id}
+                    layoutId={`card-container-${res.id}`}
+                    onClick={() => setSelectedResource(res)}
+                    className="group flex flex-col justify-between p-6 rounded-3xl border border-gray-150 bg-white hover:border-[#1E40AF]/40 hover:shadow-md transition-all duration-300 cursor-pointer relative overflow-hidden"
+                  >
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center">
+                        <span className="text-[9px] font-bold text-[#1E40AF] bg-blue-50 px-2.5 py-1 rounded-full uppercase tracking-widest">
+                          {res.badge}
+                        </span>
+                        <span className="text-[10px] text-gray-400 font-medium flex items-center gap-1">
+                          <FileText className="w-3.5 h-3.5 text-[#1e4fc0]/60" />
+                          {res.size}
+                        </span>
+                      </div>
+
+                      <div className="space-y-2">
+                        <h3 className="text-md font-display font-medium text-dark leading-snug group-hover:text-[#1E40AF] transition-colors duration-200">
+                          {res.title}
+                        </h3>
+                        <p className="text-gray-400 font-light text-xs line-clamp-3 leading-relaxed">
+                          {res.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="pt-6 border-t border-gray-100 mt-6 flex items-center justify-between">
+                      <span className="text-[11px] text-gray-400 font-light flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5 text-blue-500/80" />
+                        {res.date}
+                      </span>
+                      <span className="text-[10px] font-bold text-[#1E40AF] tracking-widest uppercase flex items-center gap-1">
+                        Details
+                        <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      </span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pt-12">
-            {filteredResources.map((res) => (
-              <motion.div
-                key={res.id}
-                layoutId={`card-container-${res.id}`}
-                onClick={() => setSelectedResource(res)}
-                className="group flex flex-col justify-between p-6 rounded-3xl border border-gray-150 bg-white hover:border-[#1E40AF]/40 hover:shadow-md transition-all duration-300 cursor-pointer relative overflow-hidden"
+          <div className="py-12 flex flex-col items-center justify-center text-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-md p-8 rounded-3xl border border-gray-150 bg-gradient-to-br from-white to-[#FAFBFD] shadow-sm relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-blue-500 to-[#1e40af]" />
+              <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-[#1E40AF] mx-auto mb-6">
+                <Clock className="w-6 h-6 animate-pulse" />
+              </div>
+              <h3 className="text-xl font-display font-semibold text-dark mb-3">
+                Resources Coming Soon
+              </h3>
+              <p className="text-gray-400 font-light text-xs leading-relaxed mb-6">
+                We are currently compiling the latest current affairs digests, micro-syllabus maps, solved question papers, and study guides. Check back soon!
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  navigate("/contact");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="px-6 py-3 bg-[#1E40AF] hover:bg-blue-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 mx-auto cursor-pointer group"
               >
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[9px] font-bold text-[#1E40AF] bg-blue-50 px-2.5 py-1 rounded-full uppercase tracking-widest">
-                      {res.badge}
-                    </span>
-                    <span className="text-[10px] text-gray-400 font-medium flex items-center gap-1">
-                      <FileText className="w-3.5 h-3.5 text-[#1e4fc0]/60" />
-                      {res.size}
-                    </span>
-                  </div>
-
-                  <div className="space-y-2">
-                    <h3 className="text-md font-display font-medium text-dark leading-snug group-hover:text-[#1E40AF] transition-colors duration-200">
-                      {res.title}
-                    </h3>
-                    <p className="text-gray-400 font-light text-xs line-clamp-3 leading-relaxed">
-                      {res.description}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t border-gray-100 mt-6 flex items-center justify-between">
-                  <span className="text-[11px] text-gray-400 font-light flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-blue-500/80" />
-                    {res.date}
-                  </span>
-                  <span className="text-[10px] font-bold text-[#1E40AF] tracking-widest uppercase flex items-center gap-1">
-                    Details
-                    <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                  </span>
-                </div>
-              </motion.div>
-            ))}
+                Get Notified
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+              </button>
+            </motion.div>
           </div>
         )}
 
