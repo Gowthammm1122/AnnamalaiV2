@@ -116,7 +116,6 @@ const FacultySection = () => {
 
   // Update active index based on scroll progress
   useEffect(() => {
-    if (isMobile) return;
     return scrollYProgress.on("change", (v) => {
       const segmentWidth = 1 / FACULTY.length;
       const slideDuration = segmentWidth * 0.55; // aligned with slideDuration in FacultyImage
@@ -131,11 +130,12 @@ const FacultySection = () => {
       }
       setActiveIndex(index);
     });
-  }, [scrollYProgress, FACULTY.length, isMobile]);
+  }, [scrollYProgress, FACULTY.length]);
 
-  if (isMobile) {
-    return (
-      <section className="bg-white py-14 px-4 border-b border-gray-100">
+  return (
+    <>
+      {/* Mobile Layout */}
+      <section className="block md:hidden bg-white py-14 px-4 border-b border-gray-100 animate-fade-in">
         <div className="max-w-[1440px] mx-auto">
           <div className="text-center mb-10">
             <div className="inline-block px-3 py-1 bg-primary-light text-primary text-[9px] font-bold tracking-[0.3em] uppercase rounded-full mb-3">
@@ -151,10 +151,10 @@ const FacultySection = () => {
             {FACULTY.map((f, i) => (
               <div
                 key={i}
-                className="flex gap-4 p-4 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
+                className="flex gap-4 p-4 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 animate-fade-in"
               >
-                <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 border border-gray-100 shadow-sm">
-                  <img src={f.image} className="w-full h-full object-cover" alt={f.name} />
+                <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 border border-gray-100 shadow-sm bg-gray-50">
+                  <img src={f.image} className="w-full h-full object-cover" alt={f.name} width="80" height="80" loading="lazy" />
                 </div>
                 <div className="flex-1 flex flex-col justify-center">
                   <span className="text-[10px] font-bold text-primary tracking-wider uppercase">{f.role}</span>
@@ -168,77 +168,76 @@ const FacultySection = () => {
           </div>
         </div>
       </section>
-    );
-  }
 
-  return (
-    <section ref={containerRef} className="relative bg-white" style={{ height: `${FACULTY.length * 100}vh` }}>
-      <div className="sticky top-0 h-screen w-full flex flex-col lg:flex-row overflow-hidden">
-        
-        {/* Left Side: Editorial Text */}
-        <div className="w-full lg:w-1/2 h-full flex flex-col pt-32 px-6 sm:px-12 xl:px-[120px] bg-white z-20 border-b lg:border-b-0 lg:border-r border-gray-100 relative">
-          <div className="max-w-xl w-full text-left mr-auto">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 40 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="inline-block px-4 py-1.5 bg-primary-light text-primary text-[10px] font-bold tracking-[0.4em] uppercase rounded-full mb-10">
-                MEET THE MENTORS
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[50px] font-display text-dark leading-tight mb-8 font-normal tracking-tight">
-                {FACULTY[activeIndex].name}
-              </h2>
-              <div className="flex flex-col items-start space-y-8">
-                <span className="text-2xl font-display italic text-primary/80">{FACULTY[activeIndex].role}</span>
-                <p className="text-gray-500 leading-relaxed text-base lg:text-lg max-w-sm font-light">
-                  {FACULTY[activeIndex].desc}
-                </p>
-                <div className="pt-10 flex items-center gap-12">
-                   <div className="flex -space-x-3">
-                      {FACULTY.map((f, i) => (
-                        <div 
-                          key={i} 
-                          className={`w-10 h-10 rounded-full border-2 border-white overflow-hidden transition-all duration-500 ${i === activeIndex ? 'scale-125 z-10 border-primary' : 'opacity-40'}`}
-                        >
-                          <img src={f.image} className="w-full h-full object-cover" alt="" />
-                        </div>
-                      ))}
-                   </div>
+      {/* Desktop Layout */}
+      <section ref={containerRef} className="hidden md:block relative bg-white animate-fade-in" style={{ height: `${FACULTY.length * 100}vh` }}>
+        <div className="sticky top-0 h-screen w-full flex flex-col lg:flex-row overflow-hidden">
+          
+          {/* Left Side: Editorial Text */}
+          <div className="w-full lg:w-1/2 h-full flex flex-col pt-32 px-6 sm:px-12 xl:px-[120px] bg-white z-20 border-b lg:border-b-0 lg:border-r border-gray-100 relative">
+            <div className="max-w-xl w-full text-left mr-auto">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, x: -40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 40 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className="inline-block px-4 py-1.5 bg-primary-light text-primary text-[10px] font-bold tracking-[0.4em] uppercase rounded-full mb-10">
+                  MEET THE MENTORS
                 </div>
-              </div>
-            </motion.div>
+                <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[50px] font-display text-dark leading-tight mb-8 font-normal tracking-tight">
+                  {FACULTY[activeIndex].name}
+                </h2>
+                <div className="flex flex-col items-start space-y-8">
+                  <span className="text-2xl font-display italic text-primary/80">{FACULTY[activeIndex].role}</span>
+                  <p className="text-gray-500 leading-relaxed text-base lg:text-lg max-w-sm font-light">
+                    {FACULTY[activeIndex].desc}
+                  </p>
+                  <div className="pt-10 flex items-center gap-12">
+                     <div className="flex -space-x-3">
+                        {FACULTY.map((f, i) => (
+                          <div 
+                            key={i} 
+                            className={`w-10 h-10 rounded-full border-2 border-white overflow-hidden transition-all duration-500 ${i === activeIndex ? 'scale-125 z-10 border-primary' : 'opacity-40'}`}
+                          >
+                            <img src={f.image} className="w-full h-full object-cover" alt="" />
+                          </div>
+                        ))}
+                     </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Vertical Counter - Moved to right side of left panel for balance */}
+            <div className="absolute right-12 bottom-12 flex flex-col gap-12 font-display text-4xl lg:text-7xl opacity-5">
+              {FACULTY.map((_, i) => (
+                <span key={i} className={`transition-opacity duration-500 ${i === activeIndex ? 'opacity-100' : 'opacity-20'}`}>
+                  0{i + 1}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* Vertical Counter - Moved to right side of left panel for balance */}
-          <div className="absolute right-12 bottom-12 flex flex-col gap-12 font-display text-4xl lg:text-7xl opacity-5">
-            {FACULTY.map((_, i) => (
-              <span key={i} className={`transition-opacity duration-500 ${i === activeIndex ? 'opacity-100' : 'opacity-20'}`}>
-                0{i + 1}
-              </span>
-            ))}
+          {/* Right Side: Stacking images */}
+          <div className="w-full lg:w-1/2 h-full relative bg-gray-50 overflow-hidden">
+            {FACULTY.map((f, i) => {
+              return (
+                <FacultyImage 
+                  key={i} 
+                  image={f.image} 
+                  index={i} 
+                  total={FACULTY.length} 
+                  scrollProgress={scrollYProgress}
+                  isActive={i === activeIndex}
+                />
+              );
+            })}
           </div>
         </div>
-
-        {/* Right Side: Stacking images */}
-        <div className="w-full lg:w-1/2 h-full relative bg-gray-50 overflow-hidden">
-          {FACULTY.map((f, i) => {
-            return (
-              <FacultyImage 
-                key={i} 
-                image={f.image} 
-                index={i} 
-                total={FACULTY.length} 
-                scrollProgress={scrollYProgress}
-                isActive={i === activeIndex}
-              />
-            );
-          })}
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

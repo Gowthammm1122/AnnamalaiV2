@@ -7,12 +7,21 @@ import EnquiryModal from "./components/common component/EnquiryModal";
 import DownloadAppModal from "./components/common component/DownloadAppModal";
 import Footer from "./components/common component/Footer";
 import LoadingScreen from "./components/common component/LoadingScreen";
-import Home from "./components/Home";
-import About from "./components/About";
-import Courses from "./components/Courses";
-import Gallery from "./components/Gallery";
-import Contact from "./components/Contact";
-import Resources from "./components/Resources";
+const Home = React.lazy(() => import("./components/Home"));
+const About = React.lazy(() => import("./components/About"));
+const Courses = React.lazy(() => import("./components/Courses"));
+const Gallery = React.lazy(() => import("./components/Gallery"));
+const Contact = React.lazy(() => import("./components/Contact"));
+const Resources = React.lazy(() => import("./components/Resources"));
+
+const RouteLoader = () => (
+  <div className="w-full min-h-[60vh] flex items-center justify-center bg-transparent">
+    <div className="flex flex-col items-center gap-4">
+      <div className="w-10 h-10 rounded-full border-2 border-[#1e4fc0]/20 border-t-[#1e4fc0] animate-spin" />
+      <span className="text-xs font-semibold text-[#1e4fc0] tracking-wider uppercase opacity-80 animate-pulse">Loading...</span>
+    </div>
+  </div>
+);
 
 function AppContent() {
   const [showLoading, setShowLoading] = useState(false);
@@ -72,17 +81,19 @@ function AppContent() {
       <EnquiryModal />
       <DownloadAppModal />
       
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Navigate to="/" replace />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/resources" element={<Resources />} />
-        <Route path="/contact" element={<Contact />} />
-        {/* Fallback to home */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <React.Suspense fallback={<RouteLoader />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/contact" element={<Contact />} />
+          {/* Fallback to home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </React.Suspense>
       
       <Footer />
     </div>
