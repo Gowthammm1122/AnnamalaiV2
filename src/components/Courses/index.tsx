@@ -46,7 +46,7 @@ const COURSES_DATA: CourseItem[] = [
   },
   {
     id: "tnpsc-group-1-2-4",
-    name: "TNPSC Combined Civil Services (Group 1, 2, 2A & 4)",
+    name: "TNPSC Combined Civil Services (Group 1, 2/2A & 4)",
     category: "civil-services",
     duration: "Syllabus Milestone Based",
     level: "10th Standard to Degree Level",

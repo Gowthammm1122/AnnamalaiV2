@@ -539,9 +539,9 @@ const OurCourses = ({ onDiscoverMore }: OurCoursesProps) => {
           style={{ fontFamily: "'Anton', sans-serif" }}
         >
           <div className="flex flex-col items-end">
-            <span className="text-[8px] md:text-[10px] uppercase tracking-[0.4em] opacity-50 mb-1 font-sans font-bold">Registration Open</span>
+            <span className="text-[8px] md:text-[10px] uppercase tracking-[0.4em] opacity-50 mb-1 font-sans font-bold">Admissions Open</span>
             <span className="text-xl md:text-4xl lg:text-5xl xl:text-6xl uppercase tracking-tighter opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all">
-              APPLY NOW
+              REGISTER NOW
             </span>
           </div>
           <div className="w-10 h-10 md:w-24 md:h-24 bg-white/5 border border-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/30 transition-all backdrop-blur-md">

@@ -14,7 +14,7 @@ const Navbar = () => {
   const dropdownData = {
     courses: [
       { name: "UPSC Civil Services", id: "upsc-civil-services" },
-      { name: "TNPSC Group 1, 2, 4", id: "tnpsc-group-1-2-4" },
+      { name: "TNPSC Group 1, 2/2A, 4", id: "tnpsc-group-1-2-4" },
       { name: "Banking Services", id: "banking-ibps-sbi-rbi" },
       { name: "Insurance Corporation", id: "insurance-recruitment" },
       { name: "RRB (Railways)", id: "rrb-technical-popular" },
