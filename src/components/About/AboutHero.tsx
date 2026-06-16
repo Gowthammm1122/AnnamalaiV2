@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { motion } from "framer-motion"; // Kept to your standard package path variant
+import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Image1 from "../../assets/images/banner1.png";
