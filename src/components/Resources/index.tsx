@@ -61,7 +61,7 @@ const ResourcesContent = () => {
   const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState<"all" | "syllabus" | "pyqs" | "current-affairs" | "optional-lit">("all");
 
-  const SHOW_CARDS = false; // Set to true to restore the interactive search, category filters, and cards
+  const SHOW_CARDS = true; // Set to true to restore the interactive search, category filters, and cards
 
   React.useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -78,99 +78,35 @@ const ResourcesContent = () => {
 
   const resourceItems: ResourceItem[] = [
     {
-      id: "upsc-syllabus",
-      title: "UPSC Civil Services Comprehensive Syllabus Map",
-      category: "syllabus",
-      date: "Updated June 2026",
-      badge: "Syllabus Blueprint",
-      description: "Our hallmark master reference sheet. Breaks down Prelims and GS Papers I-IV into specific micro-topics, indicating standard high-yield resource books and study alignment strategies.",
-      format: "PDF Document",
-      size: "2.8 MB",
-      downloadUrl: "https://drive.google.com/drive/folders/dummy-syllabus-folder-id",
-      features: [
-        "Interactive GS Paper I-IV micro-theme tracker list",
-        "Recommended booklist tags and official government report references",
-        "Answer-writing syllabus maps for easy correlation"
-      ]
-    },
-    {
-      id: "pyq-prelims-2025",
-      title: "2025 Civil Services Prelims GS Paper I (Solved)",
-      category: "pyqs",
-      date: "May 2026",
-      badge: "Solved PYQs",
-      description: "Complete GS Paper I analysis under Dr P. Annamalai's evaluation model. Includes logical logical elimination checklists, syllabus correlation grids, and official key benchmarks.",
-      format: "PDF Document",
-      size: "4.1 MB",
-      downloadUrl: "https://drive.google.com/drive/folders/dummy-pyq-folder-id",
-      features: [
-        "Curated analytical explanations for all 100 questions",
-        "Syllabus tags identifying conceptual topics versus factual themes",
-        "Special insights into dynamic current affairs correlations"
-      ]
-    },
-    {
-      id: "ca-may-2026",
-      title: "Monthly Current Affairs Digest - May 2026 Edition",
+      id: "upsc-current-affairs",
+      title: "UPSC Current Affairs Digest",
       category: "current-affairs",
-      date: "June 2026",
-      badge: "Monthly CA Digest",
-      description: "Bilingual comprehensive digest mapping high-yield items from The Hindu, Indian Express, and PIB. Completely simplified for Prelims facts and Mains analytical structures.",
-      format: "PDF Document",
-      size: "5.4 MB",
-      downloadUrl: "https://drive.google.com/drive/folders/dummy-current-affairs-folder-id",
+      date: "Daily, Weekly & Monthly",
+      badge: "UPSC",
+      description: "Access our comprehensive Daily, Weekly, and Monthly current affairs compilations curated specifically for the UPSC Civil Services Examination.",
+      format: "Google Drive Folder",
+      size: "Shared Folder",
+      downloadUrl: "https://drive.google.com/drive/folders/1e_PcuYoFS6ShagBnqYrkOVn9JlxcIQt9?usp=sharing",
       features: [
-        "Crisp point-wise editorial analysis of top national issues",
-        "Curated Prelims practice MCQs with instant key grids",
-        "Mains questions outline with strategic schema mappings"
+        "Daily news analysis of high-yield editorial topics",
+        "Weekly current affairs compilations",
+        "Monthly comprehensive digests mapping Prelims & Mains themes"
       ]
     },
     {
-      id: "tamil-lit-ref",
-      title: "Tamil Literature Optional Reference Blueprint",
-      category: "optional-lit",
-      date: "May 2026",
-      badge: "Optional Materials",
-      description: "Premium reference material curated by expert faculties. Includes systematic explanations of classical poems, epic literature structures, and expected sample mains answer scripts.",
-      format: "PDF Document",
-      size: "3.2 MB",
-      downloadUrl: "https://drive.google.com/drive/folders/dummy-optional-folder-id",
-      features: [
-        "Expert structures for classical poetry grammar analysis",
-        "Expected question lists matching previous 10 years TNPSC trends",
-        "One-on-one answer structuring blueprints"
-      ]
-    },
-    {
-      id: "mains-feedback-model",
-      title: "Mains Answer writing Model Copy & Feedback",
-      category: "pyqs",
-      date: "Bi-Weekly Updated",
-      badge: "Mains Evaluation Cell",
-      description: "Actual toppers' model test scripts showing direct administrative feedback grids. Perfect for evaluating structural alignments, cases, case files, and diagrams.",
-      format: "PDF Document",
-      size: "6.2 MB",
-      downloadUrl: "https://drive.google.com/drive/folders/dummy-mains-model-folder-id",
-      features: [
-        "Blueprints of average answer copies vs outstanding scores",
-        "Direct comments by senior faculty members showing map details",
-        "Standard skeletal templates for quick mains structure recall"
-      ]
-    },
-    {
-      id: "yojana-april-2026",
-      title: "Yojana & Kurukshetra Magazine Analysis (April 2026)",
+      id: "tnpsc-current-affairs",
+      title: "TNPSC Current Affairs Digest",
       category: "current-affairs",
-      date: "May 2026",
-      badge: "Monthly Summaries",
-      description: "Extensive government magazine summary notes targeting crucial policy schemes and infrastructure agendas. Highly recommended for GS Papers II and III answer keys.",
-      format: "PDF Document",
-      size: "1.9 MB",
-      downloadUrl: "https://drive.google.com/drive/folders/dummy-yojana-folder-id",
+      date: "Daily, Weekly & Monthly",
+      badge: "TNPSC",
+      description: "Access our comprehensive Daily, Weekly, and Monthly current affairs compilations curated specifically for the TNPSC Group Examinations.",
+      format: "Google Drive Folder",
+      size: "Shared Folder",
+      downloadUrl: "https://drive.google.com/drive/folders/13HV0rUUc5DEL_aHQmoUK1a2fl0YiqUgx?usp=sharing",
       features: [
-        "Policy schemes mapped to standard administrative goals",
-        "Key quotes and charts curated for direct essay inputs",
-        "Syllabus checklist mapping magazine articles to UPSC criteria"
+        "Daily regional & national news updates for Group exams",
+        "Weekly summaries of crucial state administration schemes",
+        "Monthly bilingual compilations of current affairs"
       ]
     }
   ];
@@ -344,8 +280,6 @@ const ResourcesContent = () => {
               exit={{ scale: 0.98, opacity: 0 }}
               className="relative w-full max-w-2xl transform overflow-hidden rounded-[28px] bg-white p-6 md:p-8 text-left shadow-xl transition-all border border-gray-150 z-10"
             >
-              {/* Top Gradient Accent Block */}
-              <div className="absolute top-0 right-0 left-0 h-[4px] bg-gradient-to-r from-blue-500 to-indigo-600" />
               
               {/* Close Button */}
               <button
@@ -402,7 +336,7 @@ const ResourcesContent = () => {
                 {/* Download Button Section inside modal overlay */}
                 <div className="pt-6 border-t border-gray-150 flex flex-col items-center gap-4">
                   <p className="text-xs text-gray-500 font-light text-center">
-                    Click the button below to download the material. It will direct you to the secure resource folder.
+                    Click the button below to view the materials. It will direct you to the secure resource folder.
                   </p>
                   <button
                     type="button"
@@ -411,8 +345,7 @@ const ResourcesContent = () => {
                     }}
                     className="w-full py-3 bg-[#1E40AF] hover:bg-blue-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer group"
                   >
-                    <Download className="w-3.5 h-3.5" />
-                    Download Material
+                    View Materials
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
