@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 interface ResourceItem {
   id: string;
   title: string;
-  category: "syllabus" | "pyqs" | "current-affairs" | "optional-lit";
+  category: "syllabus" | "current-affairs";
   date: string;
   badge: string;
   description: string;
@@ -59,14 +59,14 @@ const ResourcesHero = () => {
 const ResourcesContent = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [selectedCategory, setSelectedCategory] = useState<"all" | "syllabus" | "pyqs" | "current-affairs" | "optional-lit">("all");
+  const [selectedCategory, setSelectedCategory] = useState<"all" | "syllabus" | "current-affairs">("all");
 
   const SHOW_CARDS = true; // Set to true to restore the interactive search, category filters, and cards
 
   React.useEffect(() => {
     const params = new URLSearchParams(location.search);
     const tab = params.get("tab");
-    if (tab && ["syllabus", "pyqs", "current-affairs", "optional-lit"].includes(tab)) {
+    if (tab && ["syllabus", "current-affairs"].includes(tab)) {
       setSelectedCategory(tab as any);
     } else {
       setSelectedCategory("all");
@@ -78,35 +78,99 @@ const ResourcesContent = () => {
 
   const resourceItems: ResourceItem[] = [
     {
-      id: "upsc-current-affairs",
-      title: "UPSC Current Affairs Digest",
+      id: "upsc-daily-ca",
+      title: "Daily UPSC Current Affairs",
       category: "current-affairs",
-      date: "Daily, Weekly & Monthly",
-      badge: "UPSC",
-      description: "Access our comprehensive Daily, Weekly, and Monthly current affairs compilations curated specifically for the UPSC Civil Services Examination.",
+      date: "Daily Updated",
+      badge: "UPSC Daily",
+      description: "Access our daily current affairs analysis mapping high-yield news items from The Hindu, Indian Express, and PIB for UPSC Civil Services Examination.",
       format: "Google Drive Folder",
       size: "Shared Folder",
-      downloadUrl: "https://drive.google.com/drive/folders/1e_PcuYoFS6ShagBnqYrkOVn9JlxcIQt9?usp=sharing",
+      downloadUrl: "https://drive.google.com/drive/folders/1sInFSapeKiSpWsw_eVqfwKxc10kT-2vA?usp=drive_link",
       features: [
-        "Daily news analysis of high-yield editorial topics",
-        "Weekly current affairs compilations",
-        "Monthly comprehensive digests mapping Prelims & Mains themes"
+        "Daily editorial analysis and key takeaways",
+        "Prelims specific facts & daily practice MCQs",
+        "Syllabus-aligned micro-notes for quick revision"
       ]
     },
     {
-      id: "tnpsc-current-affairs",
-      title: "TNPSC Current Affairs Digest",
+      id: "upsc-weekly-ca",
+      title: "Weekly UPSC Current Affairs",
       category: "current-affairs",
-      date: "Daily, Weekly & Monthly",
-      badge: "TNPSC",
-      description: "Access our comprehensive Daily, Weekly, and Monthly current affairs compilations curated specifically for the TNPSC Group Examinations.",
+      date: "Weekly Updated",
+      badge: "UPSC Weekly",
+      description: "Comprehensive weekly summaries and news compilations designed for mains answer writing enrichment and core theme updates.",
       format: "Google Drive Folder",
       size: "Shared Folder",
-      downloadUrl: "https://drive.google.com/drive/folders/13HV0rUUc5DEL_aHQmoUK1a2fl0YiqUgx?usp=sharing",
+      downloadUrl: "https://drive.google.com/drive/folders/1mIw5N0iYotUE8ydbnyogRNFN6xVU77tM?usp=drive_link",
       features: [
-        "Daily regional & national news updates for Group exams",
-        "Weekly summaries of crucial state administration schemes",
-        "Monthly bilingual compilations of current affairs"
+        "Weekly news roundups and critical issues analysis",
+        "Mains answer structures and schematic mapping",
+        "Crucial data points, reports, and indices updates"
+      ]
+    },
+    {
+      id: "upsc-monthly-ca",
+      title: "Monthly UPSC Current Affairs Digest",
+      category: "current-affairs",
+      date: "Monthly Updated",
+      badge: "UPSC Monthly",
+      description: "Our hallmark comprehensive monthly current affairs digest. Simplified mains answer blueprints and structured prelims pointers.",
+      format: "Google Drive Folder",
+      size: "Shared Folder",
+      downloadUrl: "https://drive.google.com/drive/folders/1GYP8nE0u8mdPhYhPEfNF0jZaNw_1Fcg1?usp=drive_link",
+      features: [
+        "Bilingual comprehensive monthly digests",
+        "Complete month-in-review editorial analysis",
+        "Prelims practice test papers with explanatory keys"
+      ]
+    },
+    {
+      id: "tnpsc-daily-ca",
+      title: "Daily TNPSC Current Affairs",
+      category: "current-affairs",
+      date: "Daily Updated",
+      badge: "TNPSC Daily",
+      description: "Access our daily regional and national current affairs updates specifically curated for TNPSC Group I, II, and IV examinations.",
+      format: "Google Drive Folder",
+      size: "Shared Folder",
+      downloadUrl: "https://drive.google.com/drive/folders/16rG1EaKD-ebktROLL03VmmQ1rkLLxK7Z?usp=drive_link",
+      features: [
+        "Daily Tamil Nadu state specific news analysis",
+        "Objective current affairs questions aligned with TNPSC trends",
+        "Bilingual (Tamil & English) daily summaries"
+      ]
+    },
+    {
+      id: "tnpsc-weekly-ca",
+      title: "Weekly TNPSC Current Affairs",
+      category: "current-affairs",
+      date: "Weekly Updated",
+      badge: "TNPSC Weekly",
+      description: "Weekly current affairs roundups focused on state schemes, socio-economic developments, and administrative updates in Tamil Nadu.",
+      format: "Google Drive Folder",
+      size: "Shared Folder",
+      downloadUrl: "https://youtube.com/playlist?list=PLR8EBxbqoTN4&si=xden5uWP90VT_UIr",
+      features: [
+        "Weekly consolidated state policy reviews",
+        "Detailed explanations of newly launched schemes",
+        "High-yield facts for Group Exam mains preparation"
+      ]
+    },
+    {
+      id: "tnpsc-monthly-ca",
+      title: "Monthly TNPSC Current Affairs Digest",
+      category: "current-affairs",
+      date: "Monthly Updated",
+      badge: "TNPSC Monthly",
+      description: "Bilingual monthly compilations of current affairs for exhaustive revision of state, national, and international events.",
+      format: "Google Drive Folder",
+      size: "Shared Folder",
+      downloadUrl: "https://drive.google.com/drive/folders/1opdjKjy3aG8tI3QH7GQXmf3PmX1oG_R-?usp=drive_link",
+      features: [
+        "Comprehensive bilingual monthly current affairs booklets",
+        "Topic-wise classification of state and national updates",
+        "Full-length current affairs practice tests"
       ]
     }
   ];
@@ -133,7 +197,7 @@ const ResourcesContent = () => {
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-12 border-b border-gray-150">
               {/* Category Tabs */}
               <div className="flex flex-wrap gap-2">
-                {(["all", "syllabus", "pyqs", "current-affairs", "optional-lit"] as const).map((cat) => (
+                {(["all", "syllabus", "current-affairs"] as const).map((cat) => (
                   <button
                     key={cat}
                     type="button"
@@ -144,7 +208,7 @@ const ResourcesContent = () => {
                         : "bg-gray-50 text-gray-400 border-gray-150 hover:bg-gray-100 hover:text-dark"
                     }`}
                   >
-                    {cat === "all" ? "All Materials" : cat === "syllabus" ? "Syllabus Maps" : cat === "pyqs" ? "PYQs & Mocks" : cat === "current-affairs" ? "Current Affairs" : "Optional Subjects"}
+                    {cat === "all" ? "All Materials" : cat === "syllabus" ? "Syllabus Maps" : "Current Affairs"}
                   </button>
                 ))}
               </div>

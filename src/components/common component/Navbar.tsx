@@ -27,9 +27,8 @@ const Navbar = () => {
       { name: "Scholarships", tab: "special-events" },
     ],
     resources: [
-      { name: "PYQs and Mocks", tab: "pyqs" },
+      { name: "Syllabus Maps", tab: "syllabus" },
       { name: "Current Affairs", tab: "current-affairs" },
-      { name: "Optional Subjects", tab: "optional-lit" },
     ],
   };
 

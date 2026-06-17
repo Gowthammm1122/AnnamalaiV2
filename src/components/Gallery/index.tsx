@@ -14,6 +14,7 @@ interface GalleryEvent {
   venueOrPlatform: string;
   timeLine: string;
   features: string[];
+  registrationUrl?: string;
 }
 
 const GalleryHero = () => {
@@ -61,7 +62,7 @@ const GalleryContent = () => {
   const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState<"all" | "test-series" | "workshops" | "special-events">("all");
 
-  const SHOW_CARDS = false; // Set to true to restore the interactive search, category filters, and cards
+  const SHOW_CARDS = true; // Set to true to restore the interactive search, category filters, and cards
 
   React.useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -78,100 +79,55 @@ const GalleryContent = () => {
 
   const galleryEvents: GalleryEvent[] = [
     {
-      id: "aipmts",
-      title: "All India Prelims Mock Test Series (AIPMTS)",
-      category: "test-series",
-      date: "Every Sunday Morning",
-      badge: "UPSC Prelims Mock",
-      description: "Our hallmark national review simulation. Aligns with exact UPSC timing, style, paper weights, and negative scoring calibrations.",
-      mode: "Offline & Online",
-      venueOrPlatform: "Plot 12&13, Main road, Anthony Nagar Main Road, Kolathur Campus & Online Portal",
-      timeLine: "09:30 AM Onwards (Paper I & II)",
-      features: [
-        "Real-time comparative leaderboard metrics",
-        "Comprehensive bilingual video analytical keys",
-        "Focus diagnostic checklists and negative mark tracker"
-      ]
-    },
-    {
-      id: "tamil-lit",
-      title: "Tamil Literature Optional Test Series",
-      category: "test-series",
-      date: "Saturdays & Wednesdays",
-      badge: "Mains Optional Program",
-      description: "Comprehensive guidance program tailored under Dr P. Annamalai's methodology. Includes evaluation on classical poems, dramas, and contemporary novels.",
-      mode: "Offline Only",
-      venueOrPlatform: "Main Seminar Boardroom, Chennai HQ",
-      timeLine: "Starting from 02:00 PM",
-      features: [
-        "Line-by-line evaluated script feedback from senior mentors",
-        "Unique notes for classical grammar and folklore questions",
-        "One-on-one virtual zoom counsel sessions"
-      ]
-    },
-    {
-      id: "officer-talk",
-      title: "Officer Interaction: 'LBSNAA and Real-world Administration'",
-      category: "workshops",
-      date: "May 28, 2026",
-      badge: "Invited Guest Seminar",
-      description: "Interact directly with freshly selected and senior serving IAS & IPS administrative officers. Learn study disciplines, optional strategy formulation, and answer polish templates.",
-      mode: "Offline & Online",
-      venueOrPlatform: "Main Auditorium Block & Live Webcast",
-      timeLine: "03:00 PM to 06:00 PM IST",
-      features: [
-        "Live candid Q&A session with candidate interaction",
-        "Officer's personal Mains and Interview answer breakdowns",
-        "Strategic motivation and pressure management strategies"
-      ]
-    },
-    {
-      id: "current-affairs",
-      title: "Daily Morning Current Affairs Quiz Challenge",
+      id: "upsc-scholarship-test",
+      title: "UPSC Free Scholarship Test Registration",
       category: "special-events",
-      date: "Daily Morning (Mon-Sat)",
-      badge: "Micro-Practice Challenge",
-      description: "Bite-sized high-yield tests built around The Hindu, Indian Express, and PIB. Keeps factual and analytical memory sharp.",
+      date: "Limited Time Registration",
+      badge: "UPSC Scholarship",
+      description: "Register for the UPSC Free Scholarship Test. Exceptional performers can qualify for program scholarships and fee waivers at Dr P. Annamalai IAS Academy.",
       mode: "Online Only",
-      venueOrPlatform: "Official Academy Portal",
-      timeLine: "08:30 AM Post Time",
+      venueOrPlatform: "Proctored Online Exam Portal",
+      timeLine: "Registrations Open",
       features: [
-        "Comprehensive syllabus tags for GS Papers I, II and III",
-        "Instant conceptual logic grids upon clicking answers",
-        "Monthly topper incentive awards and book sponsorships"
-      ]
+        "Full or partial tuition fee waivers for top scorers",
+        "Comprehensive syllabus mapping and logic questions",
+        "Detailed performance dashboard analytics"
+      ],
+      registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdwlHArLLAk40LkMygslX0QnSk4Ylyoygp5_y2P0b6FgYiboA/viewform?usp=dialog"
     },
     {
-      id: "mains-polish",
-      title: "UPSC Mains Answer Copy Review Workshop",
+      id: "upsc-orientation-program",
+      title: "UPSC Free Orientation Program",
       category: "workshops",
-      date: "Bi-Weekly Saturdays",
-      badge: "Skill Intensive",
-      description: "Interactive session on drafting answers that stand out. Includes diagram and map integration, ethical case briefs, and government committee references.",
+      date: "Upcoming Session",
+      badge: "UPSC Orientation",
+      description: "Join our comprehensive orientation session to map out your civil services preparation strategy, booklists, and timeline milestones.",
       mode: "Offline & Online",
-      venueOrPlatform: "Lecture Corridor Hall A & Academy Zoom Stream",
-      timeLine: "04:30 PM Onwards",
+      venueOrPlatform: "Main Seminar Boardroom & Online Stream",
+      timeLine: "Live Interactive Session",
       features: [
-        "Skeletal structure blueprinting methodology",
-        "Interactive display of average vs outstanding answer briefs",
-        "Reference notes on high-yielding index keys & committee briefs"
-      ]
+        "Detailed analysis of UPSC Civil Services syllabus maps",
+        "Interactive Q&A with experienced academic counselors",
+        "Strategic reference booklets and planning blueprints"
+      ],
+      registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf6oXl-ItT0T7j61t9FYImHS1rPYJkfdFN9uRAFsN7OqN4Xww/viewform?usp=dialog"
     },
     {
-      id: "scat-scholar",
-      title: "Scholarship Cum Admission Test (SCAT)",
+      id: "tnpsc-scholarship-test",
+      title: "TNPSC Scholarship Test Registration",
       category: "special-events",
-      date: "First Sunday of June, 2026",
-      badge: "Admits & Fee Waivers",
-      description: "Our state-wide merit examination. Exceptional achievers qualify for full tuition and residential program scholarships at Dr P. Annamalai IAS Academy.",
-      mode: "Offline & Online",
-      venueOrPlatform: "State-wide partner centers & Proctored Portal",
-      timeLine: "Registrations closing in 4 Days",
+      date: "Limited Time Registration",
+      badge: "TNPSC Scholarship",
+      description: "Register for the TNPSC Free Scholarship Test. Qualify for tuition waivers and dedicated mentoring for Group I, II/IIA, and IV examinations.",
+      mode: "Online Only",
+      venueOrPlatform: "Academy Online Portal",
+      timeLine: "Registrations Open",
       features: [
-        "UPSC civil services syllabus-aligned logic and GS standard",
-        "Tiered admissions fee waiver slabs based on strict performance",
-        "Immediate detailed personal feedback syllabus mapping"
-      ]
+        "Tiered admissions fee waiver based on performance",
+        "Focus diagnostic checklists for TNPSC exam syllabus",
+        "One-on-one preparation planning with academic experts"
+      ],
+      registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfQn5ue9NRnMLR6E6awLbBfKkeSeecx0cPZ8aM23FW45SGiOw/viewform?usp=dialog"
     }
   ];
 
@@ -398,17 +354,21 @@ const GalleryContent = () => {
                 {/* Enroll Now Section inside modal overlay */}
                 <div className="pt-6 border-t border-gray-150 flex flex-col items-center gap-4">
                   <p className="text-xs text-gray-500 font-light text-center">
-                    Ready to participate? Secure your seat by enrolling today.
+                    Ready to participate? Secure your seat by registering today.
                   </p>
                   <button
                     type="button"
                     onClick={() => {
-                      navigate("/contact");
-                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      if (selectedEvent.registrationUrl) {
+                        window.open(selectedEvent.registrationUrl, "_blank", "noopener,noreferrer");
+                      } else {
+                        navigate("/contact");
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
                     }}
                     className="w-full py-3 bg-[#1E40AF] hover:bg-blue-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer group"
                   >
-                    Pre Register now
+                    Register Now
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
