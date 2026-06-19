@@ -172,6 +172,70 @@ const ResourcesContent = () => {
         "Topic-wise classification of state and national updates",
         "Full-length current affairs practice tests"
       ]
+    },
+    {
+      id: "tnpsc-group-1-syllabus",
+      title: "TNPSC Group 1",
+      category: "syllabus",
+      date: "Latest Syllabus",
+      badge: "Syllabus TNPSC Group 1",
+      description: "Complete syllabus map, micro-topic breakdown, and exam pattern details for TNPSC Group 1 services.",
+      format: "Google Drive Folder",
+      size: "Shared Folder",
+      downloadUrl: "https://drive.google.com/drive/folders/1sjnQgESf8PO6YAj3X2mdwCbFDdNqVa3m?usp=drive_link",
+      features: [
+        "Prelims & Mains detailed syllabus layout",
+        "Topic-wise weightage and reference list",
+        "Micro-unit divisions for systematic tracking"
+      ]
+    },
+    {
+      id: "tnpsc-group-2-2a-syllabus",
+      title: "TNPSC Group 2/2A",
+      category: "syllabus",
+      date: "Latest Syllabus",
+      badge: "Syllabus TNPSC Group 2/2A",
+      description: "Micro-syllabus map for TNPSC Group 2 and 2A (Combined Civil Services Examination-II).",
+      format: "Google Drive Folder",
+      size: "Shared Folder",
+      downloadUrl: "https://drive.google.com/drive/folders/1WLe9UE18YBO66sJdkknn-OzmqwHpyaXF?usp=drive_link",
+      features: [
+        "Prelims objective type & Mains descriptive topics details",
+        "Tamil language eligibility test requirements breakdown",
+        "Core subject checklists and strategic guidelines"
+      ]
+    },
+    {
+      id: "tnpsc-group-4-syllabus",
+      title: "TNPSC Group 4",
+      category: "syllabus",
+      date: "Latest Syllabus",
+      badge: "Syllabus TNPSC Group 4",
+      description: "Exhaustive syllabus outline for TNPSC Group 4 and VAO recruitment examination.",
+      format: "Google Drive Folder",
+      size: "Shared Folder",
+      downloadUrl: "https://drive.google.com/drive/folders/1zeK-OEkxaoBZWWtx9KQOagAuNUggTqnp?usp=drive_link",
+      features: [
+        "Single-stage OMR-based test subject areas checklist",
+        "Bilingual general studies and language content tracking",
+        "Mental ability & aptitude micro-syllabus"
+      ]
+    },
+    {
+      id: "upsc-syllabus",
+      title: "UPSC",
+      category: "syllabus",
+      date: "Latest Syllabus",
+      badge: "Syllabus UPSC Civil Services",
+      description: "Strategic micro-syllabus map for Civil Services Examination (CSE) Prelims and Mains.",
+      format: "Google Drive Folder",
+      size: "Shared Folder",
+      downloadUrl: "https://drive.google.com/drive/folders/1AIuM27VSMCB3Ynd6f_N5CJ7FkEZ7CttJ?usp=drive_link",
+      features: [
+        "GS Papers I-IV detailed micro-topic lists",
+        "Prelims CSAT syllabus and optional subject selector guide",
+        "Mains answer writing strategy syllabus checkpoints"
+      ]
     }
   ];
 

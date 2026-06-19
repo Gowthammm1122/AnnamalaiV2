@@ -80,35 +80,41 @@ const GalleryContent = () => {
   const galleryEvents: GalleryEvent[] = [
     {
       id: "upsc-scholarship-test",
-      title: "UPSC Free Scholarship Test Registration",
+      title: "UPSC Scholarship Test Registration",
       category: "special-events",
       date: "Limited Time Registration",
       badge: "UPSC Scholarship",
-      description: "Register for the UPSC Free Scholarship Test. Exceptional performers can qualify for program scholarships and fee waivers at Dr P. Annamalai IAS Academy.",
+      description: "Register for the UPSC Scholarship Test. Exceptional performers can qualify for up to 50% tuition scholarships at Dr P. Annamalai IAS Academy.",
       mode: "Online Only",
       venueOrPlatform: "Proctored Online Exam Portal",
       timeLine: "Registrations Open",
       features: [
-        "Full or partial tuition fee waivers for top scorers",
-        "Comprehensive syllabus mapping and logic questions",
-        "Detailed performance dashboard analytics"
+        "Scholarship Perk: Upto 50% scholarship based on merit rankings",
+        "Exam Duration: 2 Hours | Total Marks: 200",
+        "Question Count: 80 Questions (2.5 marks for each correct answer)",
+        "Subject Division: General Studies (60 questions) & CSAT (20 questions)",
+        "Marking Policy: Negative marking of -0.83 marks for each wrong answer",
+        "Syllabus Scope: Same as basic UPSC Civil Services syllabus"
       ],
       registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdwlHArLLAk40LkMygslX0QnSk4Ylyoygp5_y2P0b6FgYiboA/viewform?usp=dialog"
     },
     {
-      id: "upsc-orientation-program",
-      title: "UPSC Free Orientation Program",
+      id: "upsc-mega-orientation",
+      title: "UPSC Mega Orientation Session - The Leadership Edge",
       category: "workshops",
-      date: "Upcoming Session",
-      badge: "UPSC Orientation",
-      description: "Join our comprehensive orientation session to map out your civil services preparation strategy, booklists, and timeline milestones.",
-      mode: "Offline & Online",
-      venueOrPlatform: "Main Seminar Boardroom & Online Stream",
-      timeLine: "Live Interactive Session",
+      date: "28-06-2026",
+      badge: "Mega Orientation",
+      description: "Join 'The Leadership Edge' orientation session led by 2 veteran IAS officers (Former Principal Secretary & Former Secretary, Government of Tamil Nadu). Hybrid session covering Prelims mastery, Mains strategy, Interview blueprint, and exclusive offline perks.",
+      mode: "Hybrid (Online & Offline)",
+      venueOrPlatform: "Plot 12 & 13, Anthony Nagar Main Road, Kolathur, Chennai - 99",
+      timeLine: "Sunday, 28.06.2026 at 10:00 AM",
       features: [
-        "Detailed analysis of UPSC Civil Services syllabus maps",
-        "Interactive Q&A with experienced academic counselors",
-        "Strategic reference booklets and planning blueprints"
+        "Led by 2 Veteran IAS Officers (Former Principal Secretary & Former Secretary, Govt of TN)",
+        "Prelims Mastery: High-yield topics, pattern analysis, and smart elimination",
+        "Mains Workshop: Live answer-structuring and time-management drill",
+        "Interview Blueprint: Real boardroom experiences and personality development",
+        "Current Affairs: Newspaper analysis and seamless GS integration",
+        "Offline Exclusive Perks: Free shuttle from Anna Nagar & hospitality (lunch/tea) provided"
       ],
       registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf6oXl-ItT0T7j61t9FYImHS1rPYJkfdFN9uRAFsN7OqN4Xww/viewform?usp=dialog"
     },
@@ -118,14 +124,17 @@ const GalleryContent = () => {
       category: "special-events",
       date: "Limited Time Registration",
       badge: "TNPSC Scholarship",
-      description: "Register for the TNPSC Free Scholarship Test. Qualify for tuition waivers and dedicated mentoring for Group I, II/IIA, and IV examinations.",
+      description: "Register for the TNPSC Scholarship Test. Qualify for up to 50% tuition scholarships and dedicated mentoring for Group I, II/IIA, and IV examinations.",
       mode: "Online Only",
       venueOrPlatform: "Academy Online Portal",
       timeLine: "Registrations Open",
       features: [
-        "Tiered admissions fee waiver based on performance",
-        "Focus diagnostic checklists for TNPSC exam syllabus",
-        "One-on-one preparation planning with academic experts"
+        "Scholarship Perk: Upto 50% scholarship based on merit rankings",
+        "Exam Duration: 1 Hour 30 Minutes | Total Marks: 150",
+        "Question Count: 100 Questions (1.5 marks for each question)",
+        "Subject Division: General Studies (80 questions) & Maths/Mental Ability (20 questions)",
+        "Marking Policy: Basic scoring system with no negative marks",
+        "Syllabus Scope: Same as basic TNPSC syllabus"
       ],
       registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfQn5ue9NRnMLR6E6awLbBfKkeSeecx0cPZ8aM23FW45SGiOw/viewform?usp=dialog"
     }

@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "r
 import Lenis from "lenis";
 import Navbar from "./components/common component/Navbar";
 import FloatingButtons from "./components/common component/FloatingButtons";
+import NewEventsTab from "./components/common component/NewEventsTab";
+import OrientationPopup from "./components/common component/OrientationPopup";
 import EnquiryModal from "./components/common component/EnquiryModal";
 import DownloadAppModal from "./components/common component/DownloadAppModal";
 import Footer from "./components/common component/Footer";
@@ -78,6 +80,8 @@ function AppContent() {
 
       <Navbar />
       <FloatingButtons />
+      <NewEventsTab />
+      <OrientationPopup />
       <EnquiryModal />
       <DownloadAppModal />
       
