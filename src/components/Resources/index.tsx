@@ -12,7 +12,12 @@ interface ResourceItem {
   description: string;
   format: string;
   size: string;
-  downloadUrl: string;
+  downloadUrl?: string;
+  links?: {
+    daily: string;
+    weekly: string;
+    monthly: string;
+  };
   features: string[];
 }
 
@@ -78,100 +83,44 @@ const ResourcesContent = () => {
 
   const resourceItems: ResourceItem[] = [
     {
-      id: "upsc-daily-ca",
-      title: "Daily UPSC Current Affairs",
+      id: "upsc-ca",
+      title: "UPSC Current Affairs",
       category: "current-affairs",
-      date: "Daily Updated",
-      badge: "UPSC Daily",
-      description: "Access our daily current affairs analysis mapping high-yield news items from The Hindu, Indian Express, and PIB for UPSC Civil Services Examination.",
-      format: "Google Drive Folder",
-      size: "Shared Folder",
-      downloadUrl: "https://drive.google.com/drive/folders/1sInFSapeKiSpWsw_eVqfwKxc10kT-2vA?usp=drive_link",
+      date: "Daily/Weekly/Monthly Updates",
+      badge: "UPSC Current Affairs",
+      description: "Access our daily news analyses, weekly summaries, and monthly digests designed for UPSC Civil Services Examination preparation.",
+      format: "Google Drive Folders",
+      size: "Shared Folders",
       features: [
         "Daily editorial analysis and key takeaways",
-        "Prelims specific facts & daily practice MCQs",
-        "Syllabus-aligned micro-notes for quick revision"
-      ]
+        "Weekly summaries for mains answer writing enrichment",
+        "Comprehensive bilingual monthly digests & mock tests"
+      ],
+      links: {
+        daily: "https://drive.google.com/drive/folders/1sInFSapeKiSpWsw_eVqfwKxc10kT-2vA?usp=drive_link",
+        weekly: "https://drive.google.com/drive/folders/1mIw5N0iYotUE8ydbnyogRNFN6xVU77tM?usp=drive_link",
+        monthly: "https://drive.google.com/drive/folders/1GYP8nE0u8mdPhYhPEfNF0jZaNw_1Fcg1?usp=drive_link"
+      }
     },
     {
-      id: "upsc-weekly-ca",
-      title: "Weekly UPSC Current Affairs",
+      id: "tnpsc-ca",
+      title: "TNPSC Current Affairs",
       category: "current-affairs",
-      date: "Weekly Updated",
-      badge: "UPSC Weekly",
-      description: "Comprehensive weekly summaries and news compilations designed for mains answer writing enrichment and core theme updates.",
-      format: "Google Drive Folder",
-      size: "Shared Folder",
-      downloadUrl: "https://drive.google.com/drive/folders/1mIw5N0iYotUE8ydbnyogRNFN6xVU77tM?usp=drive_link",
+      date: "Daily/Weekly/Monthly Updates",
+      badge: "TNPSC Current Affairs",
+      description: "Access our daily, weekly, and monthly regional and national current affairs updates specifically curated for TNPSC Group examinations.",
+      format: "Google Drive / YouTube",
+      size: "Shared Resources",
       features: [
-        "Weekly news roundups and critical issues analysis",
-        "Mains answer structures and schematic mapping",
-        "Crucial data points, reports, and indices updates"
-      ]
-    },
-    {
-      id: "upsc-monthly-ca",
-      title: "Monthly UPSC Current Affairs Digest",
-      category: "current-affairs",
-      date: "Monthly Updated",
-      badge: "UPSC Monthly",
-      description: "Our hallmark comprehensive monthly current affairs digest. Simplified mains answer blueprints and structured prelims pointers.",
-      format: "Google Drive Folder",
-      size: "Shared Folder",
-      downloadUrl: "https://drive.google.com/drive/folders/1GYP8nE0u8mdPhYhPEfNF0jZaNw_1Fcg1?usp=drive_link",
-      features: [
-        "Bilingual comprehensive monthly digests",
-        "Complete month-in-review editorial analysis",
-        "Prelims practice test papers with explanatory keys"
-      ]
-    },
-    {
-      id: "tnpsc-daily-ca",
-      title: "Daily TNPSC Current Affairs",
-      category: "current-affairs",
-      date: "Daily Updated",
-      badge: "TNPSC Daily",
-      description: "Access our daily regional and national current affairs updates specifically curated for TNPSC Group I, II, and IV examinations.",
-      format: "Google Drive Folder",
-      size: "Shared Folder",
-      downloadUrl: "https://drive.google.com/drive/folders/16rG1EaKD-ebktROLL03VmmQ1rkLLxK7Z?usp=drive_link",
-      features: [
-        "Daily Tamil Nadu state specific news analysis",
-        "Objective current affairs questions aligned with TNPSC trends",
-        "Bilingual (Tamil & English) daily summaries"
-      ]
-    },
-    {
-      id: "tnpsc-weekly-ca",
-      title: "Weekly TNPSC Current Affairs",
-      category: "current-affairs",
-      date: "Weekly Updated",
-      badge: "TNPSC Weekly",
-      description: "Weekly current affairs roundups focused on state schemes, socio-economic developments, and administrative updates in Tamil Nadu.",
-      format: "Google Drive Folder",
-      size: "Shared Folder",
-      downloadUrl: "https://youtube.com/playlist?list=PLR8EBxbqoTN4&si=xden5uWP90VT_UIr",
-      features: [
-        "Weekly consolidated state policy reviews",
-        "Detailed explanations of newly launched schemes",
-        "High-yield facts for Group Exam mains preparation"
-      ]
-    },
-    {
-      id: "tnpsc-monthly-ca",
-      title: "Monthly TNPSC Current Affairs Digest",
-      category: "current-affairs",
-      date: "Monthly Updated",
-      badge: "TNPSC Monthly",
-      description: "Bilingual monthly compilations of current affairs for exhaustive revision of state, national, and international events.",
-      format: "Google Drive Folder",
-      size: "Shared Folder",
-      downloadUrl: "https://drive.google.com/drive/folders/1opdjKjy3aG8tI3QH7GQXmf3PmX1oG_R-?usp=drive_link",
-      features: [
-        "Comprehensive bilingual monthly current affairs booklets",
-        "Topic-wise classification of state and national updates",
-        "Full-length current affairs practice tests"
-      ]
+        "Daily state-specific news analysis & objective questions",
+        "Weekly consolidated policy reviews & scheme updates",
+        "Comprehensive bilingual monthly current affairs booklets"
+      ],
+      links: {
+        daily: "https://drive.google.com/drive/folders/16rG1EaKD-ebktROLL03VmmQ1rkLLxK7Z?usp=drive_link",
+        weekly: "https://youtube.com/playlist?list=PLR8EBxbqoTN4&si=xden5uWP90VT_UIr",
+        monthly: "https://drive.google.com/drive/folders/1opdjKjy3aG8tI3QH7GQXmf3PmX1oG_R-?usp=drive_link"
+      }
     },
     {
       id: "tnpsc-group-1-syllabus",
@@ -301,7 +250,15 @@ const ResourcesContent = () => {
                   <motion.div
                     key={res.id}
                     layoutId={`card-container-${res.id}`}
-                    onClick={() => setSelectedResource(res)}
+                    onClick={() => {
+                      if (res.category === "syllabus") {
+                        if (res.downloadUrl) {
+                          window.open(res.downloadUrl, "_blank", "noopener,noreferrer");
+                        }
+                      } else {
+                        setSelectedResource(res);
+                      }
+                    }}
                     className="group flex flex-col justify-between p-6 rounded-3xl border border-gray-150 bg-white hover:border-[#1E40AF]/40 hover:shadow-md transition-all duration-300 cursor-pointer relative overflow-hidden"
                   >
                     <div className="space-y-4">
@@ -330,10 +287,17 @@ const ResourcesContent = () => {
                         <Calendar className="w-3.5 h-3.5 text-blue-500/80" />
                         {res.date}
                       </span>
-                      <span className="text-[10px] font-bold text-[#1E40AF] tracking-widest uppercase flex items-center gap-1">
-                        Details
-                        <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                      </span>
+                      {res.category === "syllabus" ? (
+                        <span className="text-[10px] font-bold text-[#1E40AF] tracking-widest uppercase flex items-center gap-1">
+                          Download
+                          <Download className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
+                        </span>
+                      ) : (
+                        <span className="text-[10px] font-bold text-[#1E40AF] tracking-widest uppercase flex items-center gap-1">
+                          Details
+                          <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </span>
+                      )}
                     </div>
                   </motion.div>
                 ))}
@@ -462,20 +426,68 @@ const ResourcesContent = () => {
                 </div>
 
                 {/* Download Button Section inside modal overlay */}
-                <div className="pt-6 border-t border-gray-150 flex flex-col items-center gap-4">
+                <div className="pt-6 border-t border-gray-150 flex flex-col items-center gap-4 w-full">
                   <p className="text-xs text-gray-500 font-light text-center">
-                    Click the button below to view the materials. It will direct you to the secure resource folder.
+                    {selectedResource.links ? (
+                      "Select which material you would like to view. You will be directed to the secure resource folder or playlist."
+                    ) : (
+                      "Click the button below to view the materials. It will direct you to the secure resource folder."
+                    )}
                   </p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.open(selectedResource.downloadUrl, "_blank", "noopener,noreferrer");
-                    }}
-                    className="w-full py-3 bg-[#1E40AF] hover:bg-blue-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer group"
-                  >
-                    View Materials
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  
+                  {selectedResource.links ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (selectedResource.links?.daily) {
+                            window.open(selectedResource.links.daily, "_blank", "noopener,noreferrer");
+                          }
+                        }}
+                        className="py-3 px-4 bg-[#1E40AF] hover:bg-blue-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer group"
+                      >
+                        Daily CA
+                        <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (selectedResource.links?.weekly) {
+                            window.open(selectedResource.links.weekly, "_blank", "noopener,noreferrer");
+                          }
+                        }}
+                        className="py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] font-bold uppercase tracking-widest rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer group"
+                      >
+                        Weekly CA
+                        <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (selectedResource.links?.monthly) {
+                            window.open(selectedResource.links.monthly, "_blank", "noopener,noreferrer");
+                          }
+                        }}
+                        className="py-3 px-4 bg-[#1e4fc0] hover:bg-[#153e99] text-white text-[10px] font-bold uppercase tracking-widest rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer group"
+                      >
+                        Monthly CA
+                        <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (selectedResource.downloadUrl) {
+                          window.open(selectedResource.downloadUrl, "_blank", "noopener,noreferrer");
+                        }
+                      }}
+                      className="w-full py-3 bg-[#1E40AF] hover:bg-blue-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer group"
+                    >
+                      View Materials
+                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  )}
                 </div>
 
               </div>

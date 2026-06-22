@@ -6,10 +6,10 @@ const OrientationPopup = () => {
   const timerRef = useRef<NodeJS.Timeout | number | null>(null);
 
   useEffect(() => {
-    // Show pop-up after a slight delay for a premium entrance feel
+    // Show pop-up after a 15-second delay for a premium entrance feel
     timerRef.current = setTimeout(() => {
       setIsVisible(true);
-    }, 1500);
+    }, 15000);
 
     return () => {
       if (timerRef.current) {
@@ -24,10 +24,10 @@ const OrientationPopup = () => {
     if (timerRef.current) {
       clearTimeout(timerRef.current as any);
     }
-    // Set a new timer to reappear after 6 seconds
+    // Set a new timer to reappear after 15 seconds
     timerRef.current = setTimeout(() => {
       setIsVisible(true);
-    }, 10000);
+    }, 15000);
   };
 
   const handleRegisterClick = () => {
