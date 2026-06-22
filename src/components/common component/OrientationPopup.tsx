@@ -27,7 +27,7 @@ const OrientationPopup = () => {
     // Set a new timer to reappear after 15 seconds
     timerRef.current = setTimeout(() => {
       setIsVisible(true);
-    }, 15000);
+    }, 30000);
   };
 
   const handleRegisterClick = () => {
