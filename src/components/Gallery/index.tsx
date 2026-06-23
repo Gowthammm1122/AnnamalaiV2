@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import { Search, Calendar, ChevronRight, X, Clock, MapPin, CheckCircle2, ArrowRight } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import EnquiryModal from "../common component/EnquiryModal";
 
 interface GalleryEvent {
   id: string;
@@ -15,6 +16,7 @@ interface GalleryEvent {
   timeLine: string;
   features: string[];
   registrationUrl?: string;
+  enquiryCourse?: "upsc" | "tnpsc" | "banking" | "ssc" | "tnusrb";
 }
 
 const GalleryHero = () => {
@@ -61,6 +63,8 @@ const GalleryContent = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState<"all" | "test-series" | "workshops" | "special-events">("all");
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+  const [enquiryCourse, setEnquiryCourse] = useState("upsc");
 
   const SHOW_CARDS = true; // Set to true to restore the interactive search, category filters, and cards
 
@@ -80,7 +84,7 @@ const GalleryContent = () => {
   const galleryEvents: GalleryEvent[] = [
     {
       id: "upsc-scholarship-test",
-      title: "UPSC Scholarship Test Registration",
+      title: "Free UPSC Scholarship",
       category: "special-events",
       date: "Limited Time Registration",
       badge: "UPSC Scholarship",
@@ -119,8 +123,28 @@ const GalleryContent = () => {
       registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf6oXl-ItT0T7j61t9FYImHS1rPYJkfdFN9uRAFsN7OqN4Xww/viewform?usp=dialog"
     },
     {
+      id: "upsc-new-batch-july",
+      title: "UPSC Civil Services Examination - New Batch",
+      category: "workshops",
+      date: "01-07-2026",
+      badge: "New Batch",
+      description: "Specialized premium training for all categories of premier central posts (IAS, IPS, IFS and Central Services Group A & B). The curriculum emphasizes framing public policies, conceptual clarity, and disciplined approach.",
+      mode: "Regular & Weekend Batches",
+      venueOrPlatform: "Plot 12 & 13, Anthony Nagar Main Road, Kolathur, Chennai - 99",
+      timeLine: "Batch starts: July 1, 2026",
+      features: [
+        "Comprehensive Preliminary, Mains & Personality Test integration",
+        "Personal care focused batches for disciplined approach",
+        "Detailed mock interviews guided by Dr P. Annamalai, IAS(R) & Mr. C. Kamaraj, IAS(R)",
+        "Daily, Weekly and Monthly diagnostic tests",
+        "Answer writing practice and evaluation under active panel codes"
+      ],
+      registrationUrl: "/courses?course=upsc-civil-services",
+      enquiryCourse: "upsc"
+    },
+    {
       id: "tnpsc-scholarship-test",
-      title: "TNPSC Scholarship Test Registration",
+      title: "Free TNPSC Scholarship Test",
       category: "special-events",
       date: "Limited Time Registration",
       badge: "TNPSC Scholarship",
@@ -137,6 +161,26 @@ const GalleryContent = () => {
         "Syllabus Scope: Same as basic TNPSC syllabus"
       ],
       registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfQn5ue9NRnMLR6E6awLbBfKkeSeecx0cPZ8aM23FW45SGiOw/viewform?usp=dialog"
+    },
+    {
+      id: "tnpsc-new-batch-july",
+      title: "TNPSC Combined Civil Services (Group 1, 2/2A & 4) - New Batch",
+      category: "workshops",
+      date: "15-07-2026",
+      badge: "New Batch",
+      description: "Comprehensive state commission coaching mapping out Group 1 (Deputy Collector, DSP), Group 2/2A (Municipal Commissioner, Sub-Registrar, Assistant), and Group 4 (VAO, Junior Assistant).",
+      mode: "Bilingual Integrated Batches",
+      venueOrPlatform: "Plot 12 & 13, Anthony Nagar Main Road, Kolathur, Chennai - 99",
+      timeLine: "Batch starts: July 15, 2026",
+      features: [
+        "Deep focus on Unit 8 & Unit 9 administration systems",
+        "Tamil Language eligibility & General Studies synthesis",
+        "Custom printed books and model papers mapped per standard syllabi",
+        "Comparative mock test leaderboards matching state Commission criteria",
+        "Single-stage and multi-tier tracking arrays tailored per target exam tier"
+      ],
+      registrationUrl: "/courses?course=tnpsc-group-1-2-4",
+      enquiryCourse: "tnpsc"
     }
   ];
 
@@ -368,8 +412,17 @@ const GalleryContent = () => {
                   <button
                     type="button"
                     onClick={() => {
-                      if (selectedEvent.registrationUrl) {
-                        window.open(selectedEvent.registrationUrl, "_blank", "noopener,noreferrer");
+                      if (selectedEvent.enquiryCourse) {
+                        setEnquiryCourse(selectedEvent.enquiryCourse);
+                        setIsEnquiryOpen(true);
+                        closeOverlay();
+                      } else if (selectedEvent.registrationUrl) {
+                        if (selectedEvent.registrationUrl.startsWith("http")) {
+                          window.open(selectedEvent.registrationUrl, "_blank", "noopener,noreferrer");
+                        } else {
+                          navigate(selectedEvent.registrationUrl);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }
                       } else {
                         navigate("/contact");
                         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -377,7 +430,7 @@ const GalleryContent = () => {
                     }}
                     className="w-full py-3 bg-[#1E40AF] hover:bg-blue-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer group"
                   >
-                    Register Now
+                    {selectedEvent.enquiryCourse ? "Enquire Now" : (selectedEvent.registrationUrl && !selectedEvent.registrationUrl.startsWith("http") ? "View Course Details" : "Register Now")}
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
@@ -387,6 +440,13 @@ const GalleryContent = () => {
           </div>
         </div>
       )}
+
+      {/* Enquiry Modal Popup */}
+      <EnquiryModal 
+        isOpen={isEnquiryOpen} 
+        onClose={() => setIsEnquiryOpen(false)} 
+        initialCourse={enquiryCourse} 
+      />
     </section>
   );
 };
