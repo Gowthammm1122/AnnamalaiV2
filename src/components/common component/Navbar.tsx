@@ -25,6 +25,7 @@ const Navbar = () => {
       { name: "Test Series", tab: "test-series" },
       { name: "Workshops and Talks", tab: "workshops" },
       { name: "Scholarships", tab: "special-events" },
+      { name: "Courses", tab: "courses" },
     ],
     resources: [
       { name: "Syllabus Maps", tab: "syllabus" },

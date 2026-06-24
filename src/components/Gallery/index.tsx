@@ -7,7 +7,7 @@ import EnquiryModal from "../common component/EnquiryModal";
 interface GalleryEvent {
   id: string;
   title: string;
-  category: "test-series" | "workshops" | "special-events";
+  category: "test-series" | "workshops" | "special-events" | "courses";
   date: string;
   badge: string;
   description: string;
@@ -62,7 +62,7 @@ const GalleryHero = () => {
 const GalleryContent = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [selectedCategory, setSelectedCategory] = useState<"all" | "test-series" | "workshops" | "special-events">("all");
+  const [selectedCategory, setSelectedCategory] = useState<"all" | "test-series" | "workshops" | "special-events" | "courses">("all");
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [enquiryCourse, setEnquiryCourse] = useState("upsc");
 
@@ -71,7 +71,7 @@ const GalleryContent = () => {
   React.useEffect(() => {
     const params = new URLSearchParams(location.search);
     const tab = params.get("tab");
-    if (tab && ["test-series", "workshops", "special-events"].includes(tab)) {
+    if (tab && ["test-series", "workshops", "special-events", "courses"].includes(tab)) {
       setSelectedCategory(tab as any);
     } else {
       setSelectedCategory("all");
@@ -125,7 +125,7 @@ const GalleryContent = () => {
     {
       id: "upsc-new-batch-july",
       title: "UPSC Civil Services Examination - New Batch",
-      category: "workshops",
+      category: "courses",
       date: "01-07-2026",
       badge: "New Batch",
       description: "Specialized premium training for all categories of premier central posts (IAS, IPS, IFS and Central Services Group A & B). The curriculum emphasizes framing public policies, conceptual clarity, and disciplined approach.",
@@ -165,7 +165,7 @@ const GalleryContent = () => {
     {
       id: "tnpsc-new-batch-july",
       title: "TNPSC Combined Civil Services (Group 1, 2/2A & 4) - New Batch",
-      category: "workshops",
+      category: "courses",
       date: "15-07-2026",
       badge: "New Batch",
       description: "Comprehensive state commission coaching mapping out Group 1 (Deputy Collector, DSP), Group 2/2A (Municipal Commissioner, Sub-Registrar, Assistant), and Group 4 (VAO, Junior Assistant).",
@@ -178,6 +178,48 @@ const GalleryContent = () => {
         "Custom printed books and model papers mapped per standard syllabi",
         "Comparative mock test leaderboards matching state Commission criteria",
         "Single-stage and multi-tier tracking arrays tailored per target exam tier"
+      ],
+      registrationUrl: "/courses?course=tnpsc-group-1-2-4",
+      enquiryCourse: "tnpsc"
+    },
+    {
+      id: "tnpsc-group-2-test-series",
+      title: "TNPSC Group 2 Test Series (Test Batch)",
+      category: "test-series",
+      date: "15-07-2026",
+      badge: "Test Series",
+      description: "Comprehensive TNPSC Group 2 test series program designed to mirror the actual exam structure. Features 30 total tests with General English and General Tamil mediums.",
+      mode: "Bilingual (English & Tamil)",
+      venueOrPlatform: "Online Portal & Offline Test Centers",
+      timeLine: "Flexible Schedule",
+      features: [
+        "Total Tests: 30 Tests | 200 Questions per test | 300 Marks",
+        "Medium: General English & General Tamil available",
+        "Exam Pattern: Language (100 Qs) + General Studies (75 Qs) + Mental Ability & Reasoning (25 Qs)",
+        "Comprehensive Answer Keys: Detailed explanation PDF (soft copy) provided after every test",
+        "Video Explanations: Exclusive video breakdowns for Mental Ability and General Studies",
+        "Value-Add Materials: Concise gist of Current Affairs & Policy Notes included"
+      ],
+      registrationUrl: "/courses?course=tnpsc-group-1-2-4",
+      enquiryCourse: "tnpsc"
+    },
+    {
+      id: "tnpsc-group-4-test-series",
+      title: "TNPSC Group 4 Test Series (Test Batch)",
+      category: "test-series",
+      date: "15-07-2026",
+      badge: "Test Series",
+      description: "Curated test series package for TNPSC Group 4 candidates. Includes 40 total tests strictly matching the Commission criteria in General Tamil medium.",
+      mode: "General Tamil Medium",
+      venueOrPlatform: "Online Portal & Offline Test Centers",
+      timeLine: "Flexible Schedule",
+      features: [
+        "Total Tests: 40 Tests | 200 Questions per test | 300 Marks",
+        "Medium: General Tamil medium only",
+        "Exam Pattern: Language (100 Qs) + General Studies (75 Qs) + Mental Ability & Reasoning (25 Qs)",
+        "Comprehensive Answer Keys: Detailed explanation PDF (soft copy) provided after every test",
+        "Video Explanations: Exclusive video breakdowns for Mental Ability and General Studies",
+        "Value-Add Materials: Concise gist of Current Affairs & Policy Notes included"
       ],
       registrationUrl: "/courses?course=tnpsc-group-1-2-4",
       enquiryCourse: "tnpsc"
@@ -206,7 +248,7 @@ const GalleryContent = () => {
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-12 border-b border-gray-150">
               {/* Category Tabs */}
               <div className="flex flex-wrap gap-2">
-                {(["all", "test-series", "workshops", "special-events"] as const).map((cat) => (
+                {(["all", "test-series", "workshops", "special-events", "courses"] as const).map((cat) => (
                   <button
                     key={cat}
                     type="button"
@@ -217,7 +259,7 @@ const GalleryContent = () => {
                         : "bg-gray-50 text-gray-400 border-gray-150 hover:bg-gray-100 hover:text-dark"
                     }`}
                   >
-                    {cat === "all" ? "All Programs" : cat === "test-series" ? "Test Series" : cat === "workshops" ? "Workshops & Talks" : "Scholarships"}
+                    {cat === "all" ? "All Programs" : cat === "test-series" ? "Test Series" : cat === "workshops" ? "Workshops & Talks" : cat === "special-events" ? "Scholarships" : "Courses"}
                   </button>
                 ))}
               </div>
