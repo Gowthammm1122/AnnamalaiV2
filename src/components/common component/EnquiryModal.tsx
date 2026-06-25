@@ -104,6 +104,7 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({
           banking: "Banking & Insurance Services",
           ssc: "Staff Selection (SSC) / Railways (RRB)",
           tnusrb: "TNUSRB Police Inspector & SI",
+          "test-series": "Test Series",
         };
 
         const templateParams = {
@@ -231,6 +232,7 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({
                       <option value="banking">Banking and Insurance Company Examinations</option>
                       <option value="ssc">Staff Selection Commission (SSC) / Railways (RRB) Examinations</option>
                       <option value="tnusrb">TNUSRB Sub Inspector Examinations</option>
+                      <option value="test-series">Test Series</option>
                     </select>
                   </div>
 

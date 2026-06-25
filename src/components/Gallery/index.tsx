@@ -16,7 +16,7 @@ interface GalleryEvent {
   timeLine: string;
   features: string[];
   registrationUrl?: string;
-  enquiryCourse?: "upsc" | "tnpsc" | "banking" | "ssc" | "tnusrb";
+  enquiryCourse?: "upsc" | "tnpsc" | "banking" | "ssc" | "tnusrb" | "test-series";
 }
 
 const GalleryHero = () => {
@@ -129,7 +129,7 @@ const GalleryContent = () => {
       date: "01-07-2026",
       badge: "New Batch",
       description: "Specialized premium training for all categories of premier central posts (IAS, IPS, IFS and Central Services Group A & B). The curriculum emphasizes framing public policies, conceptual clarity, and disciplined approach.",
-      mode: "Regular & Weekend Batches",
+      mode: "Hybrid-online/offline",
       venueOrPlatform: "Plot 12 & 13, Anthony Nagar Main Road, Kolathur, Chennai - 99",
       timeLine: "Batch starts: July 1, 2026",
       features: [
@@ -169,7 +169,7 @@ const GalleryContent = () => {
       date: "15-07-2026",
       badge: "New Batch",
       description: "Comprehensive state commission coaching mapping out Group 1 (Deputy Collector, DSP), Group 2/2A (Municipal Commissioner, Sub-Registrar, Assistant), and Group 4 (VAO, Junior Assistant).",
-      mode: "Bilingual Integrated Batches",
+      mode: "Hybrid-online/offline",
       venueOrPlatform: "Plot 12 & 13, Anthony Nagar Main Road, Kolathur, Chennai - 99",
       timeLine: "Batch starts: July 15, 2026",
       features: [
@@ -201,7 +201,7 @@ const GalleryContent = () => {
         "Value-Add Materials: Concise gist of Current Affairs & Policy Notes included"
       ],
       registrationUrl: "/courses?course=tnpsc-group-1-2-4",
-      enquiryCourse: "tnpsc"
+      enquiryCourse: "test-series"
     },
     {
       id: "tnpsc-group-4-test-series",
@@ -222,7 +222,7 @@ const GalleryContent = () => {
         "Value-Add Materials: Concise gist of Current Affairs & Policy Notes included"
       ],
       registrationUrl: "/courses?course=tnpsc-group-1-2-4",
-      enquiryCourse: "tnpsc"
+      enquiryCourse: "test-series"
     }
   ];
 
