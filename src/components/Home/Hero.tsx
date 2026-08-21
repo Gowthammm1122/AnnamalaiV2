@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, Quote } from "lucide-react";
+import { ArrowRight, Play, Pause, Volume2, VolumeX, Video } from "lucide-react";
 
 interface HeroProps {
   onViewCourses?: () => void;
@@ -8,6 +8,27 @@ interface HeroProps {
 }
 
 const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play().catch((err) => console.error("Video play failed:", err));
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
   return (
     <section className="relative lg:sticky lg:top-0 lg:left-0 h-auto lg:h-screen w-full flex flex-col justify-between bg-white overflow-hidden z-0">
       {/* Abstract Background Shapes */}
@@ -50,38 +71,65 @@ const Hero = ({ onViewCourses, onEnrollNow }: HeroProps) => {
             </motion.div>
           </div>
 
-          {/* Featured Card Column - Option B: Modern Typographic Quote Card */}
+          {/* Featured Card Column - Option B: Premium Video Card */}
           <div className="w-full lg:w-1/3 flex flex-col justify-end">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative w-full h-auto min-h-[360px] aspect-auto lg:aspect-[4/5] bg-gradient-to-b from-[#FAFBFD] to-[#F1F5F9] border border-gray-150 p-8 md:p-10 flex flex-col justify-between overflow-hidden group shadow-sm hover:shadow-lg transition-all duration-500 rounded-[32px]"
+              className="relative w-full h-auto min-h-[360px] aspect-auto lg:aspect-[4/5] bg-black border border-gray-150/10 flex flex-col justify-between overflow-hidden group shadow-sm hover:shadow-lg transition-all duration-500 rounded-[32px] p-8 md:p-10"
             >
-              {/* Dynamic glowing accent in bottom-right corner */}
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all duration-500 pointer-events-none"></div>
-              
-              {/* Top Row: Decorative badge & quote mark */}
-              <div className="relative z-10 flex justify-between items-center">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-light border border-blue-150 rounded-full">
-                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#1e4fc0]">Vision of Aspirants</span>
-                </div>
-                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-gray-100 shadow-xs group-hover:scale-105 transition-transform duration-300">
-                  <Quote className="w-3.5 h-3.5 text-primary" />
-                </div>
-              </div>
+              {/* HTML5 video element */}
+              <video
+                ref={videoRef}
+                className="absolute inset-0 w-full h-full object-cover z-0"
+                src="https://res.cloudinary.com/crua0mce/video/upload/f_auto,q_auto/v1787316670/Showreel.mp4"
+                loop
+                muted={isMuted}
+                autoPlay
+                playsInline
+              />
 
-              {/* Quote Content Section */}
-              <div className="relative z-10 my-auto py-4">
-                <p className="text-lg md:text-xl font-display text-gray-700 italic leading-relaxed font-normal">
-                  "Success in the competitive examinations does not depend upon chance, but on the systematic planning,hard work,perseverance and the clarity of your strategic path."
-                </p>
-              </div>
+              {/* Gradient Overlay for high readability of text/controls */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/40 z-10 pointer-events-none" />
 
-              {/* Footer Row: Clean, minimalist academy branding */}
-              <div className="relative z-10 flex items-center space-x-3 pt-4 border-t border-gray-150/60">
+              {/* Top Row: Decorative badge & video icon */}
+              <div className="relative z-20 flex justify-between items-center">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white">Academy Tour</span>
+                </div>
                 
-                <p className="text-[10px] font-medium tracking-widest text-[#1e4fc0] font-sans">Dr P. ANNAMALAI IAS ACADEMY</p>
+              </div>
+
+              {/* Middle Section: Subtle visual play hint on hover */}
+              <div className="relative z-20 my-auto py-4 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white scale-90 group-hover:scale-100 transition-transform duration-300">
+                  {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 fill-white ml-0.5" />}
+                </div>
+              </div>
+
+              {/* Footer Row: Academy name & controls */}
+              <div className="relative z-20 flex items-center justify-between">
+                
+                <div className="flex items-center gap-2">
+                  {/* Play / Pause Toggle */}
+                  <button
+                    onClick={togglePlay}
+                    className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-all active:scale-95 cursor-pointer"
+                    aria-label={isPlaying ? "Pause Video" : "Play Video"}
+                  >
+                    {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 fill-white ml-0.5" />}
+                  </button>
+
+                  {/* Mute / Unmute Toggle */}
+                  <button
+                    onClick={toggleMute}
+                    className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-all active:scale-95 cursor-pointer"
+                    aria-label={isMuted ? "Unmute Video" : "Mute Video"}
+                  >
+                    {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+                  </button>
+                </div>
               </div>
             </motion.div>
           </div>
